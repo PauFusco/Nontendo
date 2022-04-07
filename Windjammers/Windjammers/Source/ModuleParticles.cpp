@@ -6,7 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 
-#include "SDL/include/SDL_timer.h"
+#include "../External_Libraries/SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles()
 {

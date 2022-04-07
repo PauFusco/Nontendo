@@ -8,7 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 
-#include "SDL/include/SDL_scancode.h"
+#include "../External_Libraries/SDL/include/SDL_scancode.h"
 
 
 ModulePlayer::ModulePlayer()

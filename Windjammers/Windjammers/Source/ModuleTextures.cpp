@@ -3,8 +3,8 @@
 #include "Application.h"
 #include "ModuleRender.h"
 
-#include "SDL/include/SDL.h"
-#include "SDL_image/include/SDL_image.h"
+#include "../External_Libraries/SDL/include/SDL.h"
+#include "../External_Libraries/SDL_image/include/SDL_image.h"
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
 
 ModuleTextures::ModuleTextures() : Module()
