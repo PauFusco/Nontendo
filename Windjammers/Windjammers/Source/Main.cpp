@@ -2,9 +2,11 @@
 #include "Globals.h"
 #include "MemLeaks.h"
 
+#define SDL_MAIN_HANDLED
+
 #include "../External_Libraries/SDL/include/SDL.h"
-#pragma comment( lib, "SDL/libx86/SDL2.lib")
-#pragma comment( lib, "SDL/libx86/SDL2main.lib")
+#pragma comment( lib, "C:/Users/paufu/Documents/GitHub/Nontendo/Windjammers/Windjammers/External_Libraries/SDL/libx86/SDL2.lib")
+#pragma comment( lib, "C:/Users/paufu/Documents/GitHub/Nontendo/Windjammers/Windjammers/External_Libraries/SDL/libx86/SDL2main.lib")
 
 
 enum class main_states

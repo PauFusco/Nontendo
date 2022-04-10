@@ -50,6 +50,8 @@ public:
 	Animation idleAnim;
 	Animation upAnim;
 	Animation downAnim;
+	Animation rightAnim;
+	Animation leftAnim;
 
 	// TODO 3: Add a collider to the player
 

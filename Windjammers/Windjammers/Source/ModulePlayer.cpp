@@ -13,19 +13,36 @@
 
 ModulePlayer::ModulePlayer()
 {
-	// idle animation - just one sprite
-	idleAnim.PushBack({ 66, 1, 32, 14 });
+	// idle animation
+	idleAnim.PushBack({  6, 7, 52, 36 });
+	idleAnim.PushBack({ 58, 8, 52, 36 });
+	idleAnim.speed = 0.05f;
 
-	// move upwards
-	upAnim.PushBack({ 100, 1, 32, 14 });
-	upAnim.PushBack({ 132, 0, 32, 14 });
-	upAnim.loop = false;
+	// Move up
+	upAnim.PushBack({ 146, 54, 27, 39 });
+	upAnim.PushBack({ 179, 54, 27, 39 });
+	upAnim.PushBack({ 214, 48, 26, 50 });
+	upAnim.PushBack({ 247, 54, 24, 39 });
+	upAnim.PushBack({ 276, 54, 26, 39 });
 	upAnim.speed = 0.1f;
 
 	// Move down
-	downAnim.PushBack({ 33, 1, 32, 14 });
-	downAnim.PushBack({ 0, 1, 32, 14 });
-	downAnim.loop = false;
+	downAnim.PushBack({  45, 57, 27, 33 });
+	downAnim.PushBack({  79, 52, 30, 43 });
+	downAnim.PushBack({ 114, 56, 27, 35 });
+	downAnim.speed = 0.1f;
+
+	// Move right
+	rightAnim.PushBack({ 426,  7, 26, 36 });
+	rightAnim.PushBack({ 457,  7, 34, 35 });
+	rightAnim.PushBack({   6, 55, 32, 36 });
+	upAnim.speed = 0.1f;
+
+	// Move left
+	leftAnim.PushBack({  });
+	leftAnim.PushBack({  });
+	leftAnim.PushBack({  });
+	leftAnim.PushBack({  });
 	downAnim.speed = 0.1f;
 }
 
@@ -40,7 +57,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	texture = App->textures->Load("Assets/ship.png"); // arcade version
+	texture = App->textures->Load("Assets/Korea movements.png"); // arcade version
 	currentAnimation = &idleAnim;
 
 	laserFx = App->audio->LoadFx("Assets/laser.wav");
@@ -50,24 +67,34 @@ bool ModulePlayer::Start()
 	position.y = 120;
 
 	// TODO 3: Add a collider to the player
-	collider = App->collisions->AddCollider({ position.x, position.y, 32, 16 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x, position.y, 27, 33 }, Collider::Type::PLAYER, this);
 
 	return ret;
 }
 
 update_status ModulePlayer::Update()
 {
-	// Moving the player with the camera scroll
-	App->player->position.x += 1;
 
 	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
+		if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
+		collider->SetPos(position.x + 7, position.y);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
+		if (currentAnimation != &rightAnim)
+		{
+			rightAnim.Reset();
+			currentAnimation = &rightAnim;
+		}
+		collider->SetPos(position.x + 7, position.y);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
@@ -78,6 +105,7 @@ update_status ModulePlayer::Update()
 			downAnim.Reset();
 			currentAnimation = &downAnim;
 		}
+		collider->SetPos(position.x, position.y);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
@@ -88,6 +116,7 @@ update_status ModulePlayer::Update()
 			upAnim.Reset();
 			currentAnimation = &upAnim;
 		}
+		collider->SetPos(position.x, position.y);
 	}
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -98,12 +127,12 @@ update_status ModulePlayer::Update()
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
+		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) {
 		currentAnimation = &idleAnim;
 
-	// TODO 4: Update collider position to player position
-	collider->SetPos(position.x, position.y);
-
+		// TODO 4: Update collider position to player position
+		collider->SetPos(position.x + 7, position.y);
+	}
 	currentAnimation->Update();
 
 	if (destroyed)
