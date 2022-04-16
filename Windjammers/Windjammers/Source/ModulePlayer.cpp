@@ -63,8 +63,8 @@ bool ModulePlayer::Start()
 	laserFx = App->audio->LoadFx("Assets/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
 
-	position.x = 150;
-	position.y = 120;
+	position.x = 25;
+	position.y = 100;
 
 	// TODO 3: Add a collider to the player
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 33 }, Collider::Type::PLAYER, this);
