@@ -30,7 +30,7 @@ public:
 	update_status PostUpdate() override;
 
 	// Collision callback, called when the player intersects with another collider
-	bool OnCollision(Collider* c1, Collider* c2) override;
+	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
 	// Position of the player in the map
@@ -59,7 +59,7 @@ public:
 	Collider* collider = nullptr;
 
 	// A flag to detect when the player has been destroyed
-	bool KO = false;
+	bool destroyed = false;
 
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	uint destroyedCountdown = 120;
