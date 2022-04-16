@@ -41,12 +41,15 @@ public:
 
 	// The disc spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
+	
 
 	// The pointer to the current player animation
 	// It will be switched depending on the disc's movement direction
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
+	Animation idleAnim;
+	Animation slowAnim;
 
 	// The disc's collider
 	Collider* collider = nullptr;

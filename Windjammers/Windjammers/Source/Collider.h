@@ -12,7 +12,7 @@ struct Collider
 		NONE = -1,
 		WALL,
 		PLAYER,
-		ENEMY,
+		DISC,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
 
