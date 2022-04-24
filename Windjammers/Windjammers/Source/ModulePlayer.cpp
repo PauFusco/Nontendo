@@ -75,66 +75,76 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
-
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x -= speed;
-		if (currentAnimation != &rightAnim)
+	if (!hasDisc) {
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
+			position.x -= speed;
+			if (currentAnimation != &rightAnim)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+			collider->SetPos(position.x + 7, position.y);
 		}
-		collider->SetPos(position.x + 7, position.y);
+
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		{
+			position.x += speed;
+			if (currentAnimation != &rightAnim)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+			collider->SetPos(position.x + 7, position.y);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		{
+			position.y += speed;
+			if (currentAnimation != &downAnim)
+			{
+				downAnim.Reset();
+				currentAnimation = &downAnim;
+			}
+			collider->SetPos(position.x, position.y);
+		}
+
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		{
+			position.y -= speed;
+			if (currentAnimation != &upAnim)
+			{
+				upAnim.Reset();
+				currentAnimation = &upAnim;
+			}
+			collider->SetPos(position.x, position.y);
+		}
 	}
-
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	int sx, sy;
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
 	{
-		position.x += speed;
-		if (currentAnimation != &rightAnim)
-		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
-		}
-		collider->SetPos(position.x + 7, position.y);
-	}
-
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		// position.y += speed;
-		if (currentAnimation != &downAnim)
-		{
-			downAnim.Reset();
-			currentAnimation = &downAnim;
-		}
-		collider->SetPos(position.x, position.y);
-	}
-
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y -= speed;
-		if (currentAnimation != &upAnim)
-		{
-			upAnim.Reset();
-			currentAnimation = &upAnim;
-		}
-		collider->SetPos(position.x, position.y);
-	}
-
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		int sx, sy;
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)		sy = 2;
-		else if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)	sy = -2;
-		else
-		{
-			sy = 0;	
-		}
+		sy = 2;
 		sx = 5;
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 		
 		// App->audio->PlayFx(laserFx);
 	}
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+	{
+		sy = -2;
+		sx = 5;
+		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 
+		// App->audio->PlayFx(laserFx);
+	}
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	{
+		sy = 0;
+		sx = 5;
+		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
+
+		// App->audio->PlayFx(laserFx);
+	}
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE

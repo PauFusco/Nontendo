@@ -35,8 +35,6 @@ bool ModuleDisc::Start()
 {
 	LOG("Loading disc textures");
 
-	bool ret = true;
-
 	position.x = 100;
 	position.y = 50;
 
@@ -45,7 +43,7 @@ bool ModuleDisc::Start()
 	// Disc collider
 	collider = App->collisions->AddCollider({ position.x, position.y, 16, 16 }, Collider::Type::DISC, this);
 
-	return ret;
+	return true;
 }
 
 update_status ModuleDisc::Update()
