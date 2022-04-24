@@ -38,7 +38,7 @@ bool ModuleDisc::Start()
 	bool ret = true;
 
 	position.x = 100;
-	position.y = 220;
+	position.y = 50;
 
 	texture = App->textures->Load("Assets/DiscBeach.png"); 
 
@@ -54,7 +54,7 @@ update_status ModuleDisc::Update()
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		currentAnimation = &slowAnim;
-		// App->audio->PlayFx(laserFx);
+		position.x++;
 	}
 	currentAnimation->Update();
 
