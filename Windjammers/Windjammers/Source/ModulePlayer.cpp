@@ -7,6 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleDisc.h"
 #include "Collider.h"
 
 #include "../External_Libraries/SDL/include/SDL_scancode.h"
@@ -37,14 +38,13 @@ ModulePlayer::ModulePlayer()
 	rightAnim.PushBack({ 426,  7, 26, 36 });
 	rightAnim.PushBack({ 457,  7, 34, 35 });
 	rightAnim.PushBack({   6, 55, 32, 36 });
-	upAnim.speed = 0.1f;
+	rightAnim.speed = 0.1f;
 
 	// Move left
-	leftAnim.PushBack({  });
-	leftAnim.PushBack({  });
-	leftAnim.PushBack({  });
-	leftAnim.PushBack({  });
-	downAnim.speed = 0.1f;
+	leftAnim.PushBack({ 76, 161, 32, 37 });
+	leftAnim.PushBack({ 39, 161, 36, 38 });
+	leftAnim.PushBack({  3, 161, 37, 37 });
+	leftAnim.speed = 0.1f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -100,7 +100,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y += speed;
+		// position.y += speed;
 		if (currentAnimation != &downAnim)
 		{
 			downAnim.Reset();
@@ -122,13 +122,24 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		// App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
+		int sx, sy;
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)		sy = 2;
+		else if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)	sy = -2;
+		else
+		{
+			sy = 0;	
+		}
+		sx = 5;
+		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
+		
 		// App->audio->PlayFx(laserFx);
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) {
+		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE) {
 		currentAnimation = &idleAnim;
 
 		// TODO 4: Update collider position to player position
@@ -164,18 +175,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	// TODO 5: Detect collision with a wall. If so don't move
 	if (c1 == collider&& App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y -= aux+aux;
+		position.y -= aux + 1;
 	}
 	if (c1 == collider && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y += aux+aux;
+		position.y += aux + 1;
 	}
 	if (c1 == collider && App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x += aux+aux;
+		position.x += aux + 1;
 	}
 	if (c1 == collider && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x -= aux+aux;
+		position.x -= aux + 1;
 	}
 }

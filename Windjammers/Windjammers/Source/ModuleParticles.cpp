@@ -22,7 +22,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/particles.png");
+	texture = App->textures->Load("Assets/DiscBeach.png");
 
 	// Explosion particle
 	explosion.anim.PushBack({274, 296, 33, 30});
@@ -34,8 +34,11 @@ bool ModuleParticles::Start()
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
+	laser.anim.PushBack({ 117, 48, 16, 16 });
+	laser.anim.PushBack({ 149, 48, 16, 16 });
+	laser.anim.PushBack({ 181, 48, 16, 16 });
+	laser.anim.PushBack({ 213, 48, 16, 16 });
+
 	laser.speed.x = 5;
 	laser.lifetime = 180;
 	laser.anim.speed = 0.2f;
@@ -68,7 +71,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if (particles[i] != nullptr && particles[i]->collider == c1)
 		{
 			// TODO 6: Make so every time a particle hits a wall it triggers an explosion particle
-			AddParticle(explosion, particles[i]->position.x, particles[i]->position.y);
+			// AddParticle(explosion, particles[i]->position.x, particles[i]->position.y);
 
 			delete particles[i];
 			particles[i] = nullptr;
@@ -112,7 +115,7 @@ update_status ModuleParticles::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int speedx, int speedy, Collider::Type colliderType, uint delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -121,9 +124,11 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collid
 		{
 			Particle* p = new Particle(particle);
 
-			p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			//p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
 			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
 			p->position.y = y;
+			p->speed.x = speedx;
+			p->speed.y = speedy;
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
