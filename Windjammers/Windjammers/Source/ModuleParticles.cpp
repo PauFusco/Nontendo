@@ -39,7 +39,7 @@ bool ModuleParticles::Start()
 	laser.anim.PushBack({ 181, 48, 16, 16 });
 	laser.anim.PushBack({ 213, 48, 16, 16 });
 
-	laser.lifetime = 180;
+	laser.lifetime = 50;
 	laser.anim.speed = 0.2f;
 
 	return true;
@@ -130,7 +130,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sp
 			p->speed.y = speedy;
 
 			//Adding the particle's collider
-			if (colliderType != Collider::Type::PLAYER_SHOT)
+			if (colliderType != Collider::Type::NONE)
 				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
 
 			particles[i] = p;

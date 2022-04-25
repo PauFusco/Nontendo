@@ -33,7 +33,9 @@ bool ModuleScene::Start()
 	App->collisions->AddCollider({   0,  32, 304,  24 }, Collider::Type::WALL);
 	App->collisions->AddCollider({   0, 182, 304,  22 }, Collider::Type::WALL);
 	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::RED);
-
+	App->collisions->AddCollider({   0,  56,   8, 154 }, Collider::Type::GOAL);
+	App->collisions->AddCollider({ 296,  56,   8, 154 }, Collider::Type::GOAL);
+	
 	return ret;
 }
 
