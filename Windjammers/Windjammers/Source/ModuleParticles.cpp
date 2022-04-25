@@ -39,7 +39,7 @@ bool ModuleParticles::Start()
 	laser.anim.PushBack({ 181, 48, 16, 16 });
 	laser.anim.PushBack({ 213, 48, 16, 16 });
 
-	laser.lifetime = 50;
+	laser.lifetime = 200;
 	laser.anim.speed = 0.2f;
 
 	return true;
@@ -71,11 +71,12 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			// TODO 6: Make so every time a particle hits a wall it triggers an explosion particle
 			// AddParticle(explosion, particles[i]->position.x, particles[i]->position.y);
-
-			delete particles[i];
-			particles[i] = nullptr;
-			break;
+			// particles[i]->speed.x = -particles[i]->speed.x;
+			particles[i]->speed.y = -particles[i]->speed.y;
 		}
+		// delete particles[i];
+		// particles[i] = nullptr;
+			
 	}
 }
 

@@ -29,6 +29,7 @@ ModuleCollisions::ModuleCollisions()
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::PLAYER_SHOT] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::ENEMY_SHOT] = false;
 	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::RED] = false;
+	matrix[Collider::Type::PLAYER_SHOT][Collider::Type::GOAL] = true;
 
 
 	matrix[Collider::Type::ENEMY_SHOT][Collider::Type::WALL] = true;
