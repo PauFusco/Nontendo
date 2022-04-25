@@ -13,8 +13,10 @@ struct Collider
 		WALL,
 		PLAYER,
 		DISC,
+		RED,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
+		GOAL,
 
 		MAX
 	};
@@ -25,6 +27,10 @@ struct Collider
 	void SetPos(int x, int y);
 
 	bool Intersects(const SDL_Rect& r) const;
+
+	Type returnt() {
+		return type;
+	}
 
 	//Variables
 	SDL_Rect rect;
