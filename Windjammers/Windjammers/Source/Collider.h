@@ -15,7 +15,7 @@ struct Collider
 		DISC,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
-
+		NET,
 		MAX
 	};
 
