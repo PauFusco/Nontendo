@@ -120,27 +120,25 @@ update_status ModulePlayer::Update()
 			collider->SetPos(position.x, position.y);
 		}
 	}
-	int sx, sy;
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN)
+	int sx = 4, sy;
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		sy = 2;
-		sx = 5;
+		sy = -2;
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 		
 		// App->audio->PlayFx(laserFx);
 	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		sy = -2;
-		sx = 5;
+		sy = 2;
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 
 		// App->audio->PlayFx(laserFx);
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		sy = 0;
 		sx = 5;
+		sy = 0;
 		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 
 		// App->audio->PlayFx(laserFx);
