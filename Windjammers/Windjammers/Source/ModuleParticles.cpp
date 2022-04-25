@@ -22,10 +22,10 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/DiscBeach.png");
+	texture = App->textures->Load("Assets/Particles.png");
 
 	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
+	/*explosion.anim.PushBack({274, 296, 33, 30});
 	explosion.anim.PushBack({313, 296, 33, 30});
 	explosion.anim.PushBack({346, 296, 33, 30});
 	explosion.anim.PushBack({382, 296, 33, 30});
@@ -33,11 +33,18 @@ bool ModuleParticles::Start()
 	explosion.anim.PushBack({457, 296, 33, 30});
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
+	*/
 
-	disc.anim.PushBack({ 117, 48, 16, 16 });
-	disc.anim.PushBack({ 149, 48, 16, 16 });
-	disc.anim.PushBack({ 181, 48, 16, 16 });
-	disc.anim.PushBack({ 213, 48, 16, 16 });
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.loop = false;
+	explosion.anim.speed = 0.1f;
+
+	disc.anim.PushBack({ 117, 560, 16, 16 });
+	disc.anim.PushBack({ 149, 560, 16, 16 });
+	disc.anim.PushBack({ 181, 560, 16, 16 });
+	disc.anim.PushBack({ 213, 560, 16, 16 });
 
 	disc.lifetime = 200;
 	disc.anim.speed = 0.2f;
@@ -66,17 +73,18 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
+		Particle* p = particles[i];
 		// Always destroy particles that collide
-		if (particles[i] != nullptr && particles[i]->collider == c1)
+		if (p->collider == c1)
 		{
 			// TODO 6: Make so every time a particle hits a wall it triggers an explosion particle
 			// AddParticle(explosion, particles[i]->position.x, particles[i]->position.y);
-			// particles[i]->speed.x = -particles[i]->speed.x;
-			particles[i]->speed.y = -particles[i]->speed.y;
+
+			p->speed.y = -p->speed.y;
+			App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
+			// delete particles[i];
+			// particles[i] = nullptr;
 		}
-		// delete particles[i];
-		// particles[i] = nullptr;
-			
 	}
 }
 
