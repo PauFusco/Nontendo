@@ -75,14 +75,14 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
-	if (!hasDisc) {
+	if (hasDisc) {
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
-			if (currentAnimation != &rightAnim)
+			if (currentAnimation != &leftAnim)
 			{
-				rightAnim.Reset();
-				currentAnimation = &rightAnim;
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
 			}
 			collider->SetPos(position.x + 7, position.y);
 		}
