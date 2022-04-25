@@ -130,7 +130,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sp
 			p->speed.y = speedy;
 
 			//Adding the particle's collider
-			if (colliderType != Collider::Type::NONE)
+			if (colliderType != Collider::Type::PLAYER_SHOT)
 				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
 
 			particles[i] = p;

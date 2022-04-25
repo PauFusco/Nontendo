@@ -32,7 +32,7 @@ bool ModuleScene::Start()
 	// TODO 2: Add colliders for the first columns of the level
 	App->collisions->AddCollider({   0,  32, 304,  24 }, Collider::Type::WALL);
 	App->collisions->AddCollider({   0, 182, 304,  22 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::RED);
 
 	return ret;
 }
