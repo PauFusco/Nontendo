@@ -69,9 +69,6 @@
     <ClCompile Include="Source\Collider.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ModuleDisc.cpp">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -124,9 +121,6 @@
     </ClInclude>
     <ClInclude Include="Source\p2Point.h">
       <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleDisc.h">
-      <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

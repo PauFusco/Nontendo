@@ -6,7 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 
-#include "../External_Libraries/SDL/include/SDL_timer.h"
+#include "SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles()
 {
@@ -34,13 +34,13 @@ bool ModuleParticles::Start()
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	laser.anim.PushBack({ 117, 48, 16, 16 });
-	laser.anim.PushBack({ 149, 48, 16, 16 });
-	laser.anim.PushBack({ 181, 48, 16, 16 });
-	laser.anim.PushBack({ 213, 48, 16, 16 });
+	disc.anim.PushBack({ 117, 48, 16, 16 });
+	disc.anim.PushBack({ 149, 48, 16, 16 });
+	disc.anim.PushBack({ 181, 48, 16, 16 });
+	disc.anim.PushBack({ 213, 48, 16, 16 });
 
-	laser.lifetime = 200;
-	laser.anim.speed = 0.2f;
+	disc.lifetime = 200;
+	disc.anim.speed = 0.2f;
 
 	return true;
 }

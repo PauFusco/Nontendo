@@ -28,15 +28,13 @@ struct Collider
 
 	bool Intersects(const SDL_Rect& r) const;
 
-	Type returnt() {
-		return type;
-	}
-
 	//Variables
 	SDL_Rect rect;
 	bool pendingToDelete = false;
 	Type type;
 	Module* listener = nullptr;
+
+	Type mytype;
 };
 
 
