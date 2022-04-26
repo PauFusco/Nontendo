@@ -7,43 +7,47 @@
 #include "ModuleParticles.h"
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
+#include "ModuleDisc.h"
+#include "Collider.h"
 
 #include "../External_Libraries/SDL/include/SDL_scancode.h"
 
 
 ModulePlayer::ModulePlayer()
 {
-	// idle animation
-	idleAnim.PushBack({  6, 7, 52, 36 });
-	idleAnim.PushBack({ 58, 8, 52, 36 });
-	idleAnim.speed = 0.05f;
+	nat = KOREA;
+	if (nat == KOREA) {
+		// idle animation
+		idleAnim.PushBack({ 6, 7, 52, 36 });
+		idleAnim.PushBack({ 58, 8, 52, 36 });
+		idleAnim.speed = 0.05f;
 
-	// Move up
-	upAnim.PushBack({ 146, 54, 27, 39 });
-	upAnim.PushBack({ 179, 54, 27, 39 });
-	upAnim.PushBack({ 214, 48, 26, 50 });
-	upAnim.PushBack({ 247, 54, 24, 39 });
-	upAnim.PushBack({ 276, 54, 26, 39 });
-	upAnim.speed = 0.1f;
+		// Move up
+		upAnim.PushBack({ 146, 54, 27, 39 });
+		upAnim.PushBack({ 179, 54, 27, 39 });
+		upAnim.PushBack({ 214, 48, 26, 50 });
+		upAnim.PushBack({ 247, 54, 24, 39 });
+		upAnim.PushBack({ 276, 54, 26, 39 });
+		upAnim.speed = 0.1f;
 
-	// Move down
-	downAnim.PushBack({  45, 57, 27, 33 });
-	downAnim.PushBack({  79, 52, 30, 43 });
-	downAnim.PushBack({ 114, 56, 27, 35 });
-	downAnim.speed = 0.1f;
+		// Move down
+		downAnim.PushBack({ 45, 57, 27, 33 });
+		downAnim.PushBack({ 79, 52, 30, 43 });
+		downAnim.PushBack({ 114, 56, 27, 35 });
+		downAnim.speed = 0.1f;
 
-	// Move right
-	rightAnim.PushBack({ 426,  7, 26, 36 });
-	rightAnim.PushBack({ 457,  7, 34, 35 });
-	rightAnim.PushBack({   6, 55, 32, 36 });
-	upAnim.speed = 0.1f;
+		// Move right
+		rightAnim.PushBack({ 426,  7, 26, 36 });
+		rightAnim.PushBack({ 457,  7, 34, 35 });
+		rightAnim.PushBack({ 6, 55, 32, 36 });
+		rightAnim.speed = 0.1f;
 
-	// Move left
-	leftAnim.PushBack({  });
-	leftAnim.PushBack({  });
-	leftAnim.PushBack({  });
-	leftAnim.PushBack({  });
-	downAnim.speed = 0.1f;
+		// Move left
+		leftAnim.PushBack({ 76, 161, 32, 37 });
+		leftAnim.PushBack({ 39, 161, 36, 38 });
+		leftAnim.PushBack({ 3, 161, 37, 37 });
+		leftAnim.speed = 0.1f;
+	}
 }
 
 ModulePlayer::~ModulePlayer()
@@ -56,14 +60,18 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
+	if (nat == KOREA) texture = App->textures->Load("Assets/Korea movements.png"); // Korea sprites
+	
+	if (nat == ITALY) texture = App->textures->Load("Assets/Italy movements.png"); // Italy sprites
 
-	texture = App->textures->Load("Assets/Korea movements.png"); // arcade version
+	if (nat == USA) texture = App->textures->Load("Assets/USA movements.png"); // USA sprites
+	
 	currentAnimation = &idleAnim;
 
 	laserFx = App->audio->LoadFx("Assets/laser.wav");
 	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
 
-	position.x = 25;
+	position.x = 20;
 	position.y = 100;
 
 	// TODO 3: Add a collider to the player
@@ -74,60 +82,79 @@ bool ModulePlayer::Start()
 
 update_status ModulePlayer::Update()
 {
-
-	if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x -= speed;
-		if (currentAnimation != &rightAnim)
+	if (hasDisc) {
+		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
+			position.x -= speed;
+			if (currentAnimation != &leftAnim)
+			{
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
+			}
+			collider->SetPos(position.x + 7, position.y);
 		}
-		collider->SetPos(position.x + 7, position.y);
-	}
 
-	if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x += speed;
-		if (currentAnimation != &rightAnim)
+		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
-			rightAnim.Reset();
-			currentAnimation = &rightAnim;
+			position.x += speed;
+			if (currentAnimation != &rightAnim)
+			{
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+			collider->SetPos(position.x + 7, position.y);
 		}
-		collider->SetPos(position.x + 7, position.y);
-	}
 
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y += speed;
-		if (currentAnimation != &downAnim)
+		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
-			downAnim.Reset();
-			currentAnimation = &downAnim;
+			position.y += speed;
+			if (currentAnimation != &downAnim)
+			{
+				downAnim.Reset();
+				currentAnimation = &downAnim;
+			}
+			collider->SetPos(position.x, position.y);
 		}
-		collider->SetPos(position.x, position.y);
-	}
 
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y -= speed;
-		if (currentAnimation != &upAnim)
+		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
-			upAnim.Reset();
-			currentAnimation = &upAnim;
+			position.y -= speed;
+			if (currentAnimation != &upAnim)
+			{
+				upAnim.Reset();
+				currentAnimation = &upAnim;
+			}
+			collider->SetPos(position.x, position.y);
 		}
-		collider->SetPos(position.x, position.y);
 	}
+	int sx = 4, sy;
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	{
+		sy = -2;
+		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
+		
+		// App->audio->PlayFx(laserFx);
+	}
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	{
+		sy = 2;
+		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 
+		// App->audio->PlayFx(laserFx);
+	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, Collider::Type::PLAYER_SHOT);
-		App->audio->PlayFx(laserFx);
-	}
+		sx = 5;
+		sy = 0;
+		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 
+		// App->audio->PlayFx(laserFx);
+	}
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) {
+		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE) {
 		currentAnimation = &idleAnim;
 
 		// TODO 4: Update collider position to player position
@@ -158,17 +185,23 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	// TODO 5: Detect collision with a wall. If so, go back to intro screen.
-	if (c1 == collider && destroyed == false)
+	int aux = speed;
+
+	// TODO 5: Detect collision with a wall. If so don't move
+	if (c1 == collider&& App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, Collider::Type::NONE, 9);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, Collider::Type::NONE, 14);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, Collider::Type::NONE, 40);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, Collider::Type::NONE, 28);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, Collider::Type::NONE, 21);
-
-		App->audio->PlayFx(explosionFx);
-
-		destroyed = true;
+		position.y -= aux + 1;
+	}
+	if (c1 == collider && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	{
+		position.y += aux + 1;
+	}
+	if (c1 == collider && App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	{
+		position.x += aux + 1;
+	}
+	if (c1 == collider && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	{
+		position.x -= aux + 1;
 	}
 }

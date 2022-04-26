@@ -24,16 +24,18 @@ bool ModuleScene::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Beach Stadium.png");
-	App->audio->PlayMusic("Assets/stage1.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/BEACH.ogg", 1.0f);
 
 	// Colliders ---
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
 
 	// TODO 2: Add colliders for the first columns of the level
-	App->collisions->AddCollider({   0,  32, 304,  24 }, Collider::Type::WALL);
-	App->collisions->AddCollider({   0, 182, 304,  22 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::WALL);
-
+	App->collisions->AddCollider({   0,  32, 304,  15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({   0, 182, 304,  15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::RED);
+	App->collisions->AddCollider({   0,  56,   8, 132 }, Collider::Type::GOAL);
+	App->collisions->AddCollider({ 296,  56,   8, 132 }, Collider::Type::GOAL);
+	
 	return ret;
 }
 
