@@ -7,7 +7,7 @@
 #include "Particle.h"
 #include "Collider.h"
 
-#define MAX_ACTIVE_PARTICLES 1
+#define MAX_ACTIVE_PARTICLES 10
 
 struct SDL_Texture;
 struct Collider;
@@ -61,6 +61,7 @@ public:
 
 	//Template particle for a laser
 	Particle disc;
+
 };
 
 #endif // !__MODULEPARTICLES_H__

@@ -5,6 +5,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -40,14 +41,15 @@ bool ModuleParticles::Start()
 	explosion.anim.PushBack({ 451, 12, 60, 53 });
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.1f;
+	//explosion.lifetime = 10;
 
 	disc.anim.PushBack({ 117, 560, 16, 16 });
 	disc.anim.PushBack({ 149, 560, 16, 16 });
 	disc.anim.PushBack({ 181, 560, 16, 16 });
 	disc.anim.PushBack({ 213, 560, 16, 16 });
 
-	disc.lifetime = 200;
-	disc.anim.speed = 0.2f;
+	disc.lifetime = 100;
+	disc.anim.speed = 0.1f;
 
 	return true;
 }
@@ -71,42 +73,63 @@ bool ModuleParticles::CleanUp()
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
-	Particle* p = particles[0];
-	if (c2->type == Collider::Type::GOAL) {
-		p->speed.x = -p->speed.x;
-	}
-
-	if (c2->type == Collider::Type::WALL) {
-		if (p->collider == c1)
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i) {
+		Particle* p = particles[i];
+		if (p != nullptr)
 		{
-			p->speed.y = -p->speed.y;
-			App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
-		}
-	}
+			if (c2->type == Collider::Type::GOAL)
+			{
+				// p->speed.x = -p->speed.x;
+				// p->position.x = App->player->position.x + 50;
+				// p->position.y = App->player->position.y + 15;
+				
+				p->speed.x = 0;
+				p->speed.y = 0;
+				if (p->lifetime > 0) {
+					App->player->hasDisc = true;
+				}
+			}
 
-	if (c2->type == Collider::Type::PLAYER) {
-		for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i) {
-			delete particles[i];
+			if (c2->type == Collider::Type::WALL)
+			{
+				p->speed.y = -p->speed.y;
+				App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
+
+			}
+
+			if (c2->type == Collider::Type::PLAYER)
+			{
+				p->position.x = App->player->position.x + 50;
+				p->position.y = App->player->position.y + 15;
+				p->speed.x = 0;
+				p->speed.y = 0;
+				
+				delete p->collider;
+				delete p;
+				
+				App->player->hasDisc = true;
+			}
 		}
 	}
 }
 
 update_status ModuleParticles::Update()
 {
-	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
+		
 		Particle* particle = particles[i];
 
-		if(particle == nullptr)	continue;
+		if (particle == nullptr)	continue;
 
 		// Call particle Update. If it has reached its lifetime, destroy it
-		if(particle->Update() == false)
+		if (particle->Update() == false)
 		{
 			delete particle;
 			particles[i] = nullptr;
 		}
+		
 	}
-
 	return update_status::UPDATE_CONTINUE;
 }
 
