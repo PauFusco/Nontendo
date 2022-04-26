@@ -68,8 +68,8 @@ bool ModulePlayer::Start()
 	
 	currentAnimation = &idleAnim;
 
-	laserFx = App->audio->LoadFx("Assets/laser.wav");
-	explosionFx = App->audio->LoadFx("Assets/explosion.wav");
+	NthrowFx = App->audio->LoadFx("Assets/Sound/1 NORMAL THROW.wav");
+	explosionFx = App->audio->LoadFx("Assets/Sound/explosion.wav");
 
 	position.x = 20;
 	position.y = 100;
@@ -127,7 +127,9 @@ update_status ModulePlayer::Update()
 			collider->SetPos(position.x, position.y);
 		}
 	}
+	
 	int sx = 3, sy;
+	
 	if (hasDisc
 		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
@@ -135,8 +137,9 @@ update_status ModulePlayer::Update()
 		sy = -2;
 		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 		hasDisc = false;
-		// App->audio->PlayFx(laserFx);
+		App->audio->PlayFx(NthrowFx);
 	}
+	
 	if (hasDisc
 		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN
 		&& App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
@@ -144,8 +147,9 @@ update_status ModulePlayer::Update()
 		sy = 2;
 		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 		hasDisc = false;
-		// App->audio->PlayFx(laserFx);
+		App->audio->PlayFx(NthrowFx);
 	}
+	
 	if (hasDisc
 		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
@@ -153,13 +157,15 @@ update_status ModulePlayer::Update()
 		sy = 0;
 		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 		hasDisc = false;
-		// App->audio->PlayFx(laserFx);
+		App->audio->PlayFx(NthrowFx);
 	}
+	
 	// If no up/down movement detected, set the current animation back to idle
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE) {
+		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+	{
 		currentAnimation = &idleAnim;
 
 		// TODO 4: Update collider position to player position

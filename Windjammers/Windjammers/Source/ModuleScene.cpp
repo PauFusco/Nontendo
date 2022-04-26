@@ -24,7 +24,7 @@ bool ModuleScene::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Beach Stadium.png");
-	App->audio->PlayMusic("Assets/BEACH.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Sound/BEACH.ogg", 1.0f);
 
 	// Colliders ---
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
@@ -41,8 +41,6 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update()
 {
-	//App->render->camera.x += 3;
-
 	return update_status::UPDATE_CONTINUE;
 }
 
