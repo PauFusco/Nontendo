@@ -185,23 +185,8 @@ update_status ModulePlayer::PostUpdate()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	int aux = speed;
-
-	// TODO 5: Detect collision with a wall. If so don't move
-	if (c1 == collider&& App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y -= aux + 1;
-	}
-	if (c1 == collider && App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y += aux + 1;
-	}
-	if (c1 == collider && App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x += aux + 1;
-	}
-	if (c1 == collider && App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x -= aux + 1;
+	if (c2->type == Collider::Type::WALL) {
+		if (position.y >= 150) position.y = 150;
+		if (position.y <= 47) position.y = 47;
 	}
 }

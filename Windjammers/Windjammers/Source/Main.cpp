@@ -5,13 +5,13 @@
 #define SDL_MAIN_HANDLED
 
 #include "SDL/include/SDL.h"
-<<<<<<< Updated upstream
+
 #pragma comment( lib, "SDL/libx86/SDL2.lib")
 #pragma comment( lib, "SDL/libx86/SDL2main.lib")
-=======
+
 #pragma comment( lib, "SDL2.lib")
 #pragma comment( lib, "SDL2main.lib")
->>>>>>> Stashed changes
+
 
 enum class main_states
 {
