@@ -155,7 +155,8 @@ update_status ModulePlayer::Update()
 	{
 		sx = 5;
 		sy = 0;
-		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->disc,
+			position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
 	}
