@@ -73,7 +73,7 @@ public:
 	// A countdown to when the player gets destroyed. After a while, the game exits
 	uint destroyedCountdown = 120;
 
-	// Sound effects indices
+	// SFX
 	uint NthrowFx = 0;
 	uint explosionFx = 0;
 

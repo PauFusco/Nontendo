@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
+#include "ModuleAudio.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -25,16 +26,6 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Particles.png");
 
-	// Explosion particle
-	/*explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
-	*/
 
 	explosion.anim.PushBack({ 451, 12, 60, 53 });
 	explosion.anim.PushBack({ 451, 12, 60, 53 });
@@ -50,6 +41,9 @@ bool ModuleParticles::Start()
 
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
+
+	wallrbFx = App->audio->LoadFx("Assets/Sound/8 REBOUND.wav");
+	goalFx = App->audio->LoadFx("Assets/Sound/10 POINT.wav");
 
 	return true;
 }
@@ -82,7 +76,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				// p->speed.x = -p->speed.x;
 				// p->position.x = App->player->position.x + 50;
 				// p->position.y = App->player->position.y + 15;
-				
+				App->audio->PlayFx(wallrbFx);
 				p->speed.x = 0;
 				p->speed.y = 0;
 				if (p->lifetime > 0) {
@@ -93,8 +87,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == Collider::Type::WALL)
 			{
 				p->speed.y = -p->speed.y;
+				App->audio->PlayFx(goalFx);
 				App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
-
 			}
 
 			if (c2->type == Collider::Type::PLAYER)

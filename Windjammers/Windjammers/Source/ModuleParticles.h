@@ -62,6 +62,10 @@ public:
 	//Template particle for a laser
 	Particle disc;
 
+	// SFX
+	uint wallrbFx = 0;
+	uint goalFx = 0;
+
 };
 
 #endif // !__MODULEPARTICLES_H__
