@@ -71,19 +71,22 @@ bool ModuleParticles::CleanUp()
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		Particle* p = particles[i];
-		// Always destroy particles that collide
+	Particle* p = particles[0];
+	if (c2->type == Collider::Type::GOAL) {
+		p->speed.x = -p->speed.x;
+	}
+
+	if (c2->type == Collider::Type::WALL) {
 		if (p->collider == c1)
 		{
-			// TODO 6: Make so every time a particle hits a wall it triggers an explosion particle
-			// AddParticle(explosion, particles[i]->position.x, particles[i]->position.y);
-
 			p->speed.y = -p->speed.y;
 			App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
-			// delete particles[i];
-			// particles[i] = nullptr;
+		}
+	}
+
+	if (c2->type == Collider::Type::PLAYER) {
+		for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i) {
+			delete particles[i];
 		}
 	}
 }
