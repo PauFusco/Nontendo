@@ -16,6 +16,7 @@ struct Collider
 		RED,
 		PLAYER_SHOT,
 		ENEMY_SHOT,
+
 		GOAL,
 
 		MAX
