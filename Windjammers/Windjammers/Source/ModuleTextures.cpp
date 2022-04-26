@@ -5,7 +5,11 @@
 
 #include "SDL/include/SDL.h"
 #include "SDL_image/include/SDL_image.h"
+<<<<<<< Updated upstream
 #pragma comment( lib, "SDL_image/libx86/SDL2_image.lib")
+=======
+#pragma comment( lib, "SDL_image/libx86/SDL2_image.lib" )
+>>>>>>> Stashed changes
 
 ModuleTextures::ModuleTextures() : Module()
 {

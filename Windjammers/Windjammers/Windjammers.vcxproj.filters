@@ -7,9 +7,6 @@
     <Filter Include="Source Files\App">
       <UniqueIdentifier>{57eee7a8-776e-4e1f-97ec-69ef30806891}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Ents">
-      <UniqueIdentifier>{0ebd170f-4b15-4acb-93ac-2db1ab734bca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Mods">
       <UniqueIdentifier>{33b816c7-91f5-4fcd-a0db-694cd2a3a688}</UniqueIdentifier>
     </Filter>
@@ -21,6 +18,9 @@
     </Filter>
     <Filter Include="Source Files\Mods\Gplay">
       <UniqueIdentifier>{f1b600f3-ff97-4df9-9edd-1d79a61ab7b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ents">
+      <UniqueIdentifier>{0ebd170f-4b15-4acb-93ac-2db1ab734bca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

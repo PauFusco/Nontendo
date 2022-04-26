@@ -4,7 +4,11 @@
 
 #include "SDL/include/SDL.h"
 #include "SDL_mixer/include/SDL_mixer.h"
+<<<<<<< Updated upstream
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
+=======
+#pragma comment( lib, "SDL2_mixer.lib" )
+>>>>>>> Stashed changes
 
 ModuleAudio::ModuleAudio()
 {
