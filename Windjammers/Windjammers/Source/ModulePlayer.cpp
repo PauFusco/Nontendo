@@ -162,13 +162,6 @@ update_status ModulePlayer::Update()
 	}
 	currentAnimation->Update();
 
-	if (destroyed)
-	{
-		destroyedCountdown--;
-		if (destroyedCountdown <= 0)
-			return update_status::UPDATE_STOP;
-	}
-
 	return update_status::UPDATE_CONTINUE;
 }
 
