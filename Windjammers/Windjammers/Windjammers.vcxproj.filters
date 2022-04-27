@@ -69,7 +69,7 @@
     <ClCompile Include="Source\Collider.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="SceneIntro.cpp">
+    <ClCompile Include="Source\SceneIntro.cpp">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,7 +125,7 @@
     <ClInclude Include="Source\p2Point.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="SceneIntro.h">
+    <ClInclude Include="Source\SceneIntro.h">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
   </ItemGroup>

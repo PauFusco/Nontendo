@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Globals.cpp" />
@@ -35,9 +34,9 @@
     <ClCompile Include="Source\ModuleTextures.cpp" />
     <ClCompile Include="Source\ModuleWindow.cpp" />
     <ClCompile Include="Source\Particle.cpp" />
+    <ClCompile Include="Source\SceneIntro.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Application.h" />
     <ClInclude Include="Source\Collider.h" />
@@ -55,6 +54,7 @@
     <ClInclude Include="Source\ModuleWindow.h" />
     <ClInclude Include="Source\p2Point.h" />
     <ClInclude Include="Source\Particle.h" />
+    <ClInclude Include="Source\SceneIntro.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
