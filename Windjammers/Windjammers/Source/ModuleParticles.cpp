@@ -71,25 +71,22 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		Particle* p = particles[i];
 		if (p != nullptr)
 		{
-			if (c2->type == Collider::Type::GOAL)
-			{
-				// p->speed.x = -p->speed.x;
-				// p->position.x = App->player->position.x + 50;
-				// p->position.y = App->player->position.y + 15;
-				App->audio->PlayFx(goalFx);
-				p->speed.x = 0;
-				p->speed.y = 0;
-				// p->lifetime = 0;
-				App->player->hasDisc = true;
-			}
-
 			if (c2->type == Collider::Type::WALL)
 			{
 				p->speed.y = -p->speed.y;
 				App->audio->PlayFx(wallrbFx);
 				App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
 			}
-
+			
+			if (c2->type == Collider::Type::GOAL)
+			{
+				// p->speed.x = -p->speed.x
+				App->audio->PlayFx(goalFx);
+				p->speed.x = 0;
+				p->speed.y = 0;
+				p->isAlive = false;
+				App->player->hasDisc = true;
+			}
 			if (c2->type == Collider::Type::PLAYER)
 			{
 				p->position.x = App->player->position.x + 50;
