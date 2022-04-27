@@ -24,7 +24,7 @@ bool ModuleScene::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Beach Stadium.png");
-	App->audio->PlayMusic("Assets/Sound/BEACH.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Sound/BEACH.ogg");
 
 	// Colliders ---
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);

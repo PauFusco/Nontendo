@@ -39,7 +39,7 @@ bool ModuleParticles::Start()
 	disc.anim.PushBack({ 181, 560, 16, 16 });
 	disc.anim.PushBack({ 213, 560, 16, 16 });
 
-	disc.lifetime = 85;
+	disc.lifetime = 50;
 	disc.anim.speed = 0.1f;
 
 	wallrbFx = App->audio->LoadFx("Assets/Sound/8 REBOUND.wav");
@@ -76,18 +76,17 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				// p->speed.x = -p->speed.x;
 				// p->position.x = App->player->position.x + 50;
 				// p->position.y = App->player->position.y + 15;
-				App->audio->PlayFx(wallrbFx);
+				App->audio->PlayFx(goalFx);
 				p->speed.x = 0;
 				p->speed.y = 0;
-				if (p->lifetime > 0) {
-					App->player->hasDisc = true;
-				}
+				p->lifetime = 0;
+				App->player->hasDisc = true;
 			}
 
 			if (c2->type == Collider::Type::WALL)
 			{
 				p->speed.y = -p->speed.y;
-				App->audio->PlayFx(goalFx);
+				App->audio->PlayFx(wallrbFx);
 				App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
 			}
 
@@ -100,7 +99,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				
 				delete p->collider;
 				delete p;
-				
+				p->lifetime = 0;
 				App->player->hasDisc = true;
 			}
 		}
