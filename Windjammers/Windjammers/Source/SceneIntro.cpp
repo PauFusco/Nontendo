@@ -33,7 +33,7 @@ bool SceneIntro::Start()
 	return ret;
 }
 
-Update_Status SceneIntro::Update()
+update_status SceneIntro::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == Key_State::KEY_DOWN)
 	{
@@ -44,10 +44,10 @@ Update_Status SceneIntro::Update()
 }
 
 // Update: draw background
-Update_Status SceneIntro::PostUpdate()
+update_status SceneIntro::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
-	return Update_Status::UPDATE_CONTINUE;
+	return update_status::UPDATE_CONTINUE;
 }
