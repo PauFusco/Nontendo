@@ -86,6 +86,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				p->speed.y = 0;
 				p->isAlive = false;
 				App->player->hasDisc = true;
+				CleanUp();
 			}
 			if (c2->type == Collider::Type::PLAYER)
 			{
@@ -93,10 +94,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				p->position.y = App->player->position.y + 15;
 				p->speed.x = 0;
 				p->speed.y = 0;
-				
-				delete p->collider;
-				delete p;
-				p->lifetime = 0;
+				CleanUp();
 				App->player->hasDisc = true;
 			}
 		}
