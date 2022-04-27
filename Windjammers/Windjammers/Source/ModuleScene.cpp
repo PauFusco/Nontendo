@@ -6,7 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 
-ModuleScene::ModuleScene()
+ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 {
 
 }

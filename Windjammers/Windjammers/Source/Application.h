@@ -2,6 +2,7 @@
 #define __APPLICATION_H__
 
 #include "Globals.h"
+#include "ModuleFadeToBlack.h"
 
 #define NUM_MODULES 9
 
@@ -53,6 +54,7 @@ public:
 	ModuleCollisions* collisions = nullptr;
 
 	ModuleRender* render = nullptr;
+	ModuleFadeToBlack* fade = nullptr;
 };
 
 // Global var made extern for Application ---

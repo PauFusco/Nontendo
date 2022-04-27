@@ -15,7 +15,7 @@ class ModuleAudio : public Module
 {
 public:
 	//Constructor
-	ModuleAudio();
+	ModuleAudio(bool startEnabled );
 
 	//Destructor
 	~ModuleAudio();

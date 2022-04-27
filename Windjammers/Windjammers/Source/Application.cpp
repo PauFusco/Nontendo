@@ -10,24 +10,26 @@
 #include "ModuleParticles.h"
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
+#include "ModuleFadeToBlack.h"
 
 Application::Application()
 {
 	// The order in which the modules are added is very important.
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
-	modules[0] = window = new ModuleWindow();
-	modules[1] = input = new ModuleInput();
-	modules[2] = textures = new ModuleTextures();
-	modules[3] = audio = new ModuleAudio();
+	modules[0] = window = new ModuleWindow(true);
+	
+	modules[1] = textures = new ModuleTextures(true);
+	modules[2] = audio = new ModuleAudio(true);
 
-	modules[4] = scene = new ModuleScene();
-	modules[5] = player = new ModulePlayer();
+	modules[3] = scene = new ModuleScene(false);
+	modules[4] = player = new ModulePlayer(false);
 
-	modules[6] = particles = new ModuleParticles();
-	modules[7] = collisions = new ModuleCollisions();
+	modules[5] = particles = new ModuleParticles(true);
+	modules[6] = collisions = new ModuleCollisions(true);
 
-	modules[8] = render = new ModuleRender();
+	modules[7] = render = new ModuleRender(true);
+	modules[8] = fade = new ModuleFadeToBlack(true);
 }
 
 Application::~Application()
