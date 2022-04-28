@@ -36,6 +36,8 @@ bool ModuleScene::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Beach Stadium.png");
+
+	// Counter spritesheet
 	counterTexture = App->textures->Load("Assets/markadores wj chikitos.png");
 	currentAnimation = &counterTexture1;
 
@@ -78,6 +80,7 @@ bool ModuleScene::Start()
 
 update_status ModuleScene::Update()
 {
+	// Counter updates
 	currentAnimation = &counterTexture1;
 	currentAnimation->Update();
 
@@ -90,7 +93,6 @@ update_status ModuleScene::PostUpdate()
 	// Draw everything --------------------------------------
 	SDL_Rect rect = currentAnimation->GetCurrentFrame();
 	App->render->Blit(counterTexture, counterPosition.x, counterPosition.y, &rect);
-
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return update_status::UPDATE_CONTINUE;

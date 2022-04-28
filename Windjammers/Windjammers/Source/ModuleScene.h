@@ -45,6 +45,8 @@ public:
 	// Counter animations
 	Animation counterTexture1;
 	Animation counterTexture2;
+
+	// Counter states
 	int counterState1 = 0;
 	int counterState2 = 0;
 
