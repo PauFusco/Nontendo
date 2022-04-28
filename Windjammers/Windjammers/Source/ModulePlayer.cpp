@@ -194,4 +194,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (position.y >= 150) position.y = 150;
 		if (position.y <= 47) position.y = 47;
 	}
+	if (c2->type == Collider::Type::RED) {
+		if (position.x >= 117) position.x = 117;
+	}
+	if (c2->type == Collider::Type::GOAL) {
+		if (position.x >= -15) position.x =-15;
+	}
 }
