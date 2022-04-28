@@ -5,7 +5,7 @@
 #include "ModuleFadeToBlack.h"
 #include "SceneIntro.h"
 
-#define NUM_MODULES 11
+#define NUM_MODULES 12
 
 class Module;
 class ModuleWindow;
@@ -14,10 +14,10 @@ class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
 class ModuleScene;
+class ModuleEnemy;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleRender;
-
 class Application
 {
 
@@ -49,6 +49,8 @@ public:
 	ModuleAudio* audio = nullptr;
 
 	ModulePlayer* player = nullptr;
+	ModuleEnemy* enemy = nullptr;
+
 	ModuleScene* scene = nullptr;
 	ModuleParticles* particles = nullptr;
 

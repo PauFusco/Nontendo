@@ -7,6 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
+#include "ModuleEnemy.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -67,8 +68,8 @@ bool ModuleParticles::CleanUp()
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i) {
-		Particle* p = particles[i];
+	// for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i) {
+		Particle* p = particles[0];
 		if (p != nullptr)
 		{
 			if (c2->type == Collider::Type::WALL)
@@ -77,7 +78,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				App->audio->PlayFx(wallrbFx);
 				App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
 			}
-			
+
 			if (c2->type == Collider::Type::GOAL)
 			{
 				if (p->position.x > 152) {
@@ -94,17 +95,20 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				App->player->hasDisc = true;
 				CleanUp();
 			}
+			
 			if (c2->type == Collider::Type::PLAYER)
 			{
-				p->position.x = App->player->position.x + 50;
-				p->position.y = App->player->position.y + 15;
-				p->speed.x = 0;
-				p->speed.y = 0;
-				CleanUp();
-				App->player->hasDisc = true;
+				if (p->position.x > 150) {
+					CleanUp();
+					App->enemy->hasDisc = true;
+				}
+				else {
+					CleanUp();
+					App->player->hasDisc = true;
+				}
 			}
 		}
-	}
+	// }
 }
 
 update_status ModuleParticles::Update()

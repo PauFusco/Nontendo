@@ -1,5 +1,5 @@
-#ifndef __MODULE_PLAYER_H__
-#define __MODULE_PLAYER_H__
+#ifndef __MODULE_Enemy_H__
+#define __MODULE_Enemy_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -8,14 +8,14 @@
 struct SDL_Texture;
 struct Collider;
 
-class ModulePlayer : public Module
+class ModuleEnemy : public Module
 {
 public:
 	// Constructor
-	ModulePlayer(bool startEnabled);
+	ModuleEnemy(bool startEnabled);
 
 	// Destructor
-	~ModulePlayer();
+	~ModuleEnemy();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the player
@@ -37,22 +37,19 @@ public:
 		KOREA,
 		ITALY,
 		USA,
-		
+
 		MAX
 	};
-	
+
 	// Position of the player in the map
 	iPoint position;
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 
-	// Players score points
-	int player1points = 0;
-
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
-	
+
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
@@ -66,7 +63,7 @@ public:
 
 	// Stores the nation
 	Nation nat;
-	
+
 	// The player's collider
 	Collider* collider = nullptr;
 
@@ -81,7 +78,7 @@ public:
 	uint explosionFx = 0;
 
 	// Disc indent
-	bool hasDisc = false;
+	bool hasDisc = true;
 
 };
 

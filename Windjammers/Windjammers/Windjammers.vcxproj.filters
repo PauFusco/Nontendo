@@ -75,6 +75,9 @@
     <ClCompile Include="Source\ModuleFadeToBlack.cpp">
       <Filter>Source Files\Mods\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ModuleEnemy.cpp">
+      <Filter>Source Files\Mods\Gplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -113,9 +116,6 @@
     <ClInclude Include="Source\ModuleWindow.h">
       <Filter>Source Files\Mods\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ModulePlayer.h">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ModuleScene.h">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
@@ -133,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="Source\ModuleFadeToBlack.h">
       <Filter>Source Files\Mods\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleEnemy.h">
+      <Filter>Source Files\Mods\Gplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModulePlayer.h">
+      <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
