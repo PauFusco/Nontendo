@@ -6,8 +6,8 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 
-#include "../External_Libraries/SDL/include/SDL_render.h"
-#include "../External_Libraries/SDL/include/SDL_scancode.h"
+#include "SDL/include/SDL_render.h"
+#include "SDL/include/SDL_scancode.h"
 
 ModuleRender::ModuleRender(bool startEnabled) : Module(startEnabled)
 {
