@@ -81,18 +81,19 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 			if (c2->type == Collider::Type::GOAL)
 			{
-				if (p->position.x > 152) {
-					App->player->player1points += 5;
-				}
-				else {
-					// +5 al segundo player
-				}
-				// p->speed.x = -p->speed.x
 				App->audio->PlayFx(goalFx);
 				p->speed.x = 0;
 				p->speed.y = 0;
 				p->isAlive = false;
-				App->player->hasDisc = true;
+				
+				if (p->position.x > 152) {
+					App->player->points += 3;
+					App->enemy->hasDisc = true;
+				}
+				else {
+					App->enemy->points += 3;
+					App->player->hasDisc = true;
+				}
 				CleanUp();
 			}
 			
