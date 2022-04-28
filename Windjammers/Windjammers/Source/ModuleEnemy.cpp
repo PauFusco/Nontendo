@@ -12,7 +12,7 @@
 #include "../External_Libraries/SDL/include/SDL_scancode.h"
 
 
-ModuleEnemy::ModuleEnemy(bool startEnabled)
+ModuleEnemy::ModuleEnemy(bool startEnabled) : Module (startEnabled)
 {
 	nat = KOREA;
 	if (nat == KOREA) {

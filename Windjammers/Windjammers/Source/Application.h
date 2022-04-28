@@ -14,6 +14,7 @@ class ModuleTextures;
 class ModuleAudio;
 class ModulePlayer;
 class ModuleScene;
+class ModuleEnemy;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleRender;
