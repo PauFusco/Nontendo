@@ -78,6 +78,9 @@
     <ClCompile Include="Source\ModuleEnemy.cpp">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ModuleVictory.cpp">
+      <Filter>Source Files\Mods\Gplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -138,6 +141,9 @@
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
     <ClInclude Include="Source\ModulePlayer.h">
+      <Filter>Source Files\Mods\Gplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleVictory.h">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
   </ItemGroup>

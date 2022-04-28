@@ -83,6 +83,9 @@ public:
 	// Disc indent
 	bool hasDisc = true;
 
+	// Points
+	int points = 0;
+
 };
 
 #endif //!__MODULE_PLAYER_H__

@@ -5,7 +5,7 @@
 #include "ModuleFadeToBlack.h"
 #include "SceneIntro.h"
 
-#define NUM_MODULES 12
+#define NUM_MODULES 13
 
 class Module;
 class ModuleWindow;
@@ -18,6 +18,8 @@ class ModuleEnemy;
 class ModuleParticles;
 class ModuleCollisions;
 class ModuleRender;
+class ModuleVictory;
+
 class Application
 {
 
@@ -59,6 +61,7 @@ public:
 	ModuleRender* render = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	SceneIntro* intro = nullptr;
+	ModuleVictory* victory = nullptr;
 };
 
 // Global var made extern for Application ---

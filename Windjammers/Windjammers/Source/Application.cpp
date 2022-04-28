@@ -13,6 +13,7 @@
 #include "ModuleFadeToBlack.h"
 #include "SceneIntro.h"
 #include "ModuleEnemy.h"
+#include "ModuleVictory.h"
 
 Application::Application()
 {
@@ -35,6 +36,7 @@ Application::Application()
 	modules[9] = render = new ModuleRender(true);
 	modules[10] = fade = new ModuleFadeToBlack(true);
 	modules[11] = intro = new SceneIntro(true);
+	modules[12] = victory = new ModuleVictory(true);
 }
 
 Application::~Application()
