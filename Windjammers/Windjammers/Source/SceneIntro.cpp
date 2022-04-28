@@ -28,7 +28,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/introwinsjammers.png");
+	bgTexture = App->textures->Load("Assets/introwindjammers.png");
 	App->audio->PlayMusic("Assets/Sound/Beach.ogg", 1.0f);
 
 	App->render->camera.x = 0;
