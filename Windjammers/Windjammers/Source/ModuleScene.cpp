@@ -6,7 +6,7 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 
-ModuleScene::ModuleScene()
+ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 {
 	//Counter animation
 	counterTexture1.PushBack({ 2, 21, 14, 12 }); // 0 points

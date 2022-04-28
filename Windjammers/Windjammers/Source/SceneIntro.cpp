@@ -8,7 +8,7 @@
 #include "ModuleFadeToBlack.h"
 
 
-#include "../External_Libraries/SDL/include/SDL_scancode.h"
+#include "SDL/include/SDL_scancode.h"
 
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)

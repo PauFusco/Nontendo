@@ -21,15 +21,16 @@ Application::Application()
 	
 	modules[1] = textures = new ModuleTextures(true);
 	modules[2] = audio = new ModuleAudio(true);
+	modules[3] = input = new ModuleInput(true);
 
-	modules[3] = scene = new ModuleScene(false);
-	modules[4] = player = new ModulePlayer(false);
+	modules[4] = scene = new ModuleScene(false);
+	modules[5] = player = new ModulePlayer(false);
 
-	modules[5] = particles = new ModuleParticles(true);
-	modules[6] = collisions = new ModuleCollisions(true);
+	modules[6] = particles = new ModuleParticles(true);
+	modules[7] = collisions = new ModuleCollisions(true);
 
-	modules[7] = render = new ModuleRender(true);
-	modules[8] = fade = new ModuleFadeToBlack(true);
+	modules[8] = render = new ModuleRender(true);
+	modules[9] = fade = new ModuleFadeToBlack(true);
 }
 
 Application::~Application()

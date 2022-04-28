@@ -4,7 +4,7 @@
 #include "Globals.h"
 #include "ModuleFadeToBlack.h"
 
-#define NUM_MODULES 9
+#define NUM_MODULES 10
 
 class Module;
 class ModuleWindow;
