@@ -33,14 +33,14 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
-	enum Nation {
+	/*enum Nation {
 		KOREA,
 		ITALY,
 		USA,
 		
 		MAX
 	};
-	
+	*/
 	// Position of the player in the map
 	iPoint position;
 
@@ -62,7 +62,7 @@ public:
 	Animation leftAnim;
 
 	// Stores the nation
-	Nation nat;
+	// Nation nat;
 	
 	// The player's collider
 	Collider* collider = nullptr;

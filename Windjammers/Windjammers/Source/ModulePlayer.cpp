@@ -13,10 +13,10 @@
 #include "SDL/include/SDL_scancode.h"
 
 
-ModulePlayer::ModulePlayer(bool startDisabled) : Module(startDisabled)
+ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	nat = KOREA;
-	if (nat == KOREA) {
+	// nat = KOREA;
+	// if (nat == KOREA) {
 		// idle animation
 		idleAnim.PushBack({ 6, 7, 52, 36 });
 		idleAnim.PushBack({ 58, 8, 52, 36 });
@@ -47,7 +47,7 @@ ModulePlayer::ModulePlayer(bool startDisabled) : Module(startDisabled)
 		leftAnim.PushBack({ 39, 161, 36, 38 });
 		leftAnim.PushBack({ 3, 161, 37, 37 });
 		leftAnim.speed = 0.1f;
-	}
+	// }
 }
 
 ModulePlayer::~ModulePlayer()
@@ -60,11 +60,12 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-	if (nat == KOREA) texture = App->textures->Load("Assets/Korea movements.png"); // Korea sprites
+	// if (nat == KOREA)
+	texture = App->textures->Load("Assets/Korea movements.png"); // Korea sprites
 	
-	if (nat == ITALY) texture = App->textures->Load("Assets/Italy movements.png"); // Italy sprites
+	// if (nat == ITALY) texture = App->textures->Load("Assets/Italy movements.png"); // Italy sprites
 
-	if (nat == USA) texture = App->textures->Load("Assets/USA movements.png"); // USA sprites
+	// if (nat == USA) texture = App->textures->Load("Assets/USA movements.png"); // USA sprites
 	
 	currentAnimation = &idleAnim;
 

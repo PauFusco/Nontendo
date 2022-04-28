@@ -75,6 +75,9 @@
     <ClCompile Include="Source\ModuleFadeToBlack.cpp">
       <Filter>Source Files\Mods\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Path.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Application.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Source\ModuleFadeToBlack.h">
       <Filter>Source Files\Mods\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Path.h">
+      <Filter>Source Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

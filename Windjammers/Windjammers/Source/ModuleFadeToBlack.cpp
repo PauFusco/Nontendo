@@ -32,7 +32,7 @@ update_status ModuleFadeToBlack::Update()
 	if (currentStep == Fade_Step::TO_BLACK)
 	{
 		++frameCount;
-		if (frameCount >= maxFadeFrames)
+		if (frameCount == maxFadeFrames)
 		{
 			moduleToDisable->Disable();
 			moduleToEnable->Enable();

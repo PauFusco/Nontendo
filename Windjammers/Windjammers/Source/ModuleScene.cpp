@@ -35,7 +35,7 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Beach Stadium.png");
+	bgTexture = App->textures->Load("Assets/introwinsjammers.png");
 
 	// Counter spritesheet
 	counterTexture = App->textures->Load("Assets/markadores wj chikitos.png");
@@ -96,4 +96,10 @@ update_status ModuleScene::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+bool ModuleScene::CleanUp() {
+	App->collisions->CleanUp();
+
+	return true;
 }
