@@ -70,7 +70,7 @@ bool ModuleEnemy::Start()
 	NthrowFx = App->audio->LoadFx("Assets/Sound/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Sound/explosion.wav");
 
-	position.x = 60;
+	position.x = 240;
 	position.y = 100;
 
 	// TODO 3: Add a collider to the player
@@ -82,7 +82,7 @@ bool ModuleEnemy::Start()
 update_status ModuleEnemy::Update()
 {
 	if (!hasDisc) {
-		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
 			if (currentAnimation != &leftAnim)
@@ -93,7 +93,7 @@ update_status ModuleEnemy::Update()
 			collider->SetPos(position.x + 7, position.y);
 		}
 
-		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x += speed;
 			if (currentAnimation != &rightAnim)
@@ -104,7 +104,7 @@ update_status ModuleEnemy::Update()
 			collider->SetPos(position.x + 7, position.y);
 		}
 
-		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			position.y += speed;
 			if (currentAnimation != &downAnim)
@@ -115,7 +115,7 @@ update_status ModuleEnemy::Update()
 			collider->SetPos(position.x, position.y);
 		}
 
-		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 		{
 			position.y -= speed;
 			if (currentAnimation != &upAnim)
@@ -127,11 +127,11 @@ update_status ModuleEnemy::Update()
 		}
 	}
 
-	int sx = 3, sy;
+	int sx = -3, sy;
 
 	if (hasDisc
-		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
+		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
 		sy = -2;
 		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
@@ -140,8 +140,8 @@ update_status ModuleEnemy::Update()
 	}
 
 	if (hasDisc
-		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN
-		&& App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
+		&& App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		sy = 2;
 		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
@@ -150,9 +150,9 @@ update_status ModuleEnemy::Update()
 	}
 
 	if (hasDisc
-		&& App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
 	{
-		sx = 5;
+		sx = -5;
 		sy = 0;
 		App->particles->AddParticle(App->particles->disc,
 			position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
@@ -161,10 +161,10 @@ update_status ModuleEnemy::Update()
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
 	{
 		currentAnimation = &idleAnim;
 
@@ -194,7 +194,10 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 		if (position.y <= 47) position.y = 47;
 	}
 	if (c2->type == Collider::Type::RED) {
-		if (position.x >= 117) position.x = 117;
+		if (position.x <= 145) position.x = 145;
+	}
+	if (c2->type == Collider::Type::GOAL) {
+		if (position.x >= 266) position.x = 266;
 	}
 }
 
