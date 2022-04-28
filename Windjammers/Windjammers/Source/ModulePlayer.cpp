@@ -19,7 +19,7 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 	if (nat == KOREA) {
 		// idle animation
 		idleAnim.PushBack({ 4, 7, 52, 36 });
-		idleAnim.PushBack({ 58, 8, 52, 36 });
+		idleAnim.PushBack({ 58, 7, 52, 36 });
 		idleAnim.speed = 0.05f;
 
 		// Move up

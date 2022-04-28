@@ -17,8 +17,8 @@ ModuleEnemy::ModuleEnemy(bool startEnabled) : Module (startEnabled)
 	nat = KOREA;
 	if (nat == KOREA) {
 		// idle animation
-		idleAnim.PushBack({ 4, 7, 52, 36 });
-		idleAnim.PushBack({ 58, 8, 52, 36 });
+		idleAnim.PushBack({ 124, 161, 52, 36 });
+		idleAnim.PushBack({ 178, 161, 52, 36 });
 		idleAnim.speed = 0.05f;
 
 		// Move up
@@ -74,7 +74,7 @@ bool ModuleEnemy::Start()
 	position.y = 100;
 
 	// TODO 3: Add a collider to the player
-	collider = App->collisions->AddCollider({ position.x, position.y, 27, 33 }, Collider::Type::PLAYER, this);
+	collider = App->collisions->AddCollider({ position.x+10, position.y, 27, 33 }, Collider::Type::ENEMY, this);
 
 	return ret;
 }
@@ -90,7 +90,7 @@ update_status ModuleEnemy::Update()
 				leftAnim.Reset();
 				currentAnimation = &leftAnim;
 			}
-			collider->SetPos(position.x + 7, position.y);
+			collider->SetPos(position.x, position.y);
 		}
 
 		if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
@@ -101,7 +101,7 @@ update_status ModuleEnemy::Update()
 				rightAnim.Reset();
 				currentAnimation = &rightAnim;
 			}
-			collider->SetPos(position.x + 7, position.y);
+			collider->SetPos(position.x, position.y);
 		}
 
 		if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
@@ -169,7 +169,7 @@ update_status ModuleEnemy::Update()
 		currentAnimation = &idleAnim;
 
 		// TODO 4: Update collider position to player position
-		collider->SetPos(position.x + 7, position.y);
+		collider->SetPos(position.x + 17, position.y);
 	}
 	currentAnimation->Update();
 

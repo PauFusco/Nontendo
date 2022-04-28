@@ -98,14 +98,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			
 			if (c2->type == Collider::Type::PLAYER)
 			{
-				if (p->position.x > 150) {
-					CleanUp();
-					App->enemy->hasDisc = true;
-				}
-				else {
-					CleanUp();
-					App->player->hasDisc = true;
-				}
+				CleanUp();
+				App->player->hasDisc = true;
+			}
+			if (c2->type == Collider::Type::ENEMY)
+			{
+				CleanUp();
+				App->enemy->hasDisc = true;
 			}
 		}
 	// }
