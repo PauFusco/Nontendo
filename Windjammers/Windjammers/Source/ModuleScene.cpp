@@ -72,6 +72,7 @@ bool ModuleScene::Start()
 		};
 	};
 	*/
+	
 	counterPosition.x = 112;
 	counterPosition.y = 16;
 
