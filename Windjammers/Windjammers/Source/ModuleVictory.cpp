@@ -25,20 +25,17 @@ bool ModuleVictory::Start()
 
 	bool ret = true;
 
-	victoryTexture = App->textures->Load("Assets/marcadores windjammers.png"); 
+	victoryTexture = App->textures->Load("Assets/WINdjammers.png"); 
 
 
 	return ret;
 }
-
-// 0, 100, 436, 136
 
 update_status ModuleVictory::Update()
 {
 	if (App->player->points == 6 || App->enemy->points == 6) {
 		win = true;
 	}
-
 	return update_status::UPDATE_CONTINUE;
 }
 
