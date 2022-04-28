@@ -75,7 +75,7 @@
     <ClCompile Include="Source\ModuleFadeToBlack.cpp">
       <Filter>Source Files\Mods\Core</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleEnemy.cpp">
+    <ClCompile Include="Source\ModuleEnemy.cpp">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClCompile>
   </ItemGroup>
@@ -137,7 +137,7 @@
     <ClInclude Include="Source\ModuleFadeToBlack.h">
       <Filter>Source Files\Mods\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleEnemy.h">
+    <ClInclude Include="Source\ModuleEnemy.h">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
   </ItemGroup>
