@@ -10,7 +10,7 @@
 #include "ModuleDisc.h"
 #include "Collider.h"
 
-#include "../External_Libraries/SDL/include/SDL_scancode.h"
+#include "SDL/include/SDL_scancode.h"
 
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)

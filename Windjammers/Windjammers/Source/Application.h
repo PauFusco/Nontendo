@@ -5,7 +5,7 @@
 #include "ModuleFadeToBlack.h"
 #include "SceneIntro.h"
 
-#define NUM_MODULES 10
+#define NUM_MODULES 11
 
 class Module;
 class ModuleWindow;
@@ -62,4 +62,4 @@ public:
 // Global var made extern for Application ---
 extern Application* App;
 
-#endif // __APPLICATION_H__
+#endif //! __APPLICATION_H__
