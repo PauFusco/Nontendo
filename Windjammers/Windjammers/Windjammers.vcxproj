@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ModuleEnemy.cpp" />
     <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Globals.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="Source\SceneIntro.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ModuleEnemy.h" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Application.h" />
     <ClInclude Include="Source\Collider.h" />
