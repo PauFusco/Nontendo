@@ -134,7 +134,7 @@ update_status ModuleEnemy::Update()
 		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
 		sy = -2;
-		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
 	}
@@ -144,7 +144,7 @@ update_status ModuleEnemy::Update()
 		&& App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		sy = 2;
-		App->particles->AddParticle(App->particles->disc, position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
 	}
@@ -154,8 +154,7 @@ update_status ModuleEnemy::Update()
 	{
 		sx = -5;
 		sy = 0;
-		App->particles->AddParticle(App->particles->disc,
-			position.x + 20, position.y, sx, sy, Collider::Type::PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
 	}

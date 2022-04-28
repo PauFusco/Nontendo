@@ -116,9 +116,6 @@
     <ClInclude Include="Source\ModuleWindow.h">
       <Filter>Source Files\Mods\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ModulePlayer.h">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ModuleScene.h">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
@@ -138,6 +135,9 @@
       <Filter>Source Files\Mods\Core</Filter>
     </ClInclude>
     <ClInclude Include="Source\ModuleEnemy.h">
+      <Filter>Source Files\Mods\Gplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModulePlayer.h">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
   </ItemGroup>
