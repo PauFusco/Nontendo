@@ -35,7 +35,7 @@ bool ModuleScene::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/introwinsjammers.png");
+	bgTexture = App->textures->Load("Assets/Beach Stadium.png");
 
 	// Counter spritesheet
 	counterTexture = App->textures->Load("Assets/markadores wj chikitos.png");
