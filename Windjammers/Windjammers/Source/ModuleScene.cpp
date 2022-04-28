@@ -20,7 +20,7 @@ ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 	counterTexture1.PushBack({ 32, 35, 14, 12 }); // 8 points
 	counterTexture1.PushBack({ 48, 35, 14, 12 }); // 9 points
 	*/
-	counterTexture1.speed = 0.05f;
+	counterTexture1.speed = 1.0f;
 }
 
 ModuleScene::~ModuleScene()
