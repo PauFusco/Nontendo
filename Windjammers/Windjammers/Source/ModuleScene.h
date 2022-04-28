@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
@@ -10,7 +11,7 @@ class ModuleScene : public Module
 {
 public:
 	//Constructor
-	ModuleScene(bool startEnabled);
+	ModuleScene();
 
 	//Destructor
 	~ModuleScene();
@@ -28,12 +29,28 @@ public:
 	update_status PostUpdate() override;
 
 public:
-	
+
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	
+
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
+
+	// The counter spritesheet
+	SDL_Texture* counterTexture = nullptr;
+
+	// It will be switched depending on the counter's state direction
+	Animation* currentAnimation = nullptr;
+
+	// Counter animations
+	Animation counterTexture1;
+	Animation counterTexture2;
+	int counterState1 = 0;
+	int counterState2 = 0;
+
+	// Position of the counter in the map
+	iPoint counterPosition;
 };
 
 #endif
+
