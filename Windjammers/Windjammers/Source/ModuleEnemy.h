@@ -8,14 +8,14 @@
 struct SDL_Texture;
 struct Collider;
 
-class ModulePlayer : public Module
+class ModuleEnemy : public Module
 {
 public:
 	// Constructor
-	ModulePlayer();
+	ModuleEnemy(bool startEnabled);
 
 	// Destructor
-	~ModulePlayer();
+	~ModuleEnemy();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the player

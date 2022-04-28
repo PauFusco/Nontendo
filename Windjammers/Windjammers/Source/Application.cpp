@@ -12,6 +12,7 @@
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneIntro.h"
+#include "ModuleEnemy.h"
 
 Application::Application()
 {
@@ -26,13 +27,14 @@ Application::Application()
 
 	modules[4] = scene = new ModuleScene(false);
 	modules[5] = player = new ModulePlayer(false);
+	modules[6] = enemy = new ModuleEnemy(false);
 
-	modules[6] = particles = new ModuleParticles(true);
-	modules[7] = collisions = new ModuleCollisions(true);
+	modules[7] = particles = new ModuleParticles(true);
+	modules[8] = collisions = new ModuleCollisions(true);
 
-	modules[8] = render = new ModuleRender(true);
-	modules[9] = fade = new ModuleFadeToBlack(true);
-	modules[10] = intro = new SceneIntro(true);
+	modules[9] = render = new ModuleRender(true);
+	modules[10] = fade = new ModuleFadeToBlack(true);
+	modules[11] = intro = new SceneIntro(true);
 }
 
 Application::~Application()

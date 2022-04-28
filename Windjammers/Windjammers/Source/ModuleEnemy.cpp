@@ -12,7 +12,7 @@
 #include "../External_Libraries/SDL/include/SDL_scancode.h"
 
 
-ModulePlayer::ModulePlayer()
+ModuleEnemy::ModuleEnemy(bool startEnabled)
 {
 	nat = KOREA;
 	if (nat == KOREA) {
@@ -49,12 +49,12 @@ ModulePlayer::ModulePlayer()
 	}
 }
 
-ModulePlayer::~ModulePlayer()
+ModuleEnemy::~ModuleEnemy()
 {
 
 }
 
-bool ModulePlayer::Start()
+bool ModuleEnemy::Start()
 {
 	LOG("Loading player textures");
 
@@ -79,7 +79,7 @@ bool ModulePlayer::Start()
 	return ret;
 }
 
-update_status ModulePlayer::Update()
+update_status ModuleEnemy::Update()
 {
 	if (!hasDisc) {
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
@@ -176,7 +176,7 @@ update_status ModulePlayer::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
-update_status ModulePlayer::PostUpdate()
+update_status ModuleEnemy::PostUpdate()
 {
 	if (!destroyed)
 	{
@@ -187,7 +187,7 @@ update_status ModulePlayer::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c2->type == Collider::Type::WALL) {
 		if (position.y >= 150) position.y = 150;
