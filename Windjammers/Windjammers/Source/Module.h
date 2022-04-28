@@ -39,9 +39,10 @@ public:
 	void Disable();
 
 	inline bool IsEnabled() const { return isEnabled; }
-
+	
 private:
 	bool isEnabled = true;
+	
 };
 
 

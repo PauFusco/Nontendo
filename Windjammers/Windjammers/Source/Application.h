@@ -19,6 +19,7 @@ class ModuleParticles;
 class ModuleCollisions;
 class ModuleFadeToBlack;
 class ModuleRender;
+class SceneIntro;
 
 class Application
 {
