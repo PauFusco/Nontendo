@@ -12,7 +12,7 @@
 
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
 {
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		particles[i] = nullptr;
 }
 
@@ -45,45 +45,6 @@ bool ModuleParticles::Start()
 	wallrbFx = App->audio->LoadFx("Assets/Sound/8 REBOUND.wav");
 	goalFx = App->audio->LoadFx("Assets/Sound/10 POINT.wav");
 
-	// Counter spritesheet
-	counterTexture = App->textures->Load("Assets/markador wj chikito.png");
-
-	//Counter animation
-	counter.anim.PushBack({ 2, 21, 14, 12 }); // 0 points
-	counter.anim.PushBack({ 2, 21, 14, 12 }); // 0 points
-	/*
-	counterTexture1.PushBack({ 15, 21, 14, 12 }); // 1 points
-	counterTexture1.PushBack({ 32, 22, 14, 12 }); // 2 points
-	counterTexture1.PushBack({ 48, 22, 14, 12 }); // 3 points
-	counterTexture1.PushBack({ 66, 21, 14, 12 }); // 5 points
-	counterTexture1.PushBack({ 2, 35, 14, 12 }); // 6 points
-	counterTexture1.PushBack({ 32, 35, 14, 12 }); // 8 points
-	counterTexture1.PushBack({ 48, 35, 14, 12 }); // 9 points
-	*/
-	counter.anim.loop = true;
-
-	// Counter
-	/*
-if (Collider::Type::GOAL == Collider::Type::DISC) {
-	counterState1++;
-}
-else if (counterState >= 0)
-{
-	switch (counterState) {
-	case 0:
-		counterTexture.PushBack({ 0,0,0,0 });
-		counterTexture.PushBack({ 0,0,0,0 });
-		break;
-	case 10:
-		counterTexture.PushBack({ 0,0,0,0 });
-		counterTexture.PushBack({ 0,0,0,0 });
-		break;
-	};
-};
-*/
-
-	counterPosition.x = 112;
-	counterPosition.y = 16;
 	return true;
 }
 
@@ -92,9 +53,9 @@ bool ModuleParticles::CleanUp()
 	LOG("Unloading particles");
 
 	// Delete all remaining active particles on application exit 
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
-		if (particles[i] != nullptr)
+		if(particles[i] != nullptr)
 		{
 			delete particles[i];
 			particles[i] = nullptr;
@@ -116,14 +77,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				App->audio->PlayFx(wallrbFx);
 				App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
 			}
-
+			
 			if (c2->type == Collider::Type::GOAL)
 			{
 				if (p->position.x > 152) {
 					App->player->player1points += 5;
 				}
 				else {
-					// +5 to the second playerd
+					// +5 al segundo player
 				}
 				// p->speed.x = -p->speed.x
 				App->audio->PlayFx(goalFx);
@@ -150,6 +111,7 @@ update_status ModuleParticles::Update()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
+		
 		Particle* particle = particles[i];
 
 		if (particle == nullptr)	continue;
@@ -160,8 +122,8 @@ update_status ModuleParticles::Update()
 			delete particle;
 			particles[i] = nullptr;
 		}
+		
 	}
-
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -177,6 +139,7 @@ update_status ModuleParticles::PostUpdate()
 			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 

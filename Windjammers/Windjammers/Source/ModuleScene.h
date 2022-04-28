@@ -35,8 +35,24 @@ public:
 
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
+
+	// The counter spritesheet
+	SDL_Texture* counterTexture = nullptr;
+
+	// It will be switched depending on the counter's state direction
+	Animation* currentAnimation = nullptr;
+
+	// Counter animations
+	Animation counterTexture1;
+	Animation counterTexture2;
+
+	// Counter states
+	int counterState1 = 0;
+	int counterState2 = 0;
+
+	// Position of the counter in the map
+	iPoint counterPosition;
 };
 
 #endif
-
 
