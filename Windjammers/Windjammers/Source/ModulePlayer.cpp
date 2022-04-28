@@ -13,7 +13,7 @@
 #include "SDL/include/SDL_scancode.h"
 
 
-ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
+ModulePlayer::ModulePlayer(bool startDisabled) : Module(startDisabled)
 {
 	nat = KOREA;
 	if (nat == KOREA) {

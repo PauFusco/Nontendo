@@ -6,12 +6,12 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 
-ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
+ModuleScene::ModuleScene(bool startDisabled) : Module(startDisabled)
 {
 	//Counter animation
 	counterTexture1.PushBack({ 2, 21, 14, 12 }); // 0 points
 	counterTexture1.PushBack({ 2, 21, 14, 12 }); // 0 points
-	/*
+	
 	counterTexture1.PushBack({ 15, 21, 14, 12 }); // 1 points
 	counterTexture1.PushBack({ 32, 22, 14, 12 }); // 2 points
 	counterTexture1.PushBack({ 48, 22, 14, 12 }); // 3 points
@@ -19,7 +19,7 @@ ModuleScene::ModuleScene(bool startEnabled) : Module(startEnabled)
 	counterTexture1.PushBack({ 2, 35, 14, 12 }); // 6 points
 	counterTexture1.PushBack({ 32, 35, 14, 12 }); // 8 points
 	counterTexture1.PushBack({ 48, 35, 14, 12 }); // 9 points
-	*/
+	
 	counterTexture1.speed = 1.0f;
 }
 

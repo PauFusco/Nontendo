@@ -11,7 +11,7 @@ class ModuleScene : public Module
 {
 public:
 	//Constructor
-	ModuleScene(bool startEnabled);
+	ModuleScene(bool startDisabled);
 
 	//Destructor
 	~ModuleScene();
