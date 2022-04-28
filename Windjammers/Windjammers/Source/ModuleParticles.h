@@ -7,7 +7,7 @@
 #include "Particle.h"
 #include "Collider.h"
 
-#define MAX_ACTIVE_PARTICLES 2
+#define MAX_ACTIVE_PARTICLES 3
 
 struct SDL_Texture;
 struct Collider;
@@ -65,6 +65,16 @@ public:
 	// SFX
 	uint wallrbFx = 0;
 	uint goalFx = 0;
+
+
+	// The counter spritesheet
+	SDL_Texture* counterTexture = nullptr;
+
+	//Template particle for the counter
+	Particle counter;
+
+	// Position of the counter in the map
+	iPoint counterPosition;
 
 };
 
