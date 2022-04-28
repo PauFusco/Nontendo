@@ -28,7 +28,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/menu selección de personajes.png");
+	bgTexture = App->textures->Load("Assets/introwinsjammers.png.png");
 	App->audio->PlayMusic("Assets/Sound/Beach.ogg", 1.0f);
 
 	App->render->camera.x = 0;
@@ -39,7 +39,7 @@ bool SceneIntro::Start()
 
 update_status SceneIntro::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene, 90);
 	}

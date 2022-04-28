@@ -3,6 +3,7 @@
 
 #include "Globals.h"
 #include "ModuleFadeToBlack.h"
+#include "SceneIntro.h"
 
 #define NUM_MODULES 10
 
@@ -55,6 +56,7 @@ public:
 
 	ModuleRender* render = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
+	SceneIntro* intro = nullptr;
 };
 
 // Global var made extern for Application ---

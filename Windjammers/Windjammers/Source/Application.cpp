@@ -11,6 +11,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
+#include "SceneIntro.h"
 
 Application::Application()
 {
@@ -31,6 +32,7 @@ Application::Application()
 
 	modules[8] = render = new ModuleRender(true);
 	modules[9] = fade = new ModuleFadeToBlack(true);
+	modules[10] = intro = new SceneIntro(true);
 }
 
 Application::~Application()
