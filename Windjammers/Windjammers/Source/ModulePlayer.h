@@ -81,7 +81,7 @@ public:
 	uint explosionFx = 0;
 
 	// Disc indent
-	bool hasDisc = false;
+	bool hasDisc = true;
 
 };
 
