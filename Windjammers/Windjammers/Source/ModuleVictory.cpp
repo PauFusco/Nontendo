@@ -21,6 +21,8 @@ ModuleVictory::~ModuleVictory()
 // Load assets
 bool ModuleVictory::Start()
 {
+
+
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -44,8 +46,7 @@ update_status ModuleVictory::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	if (win) {
-		App->render->Blit(victoryTexture, 0, 0, NULL);
+		App->render->Blit(victoryTexture, 150, 100, nullptr);
 	}
-
 	return update_status::UPDATE_CONTINUE;
 }
