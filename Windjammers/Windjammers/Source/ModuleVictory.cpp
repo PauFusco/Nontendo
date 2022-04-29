@@ -46,7 +46,7 @@ update_status ModuleVictory::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	if (win) {
-		App->render->Blit(victoryTexture, 150, 100, nullptr);
+		App->render->Blit(victoryTexture, 150, 100, nullptr, 0.0f);
 	}
 	return update_status::UPDATE_CONTINUE;
 }
