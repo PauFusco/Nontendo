@@ -77,6 +77,10 @@ bool ModulePlayer::Start()
 	// TODO 3: Add a collider to the player
 	collider = App->collisions->AddCollider({ position.x, position.y, 27, 33 }, Collider::Type::PLAYER, this);
 
+	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	scoreFont = App->fonts->Load("Assets/Fonts/rtype_font3.png", lookupTable, 2);
+
 	return ret;
 }
 
@@ -185,6 +189,11 @@ update_status ModulePlayer::PostUpdate()
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
+
+	// TODO 3: Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(58, 248, scoreFont, scoreText);
+
+	App->fonts->BlitText(150, 248, scoreFont, "this is just a font test");
 
 	return update_status::UPDATE_CONTINUE;
 }

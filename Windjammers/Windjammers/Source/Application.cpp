@@ -14,6 +14,7 @@
 #include "SceneIntro.h"
 #include "ModuleEnemy.h"
 #include "ModuleVictory.h"
+#include "ModuleFonts.h"
 
 Application::Application()
 {
@@ -37,6 +38,7 @@ Application::Application()
 	modules[10] = fade = new ModuleFadeToBlack(true);
 	modules[11] = intro = new SceneIntro(true);
 	modules[12] = victory = new ModuleVictory(true);
+	modules[13] = fonts = new ModuleFonts(true);
 }
 
 Application::~Application()
