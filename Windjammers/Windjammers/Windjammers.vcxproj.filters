@@ -1,146 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{256aa8b9-488c-4807-8176-966252443eb7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\App">
-      <UniqueIdentifier>{57eee7a8-776e-4e1f-97ec-69ef30806891}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Mods">
-      <UniqueIdentifier>{33b816c7-91f5-4fcd-a0db-694cd2a3a688}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{15253e16-16b5-47e9-89ff-a7761b51735d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Mods\Core">
-      <UniqueIdentifier>{0160256c-e700-4205-8339-46165468bf52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Mods\Gplay">
-      <UniqueIdentifier>{f1b600f3-ff97-4df9-9edd-1d79a61ab7b7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Ents">
-      <UniqueIdentifier>{0ebd170f-4b15-4acb-93ac-2db1ab734bca}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Source\Application.cpp" />
+    <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\Globals.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Module.cpp" />
+    <ClCompile Include="Source\ModuleAudio.cpp" />
+    <ClCompile Include="Source\ModuleCollisions.cpp" />
+    <ClCompile Include="Source\ModuleFadeToBlack.cpp" />
+    <ClCompile Include="Source\ModuleInput.cpp" />
+    <ClCompile Include="Source\ModuleParticles.cpp" />
+    <ClCompile Include="Source\ModulePlayer.cpp" />
+    <ClCompile Include="Source\ModuleRender.cpp" />
+    <ClCompile Include="Source\ModuleScene.cpp" />
+    <ClCompile Include="Source\ModuleTextures.cpp" />
+    <ClCompile Include="Source\ModuleWindow.cpp" />
+    <ClCompile Include="Source\Particle.cpp" />
+    <ClCompile Include="Source\Path.cpp" />
+    <ClCompile Include="Source\SceneIntro.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Application.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Globals.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Main.cpp">
-      <Filter>Source Files\App</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Particle.cpp">
-      <Filter>Source Files\Ents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleAudio.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleCollisions.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleInput.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleParticles.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleRender.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleTextures.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleWindow.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModulePlayer.cpp">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleScene.cpp">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Collider.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\SceneIntro.cpp">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleFadeToBlack.cpp">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClCompile>
-<<<<<<< Updated upstream
-    <ClCompile Include="Source\Path.cpp">
-      <Filter>Source Files\Utils</Filter>
-=======
-    <ClCompile Include="Source\Module.cpp">
-      <Filter>Source Files\Mods\Gplay</Filter>
->>>>>>> Stashed changes
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Source\Application.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Globals.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\MemLeaks.h">
-      <Filter>Source Files\App</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Particle.h">
-      <Filter>Source Files\Ents</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Module.h">
-      <Filter>Source Files\Mods</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleAudio.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleCollisions.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleInput.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleParticles.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleRender.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleTextures.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleWindow.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModulePlayer.h">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleScene.h">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Animation.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Collider.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\p2Point.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SceneIntro.h">
-      <Filter>Source Files\Mods\Gplay</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleFadeToBlack.h">
-      <Filter>Source Files\Mods\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Path.h">
-      <Filter>Source Files\Utils</Filter>
-    </ClInclude>
+    <ClInclude Include="Source\Animation.h" />
+    <ClInclude Include="Source\Application.h" />
+    <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\Globals.h" />
+    <ClInclude Include="Source\MemLeaks.h" />
+    <ClInclude Include="Source\Module.h" />
+    <ClInclude Include="Source\ModuleAudio.h" />
+    <ClInclude Include="Source\ModuleCollisions.h" />
+    <ClInclude Include="Source\ModuleFadeToBlack.h" />
+    <ClInclude Include="Source\ModuleInput.h" />
+    <ClInclude Include="Source\ModuleParticles.h" />
+    <ClInclude Include="Source\ModulePlayer.h" />
+    <ClInclude Include="Source\ModuleRender.h" />
+    <ClInclude Include="Source\ModuleScene.h" />
+    <ClInclude Include="Source\ModuleTextures.h" />
+    <ClInclude Include="Source\ModuleWindow.h" />
+    <ClInclude Include="Source\p2Point.h" />
+    <ClInclude Include="Source\Particle.h" />
+    <ClInclude Include="Source\Path.h" />
+    <ClInclude Include="Source\SceneIntro.h" />
   </ItemGroup>
 </Project>
