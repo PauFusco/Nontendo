@@ -126,6 +126,11 @@ update_status ModulePlayer::Update()
 			}
 			collider->SetPos(position.x, position.y);
 		}
+
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
+		{
+
+		}
 	}
 	
 	int sx = 3, sy;
