@@ -31,7 +31,7 @@ public:
 public:
 	
 	// The win spritesheet
-	SDL_Texture* victoryTexture = nullptr;
+	SDL_Texture* victoryTexture;
 
 	// Victory state
 	bool win = false;

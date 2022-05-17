@@ -33,12 +33,11 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
+	// Enum of different possible nations
 	enum Nation {
 		KOREA,
 		ITALY,
-		USA,
-		
-		MAX
+		USA
 	};
 	
 	// Position of the player in the map
@@ -63,6 +62,11 @@ public:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+	Animation rightdashAnim;
+	Animation leftdashAnim;
+	Animation updashAnim;
+	Animation downdashAnim;
+
 
 	// Stores the nation
 	Nation nat;
@@ -73,15 +77,29 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
-	// A countdown to when the player gets destroyed. After a while, the game exits
-	uint destroyedCountdown = 120;
-
 	// SFX
 	uint NthrowFx = 0;
 	uint explosionFx = 0;
 
 	// Disc indent
 	bool hasDisc = true;
+
+	// Enum of different dash directions
+	enum dashingDir {
+		RIGHT,
+		LEFT,
+		UP,
+		DOWN,
+		A,
+		MAX
+	};
+	dashingDir dashDir = A;
+	
+	bool animationLocked = false;
+
+	int animFC = 10;
+
+	unsigned int dashingFC = animFC;
 
 	// Points
 	int points = 0;
