@@ -46,6 +46,18 @@ ModuleEnemy::ModuleEnemy(bool startEnabled) : Module (startEnabled)
 		leftAnim.PushBack({ 39, 161, 36, 38 });
 		leftAnim.PushBack({ 3, 161, 37, 37 });
 		leftAnim.speed = 0.1f;
+
+		// Dash right
+		rightdashAnim.PushBack({ 310, 56, 68, 33 });
+
+		// Dash left
+		leftdashAnim.PushBack({ 310, 98, 68, 33 });
+
+		// Dash up
+		updashAnim.PushBack({ 308, 135, 33, 68 });
+
+		// Dash down
+		downdashAnim.PushBack({ 340, 135, 33, 68 });
 	}
 }
 
@@ -81,7 +93,7 @@ bool ModuleEnemy::Start()
 
 update_status ModuleEnemy::Update()
 {
-	if (!hasDisc) {
+	if (!hasDisc && dashDir == A) {
 		if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
@@ -89,6 +101,9 @@ update_status ModuleEnemy::Update()
 			{
 				leftAnim.Reset();
 				currentAnimation = &leftAnim;
+			}
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
+				dashDir = LEFT;
 			}
 			collider->SetPos(position.x, position.y);
 		}
@@ -101,6 +116,9 @@ update_status ModuleEnemy::Update()
 				rightAnim.Reset();
 				currentAnimation = &rightAnim;
 			}
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
+				dashDir = RIGHT;
+			}
 			collider->SetPos(position.x, position.y);
 		}
 
@@ -112,6 +130,9 @@ update_status ModuleEnemy::Update()
 				downAnim.Reset();
 				currentAnimation = &downAnim;
 			}
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
+				dashDir = DOWN;
+			}
 			collider->SetPos(position.x, position.y);
 		}
 
@@ -122,6 +143,9 @@ update_status ModuleEnemy::Update()
 			{
 				upAnim.Reset();
 				currentAnimation = &upAnim;
+			}
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
+				dashDir = UP;
 			}
 			collider->SetPos(position.x, position.y);
 		}
@@ -159,8 +183,39 @@ update_status ModuleEnemy::Update()
 		App->audio->PlayFx(NthrowFx);
 	}
 
+	if (dashDir != A) {
+		switch (dashDir) {
+		case RIGHT:
+			currentAnimation = &rightdashAnim;
+			position.x += 4 * speed;
+			break;
+
+		case LEFT:
+			currentAnimation = &leftdashAnim;
+			position.x -= 4 * speed;
+			break;
+
+		case DOWN:
+			currentAnimation = &downdashAnim;
+			position.y += 4 * speed;
+			break;
+
+		case UP:
+			currentAnimation = &updashAnim;
+			position.y -= 4 * speed;
+			break;
+		}
+
+		dashingFC--;
+		if (dashingFC == 0) {
+			dashingFC = animFC;
+			dashDir = A;
+		}
+		collider->SetPos(position.x, position.y);
+	}
+
 	// If no up/down movement detected, set the current animation back to idle
-	if ((App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+	else if ((App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)

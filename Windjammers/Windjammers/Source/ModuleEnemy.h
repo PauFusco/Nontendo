@@ -37,8 +37,6 @@ public:
 		KOREA,
 		ITALY,
 		USA,
-
-		MAX
 	};
 
 	// Position of the player in the map
@@ -60,6 +58,11 @@ public:
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+	Animation rightdashAnim;
+	Animation leftdashAnim;
+	Animation updashAnim;
+	Animation downdashAnim;
+
 
 	// Stores the nation
 	Nation nat;
@@ -79,6 +82,23 @@ public:
 
 	// Disc indent
 	bool hasDisc = false;
+
+	// Enum of different dash directions
+	enum dashingDir {
+		RIGHT,
+		LEFT,
+		UP,
+		DOWN,
+		A,
+		MAX
+	};
+	dashingDir dashDir = A;
+
+	bool animationLocked = false;
+
+	int animFC = 10;
+
+	unsigned int dashingFC = animFC;
 
 	// Points
 	int points = 0;
