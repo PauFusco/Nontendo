@@ -80,6 +80,7 @@ public:
 	// SFX
 	uint NthrowFx = 0;
 	uint explosionFx = 0;
+	uint dashFx = 0;
 
 	// Disc indent
 	bool hasDisc = true;

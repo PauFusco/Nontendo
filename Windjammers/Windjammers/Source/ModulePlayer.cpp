@@ -109,7 +109,6 @@ update_status ModulePlayer::Update()
 				dashDir = LEFT;
 				animationLocked = true;
 			}
-			
 		}
 
 		if (App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -215,7 +214,7 @@ update_status ModulePlayer::Update()
 		App->audio->PlayFx(NthrowFx);
 	}
 	
-	if (animationLocked == true) {
+	if (animationLocked) {
 		switch (dashDir) {
 		case RIGHT:
 			currentAnimation = &rightdashAnim;
@@ -247,7 +246,6 @@ update_status ModulePlayer::Update()
 			dashingFC = animFC;
 			animationLocked = false;
 		}
-
 	}
 	// If no up/down/right/left movement detected, set the current animation back to idle
 	else if ((App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
