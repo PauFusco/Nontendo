@@ -90,14 +90,15 @@ public:
 		LEFT,
 		UP,
 		DOWN,
-		A,
-		MAX
 	};
-	dashingDir dashDir = A;
+	
+	dashingDir dashDir;
 	
 	bool animationLocked = false;
 
 	int animFC = 10;
+
+	bool canDash = true;
 
 	unsigned int dashingFC = animFC;
 
