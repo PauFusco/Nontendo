@@ -1,6 +1,8 @@
 #ifndef __APPLICATION_H__
 #define __APPLICATION_H__
 
+#include "SDL/include/SDL.h"
+
 #include "Globals.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneIntro.h"

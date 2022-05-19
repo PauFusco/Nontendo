@@ -79,6 +79,7 @@ public:
 	// SFX
 	uint NthrowFx = 0;
 	uint explosionFx = 0;
+	uint dashFx = 0;
 
 	// Disc indent
 	bool hasDisc = false;
@@ -89,14 +90,14 @@ public:
 		LEFT,
 		UP,
 		DOWN,
-		A,
-		MAX
 	};
-	dashingDir dashDir = A;
+	dashingDir dashDir;
 
 	bool animationLocked = false;
 
 	int animFC = 10;
+
+	bool canDash = true;
 
 	unsigned int dashingFC = animFC;
 

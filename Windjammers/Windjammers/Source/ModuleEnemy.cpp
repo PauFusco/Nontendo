@@ -93,7 +93,7 @@ bool ModuleEnemy::Start()
 
 update_status ModuleEnemy::Update()
 {
-	if (!hasDisc && dashDir == A) {
+	if (!hasDisc && !animationLocked) {
 		if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
@@ -102,10 +102,12 @@ update_status ModuleEnemy::Update()
 				leftAnim.Reset();
 				currentAnimation = &leftAnim;
 			}
-			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
-				dashDir = LEFT;
-			}
 			collider->SetPos(position.x, position.y);
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+			{
+				dashDir = LEFT;
+				animationLocked = true;
+			}
 		}
 
 		if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
@@ -116,10 +118,13 @@ update_status ModuleEnemy::Update()
 				rightAnim.Reset();
 				currentAnimation = &rightAnim;
 			}
-			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
-				dashDir = RIGHT;
-			}
 			collider->SetPos(position.x, position.y);
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+			{
+				dashDir = RIGHT;
+				animationLocked = true;
+				collider->SetPos(position.x + 34, position.y);
+			}
 		}
 
 		if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
@@ -130,10 +135,14 @@ update_status ModuleEnemy::Update()
 				downAnim.Reset();
 				currentAnimation = &downAnim;
 			}
-			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
-				dashDir = DOWN;
-			}
 			collider->SetPos(position.x, position.y);
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+			{
+				dashDir = DOWN;
+				animationLocked = true;
+				collider->SetPos(position.x, position.y + 34);
+			}
+			
 		}
 
 		if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
@@ -144,10 +153,29 @@ update_status ModuleEnemy::Update()
 				upAnim.Reset();
 				currentAnimation = &upAnim;
 			}
+			collider->SetPos(position.x, position.y);
 			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
 				dashDir = UP;
+				animationLocked = true;
 			}
-			collider->SetPos(position.x, position.y);
+		}
+
+		if ((App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
+			&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
+			&& App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
+		{
+			dashDir = LEFT;
+			animationLocked = true;
+			collider->SetPos(position.x + 34, position.y);
+
+		}
+		
+		if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN)
+		{
+			// currentAnimation = &smackAnim;
+			// animationLocked = true;
 		}
 	}
 
@@ -183,7 +211,7 @@ update_status ModuleEnemy::Update()
 		App->audio->PlayFx(NthrowFx);
 	}
 
-	if (dashDir != A) {
+	if (animationLocked) {
 		switch (dashDir) {
 		case RIGHT:
 			currentAnimation = &rightdashAnim;
@@ -209,9 +237,8 @@ update_status ModuleEnemy::Update()
 		dashingFC--;
 		if (dashingFC == 0) {
 			dashingFC = animFC;
-			dashDir = A;
+			animationLocked = false;
 		}
-		collider->SetPos(position.x, position.y);
 	}
 
 	// If no up/down movement detected, set the current animation back to idle
