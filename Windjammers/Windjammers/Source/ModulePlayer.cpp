@@ -17,17 +17,21 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
 	nat = KOREA;
 	if (nat == KOREA) {
+		// idle with disc animation
+		idlediscAnim.PushBack({ 4, 7, 52, 36 });
+		idlediscAnim.PushBack({ 58, 7, 52, 36 });
+		idlediscAnim.speed = 0.05f;
+
 		// idle animation
-		idleAnim.PushBack({ 4, 7, 52, 36 });
-		idleAnim.PushBack({ 58, 7, 52, 36 });
-		idleAnim.speed = 0.05f;
+		idleAnim.PushBack({ 379, 7, 42, 38 });
+		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({ 146, 54, 27, 39 });
-		upAnim.PushBack({ 179, 54, 27, 39 });
-		upAnim.PushBack({ 214, 48, 26, 50 });
-		upAnim.PushBack({ 247, 54, 24, 39 });
-		upAnim.PushBack({ 276, 54, 26, 39 });
+		upAnim.PushBack({ 146, 49, 27, 44 });
+		upAnim.PushBack({ 179, 49, 27, 44 });
+		upAnim.PushBack({ 214, 49, 26, 50 });
+		upAnim.PushBack({ 247, 49, 24, 44 });
+		upAnim.PushBack({ 276, 49, 26, 44 });
 		upAnim.speed = 0.1f;
 
 		// Move down
@@ -59,6 +63,16 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 		// Dash down
 		downdashAnim.PushBack({ 340, 135, 33, 68 });
+
+		// Disc throw
+		normalthrowAnim.PushBack({ 110, 6, 34, 38 });
+		normalthrowAnim.PushBack({ 144, 6, 42, 35 });
+		normalthrowAnim.PushBack({ 191, 3, 47, 46 });
+		normalthrowAnim.PushBack({ 240, 4, 37, 42 });
+		normalthrowAnim.speed = 0.5f;
+
+		// Smack anim
+		smackAnim.PushBack({  });
 	}
 }
 
@@ -78,7 +92,7 @@ bool ModulePlayer::Start()
 
 	if (nat == USA) texture = App->textures->Load("Assets/USA movements.png"); // USA sprites
 	
-	currentAnimation = &idleAnim;
+	currentAnimation = &idlediscAnim;
 
 	NthrowFx = App->audio->LoadFx("Assets/Sound/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Sound/explosion.wav");
@@ -185,10 +199,15 @@ update_status ModulePlayer::Update()
 
 	int sx = 3, sy;
 	
+	if (hasDisc) {
+		//currentAnimation = &idlediscAnim;
+	}
+
 	if (hasDisc && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN
 				&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		sy = -2;
+		currentAnimation = &normalthrowAnim;
 		App->particles->AddParticle(App->particles->disc, position.x + 35, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
@@ -198,6 +217,7 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
 		sy = 2;
+		currentAnimation = &normalthrowAnim;
 		App->particles->AddParticle(App->particles->disc, position.x + 35, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
@@ -208,12 +228,14 @@ update_status ModulePlayer::Update()
 	{
 		sx = 5;
 		sy = 0;
+		currentAnimation = &normalthrowAnim;
 		App->particles->AddParticle(App->particles->disc,
 			position.x + 30, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
+		
 	}
-	
+
 	if (animationLocked) {
 		switch (dashDir) {
 		case RIGHT:
@@ -252,7 +274,7 @@ update_status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		|| hasDisc)
+		&& !hasDisc)
 	{
 		currentAnimation = &idleAnim;
 
