@@ -81,7 +81,7 @@
     <ClCompile Include="Source\ModuleVictory.cpp">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleFonts.cpp">
+    <ClCompile Include="Source\ModuleFonts.cpp">
       <Filter>Source Files\Mods\Core</Filter>
     </ClCompile>
   </ItemGroup>
@@ -149,7 +149,7 @@
     <ClInclude Include="Source\ModuleVictory.h">
       <Filter>Source Files\Mods\Gplay</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleFonts.h">
+    <ClInclude Include="Source\ModuleFonts.h">
       <Filter>Source Files\Mods\Core</Filter>
     </ClInclude>
   </ItemGroup>
