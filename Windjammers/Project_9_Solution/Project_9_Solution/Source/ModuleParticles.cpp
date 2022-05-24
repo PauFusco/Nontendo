@@ -125,28 +125,27 @@ Update_Status ModuleParticles::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int speedx, int speedy, Collider::Type colliderType, uint delay)
 {
-	Particle* newParticle = nullptr;
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
 		if (particles[i] == nullptr)
 		{
-			newParticle = new Particle(particle);
-			newParticle->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-			newParticle->position.x = x;						// so when frameCount reaches 0 the particle will be activated
-			newParticle->position.y = y;
+			Particle* p = new Particle(particle);
+
+			//p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.y = y;
+			p->speed.x = speedx;
+			p->speed.y = speedy;
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
-				newParticle->collider = App->collisions->AddCollider(newParticle->anim.GetCurrentFrame(), colliderType, this);
+				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
 
-			particles[i] = newParticle;
+			particles[i] = p;
 			break;
 		}
 	}
-
-	return newParticle;
 }
