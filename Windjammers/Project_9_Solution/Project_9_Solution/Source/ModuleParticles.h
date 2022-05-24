@@ -57,7 +57,11 @@ public:
 	Particle explosion;
 
 	//Template particle for a laser
-	Particle laser;
+	Particle disc;
+
+	// SFX
+	uint wallrbFx = 0;
+	uint goalFx = 0;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

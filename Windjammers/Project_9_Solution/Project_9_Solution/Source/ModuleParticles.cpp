@@ -24,21 +24,23 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Sprites/particles.png");
 
-	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	explosion.anim.speed = 0.1f;
+	explosion.lifetime = 5;
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.x = 5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
+	disc.anim.PushBack({ 117, 560, 16, 16 });
+	disc.anim.PushBack({ 149, 560, 16, 16 });
+	disc.anim.PushBack({ 181, 560, 16, 16 });
+	disc.anim.PushBack({ 213, 560, 16, 16 });
+
+	disc.lifetime = 85;
+	disc.anim.speed = 0.1f;
+
+	wallrbFx = App->audio->LoadFx("Assets/Sound/8 REBOUND.wav");
+	goalFx = App->audio->LoadFx("Assets/Sound/10 POINT.wav");
 
 	return true;
 }
