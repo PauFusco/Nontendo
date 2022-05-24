@@ -15,8 +15,9 @@ struct Collider
 		WALL,
 		PLAYER,
 		ENEMY,
-		PLAYER_SHOT,
-		ENEMY_SHOT,
+		DISC,
+		RED,
+		GOAL,
 
 		MAX
 	};
@@ -35,6 +36,8 @@ struct Collider
 	bool pendingToDelete = false;
 	Type type;
 	Module* listeners[MAX_LISTENERS] = { nullptr };
+
+	Type mytype;
 };
 
 

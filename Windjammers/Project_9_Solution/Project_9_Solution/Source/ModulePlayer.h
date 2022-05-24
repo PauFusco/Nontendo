@@ -33,6 +33,13 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
+	
+	enum Nation {
+		KOREA,
+		ITALY,
+		USA
+	};
+	
 	// Position of the player in the map
 	iPoint position;
 
@@ -46,10 +53,30 @@ public:
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
 
-	// A set of animations
+	// Idle animations
+	Animation idlediscAnim;
 	Animation idleAnim;
+
+	// Movement animations
 	Animation upAnim;
 	Animation downAnim;
+	Animation rightAnim;
+	Animation leftAnim;
+
+	// Dash animations
+	Animation rightdashAnim;
+	Animation leftdashAnim;
+	Animation updashAnim;
+	Animation downdashAnim;
+
+	// Action animations
+	Animation normalthrowAnim;
+
+	// Smack animation
+	Animation smackAnim;
+
+	// Stores the nation
+	Nation nat;
 
 	// The player's collider
 	Collider* collider = nullptr;
@@ -57,9 +84,31 @@ public:
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
 
-	// Sound effects indices
-	uint laserFx = 0;
+	// SFX
+	uint NthrowFx = 0;
 	uint explosionFx = 0;
+	uint dashFx = 0;
+
+	// Disc indent
+	bool hasDisc = true;
+
+	// Enum of different dash directions
+	enum dashingDir {
+		RIGHT,
+		LEFT,
+		UP,
+		DOWN,
+	};
+
+	dashingDir dashDir;
+
+	bool animationLocked = false;
+
+	int animFC = 10;
+
+	bool canDash = true;
+
+	unsigned int dashingFC = animFC;
 
 	// Font score index
 	uint score = 000;

@@ -25,16 +25,19 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/background.png");
-	App->audio->PlayMusic("Assets/Music/stage1.ogg", 1.0f);
+	bgTexture = App->textures->Load("Assets/markadores wj chikitos.png");
+	App->audio->PlayMusic("Assets/Sound/BEACH.ogg");
 
-	//Bottomside collider
+	// Colliders ---
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
 
-	//First two columns colliders
-	App->collisions->AddCollider({ 1375, 0, 111, 96 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 1375, 145, 111, 96 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0,  32, 304,  15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 0, 182, 304,  15 }, Collider::Type::WALL);
+	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::RED);
+	App->collisions->AddCollider({ 0,  56,   8, 132 }, Collider::Type::GOAL);
+	App->collisions->AddCollider({ 296,  56,   8, 132 }, Collider::Type::GOAL);
 
+	/*
 	// Enemies ---
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 600, 80);
 	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 625, 80);
@@ -52,6 +55,7 @@ bool SceneLevel1::Start()
 	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);
 
 	App->enemies->AddEnemy(Enemy_Type::MECH, 900, 195);
+	*/
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -64,7 +68,6 @@ bool SceneLevel1::Start()
 
 Update_Status SceneLevel1::Update()
 {
-	App->render->camera.x += 3;
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -82,8 +85,6 @@ bool SceneLevel1::CleanUp()
 {
 	App->player->Disable();
 	App->enemies->Disable();
-
-	// TODO 5 (old): Remove All Memory Leaks - no solution here guys ;)
 
 	return true;
 }

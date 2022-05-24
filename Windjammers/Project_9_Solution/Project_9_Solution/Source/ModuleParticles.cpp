@@ -24,21 +24,23 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	texture = App->textures->Load("Assets/Sprites/particles.png");
 
-	// Explosion particle
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.PushBack({ 451, 12, 60, 53 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	explosion.anim.speed = 0.1f;
+	explosion.lifetime = 5;
 
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.speed.x = 5;
-	laser.lifetime = 180;
-	laser.anim.speed = 0.2f;
+	disc.anim.PushBack({ 117, 560, 16, 16 });
+	disc.anim.PushBack({ 149, 560, 16, 16 });
+	disc.anim.PushBack({ 181, 560, 16, 16 });
+	disc.anim.PushBack({ 213, 560, 16, 16 });
+
+	disc.lifetime = 85;
+	disc.anim.speed = 0.1f;
+
+	wallrbFx = App->audio->LoadFx("Assets/Sound/8 REBOUND.wav");
+	goalFx = App->audio->LoadFx("Assets/Sound/10 POINT.wav");
 
 	return true;
 }
@@ -123,28 +125,27 @@ Update_Status ModuleParticles::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Particle* ModuleParticles::AddParticle(const Particle& particle, int x, int y, Collider::Type colliderType, uint delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int speedx, int speedy, Collider::Type colliderType, uint delay)
 {
-	Particle* newParticle = nullptr;
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		//Finding an empty slot for a new particle
 		if (particles[i] == nullptr)
 		{
-			newParticle = new Particle(particle);
-			newParticle->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-			newParticle->position.x = x;						// so when frameCount reaches 0 the particle will be activated
-			newParticle->position.y = y;
+			Particle* p = new Particle(particle);
+
+			//p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
+			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.y = y;
+			p->speed.x = speedx;
+			p->speed.y = speedy;
 
 			//Adding the particle's collider
 			if (colliderType != Collider::Type::NONE)
-				newParticle->collider = App->collisions->AddCollider(newParticle->anim.GetCurrentFrame(), colliderType, this);
+				p->collider = App->collisions->AddCollider(p->anim.GetCurrentFrame(), colliderType, this);
 
-			particles[i] = newParticle;
+			particles[i] = p;
 			break;
 		}
 	}
-
-	return newParticle;
 }
