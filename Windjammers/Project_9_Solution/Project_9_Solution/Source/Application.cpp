@@ -1,12 +1,14 @@
 #include "Application.h"
 
+#include <SDL/include/SDL_timer.h>
+
 #include "Module.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
-#include "ModuleEnemy.h"
+#include "ModuleEnemies.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
 #include "ModuleParticles.h"
@@ -15,6 +17,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
+
 
 
 Application::Application()
