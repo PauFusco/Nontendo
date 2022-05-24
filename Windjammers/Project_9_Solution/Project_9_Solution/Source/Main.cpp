@@ -2,10 +2,16 @@
 #include "Globals.h"
 #include "MemLeaks.h"
 
+
+#define SDL_MAIN_HANDLED
+
 #include "SDL/include/SDL.h"
+
 #pragma comment( lib, "SDL/libx86/SDL2.lib")
 #pragma comment( lib, "SDL/libx86/SDL2main.lib")
 
+#pragma comment( lib, "SDL2.lib")
+#pragma comment( lib, "SDL2main.lib")
 
 enum class Main_States
 {
