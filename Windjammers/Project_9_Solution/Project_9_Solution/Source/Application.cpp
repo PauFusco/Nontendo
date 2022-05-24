@@ -15,6 +15,7 @@
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 
+
 Application::Application()
 {
 	// The order in which the modules are added is very important.
