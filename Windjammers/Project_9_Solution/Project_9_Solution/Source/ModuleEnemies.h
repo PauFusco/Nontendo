@@ -2,6 +2,11 @@
 #define __MODULE_ENEMIES_H__
 
 #include "Module.h"
+#include "Animation.h"
+#include "p2Point.h"
+
+struct SDL_Texture;
+struct Collider;
 
 #define MAX_ENEMIES 100
 
@@ -22,64 +27,102 @@ struct EnemySpawnpoint
 class Enemy;
 struct SDL_Texture;
 
-class ModuleEnemies : public Module
+class ModuleEnemy : public Module
 {
 public:
 	// Constructor
-	ModuleEnemies(bool startEnabled);
+	ModuleEnemy(bool startEnabled);
 
 	// Destructor
-	~ModuleEnemies();
+	~ModuleEnemy();
 
 	// Called when the module is activated
-	// Loads the necessary textures for the enemies
+	// Loads the necessary textures for the player
 	bool Start() override;
 
-	// Called at the beginning of the application loop
-	// Removes all enemies pending to delete
-	Update_Status PreUpdate() override;
-
 	// Called at the middle of the application loop
-	// Handles all enemies logic and spawning/despawning
-	Update_Status Update() override;
+	// Processes new input and handles player movement
+	update_status Update() override;
 
 	// Called at the end of the application loop
-	// Iterates all the enemies and draws them
-	Update_Status PostUpdate() override;
+	// Performs the render call of the player sprite
+	update_status PostUpdate() override;
 
-	// Called on application exit
-	// Destroys all active enemies left in the array
-	bool CleanUp() override;
-
-	// Called when an enemi collider hits another collider
-	// The enemy is destroyed and an explosion particle is fired
+	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
-	// Add an enemy into the queue to be spawned later
-	bool AddEnemy(Enemy_Type type, int x, int y);
+public:
+	enum Nation {
+		KOREA,
+		ITALY,
+		USA,
+	};
 
-	// Iterates the queue and checks for camera position
-	void HandleEnemiesSpawn();
+	// Position of the player in the map
+	iPoint position;
 
-	// Destroys any enemies that have moved outside the camera limits
-	void HandleEnemiesDespawn();
+	// The speed in which we move the player (pixels per frame)
+	int speed = 1;
 
-private:
-	// Spawns a new enemy using the data from the queue
-	void SpawnEnemy(const EnemySpawnpoint& info);
-
-private:
-	// A queue with all spawn points information
-	EnemySpawnpoint spawnQueue[MAX_ENEMIES];
-
-	// All spawned enemies in the scene
-	Enemy* enemies[MAX_ENEMIES] = { nullptr };
-
-	// The enemies sprite sheet
+	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 
-	// The audio fx for destroying an enemy
-	int enemyDestroyedFx = 0;
+	// The pointer to the current player animation
+	// It will be switched depending on the player's movement direction
+	Animation* currentAnimation = nullptr;
+
+	// A set of animations
+	Animation idlediscAnim;
+	Animation idleAnim;
+	Animation upAnim;
+	Animation downAnim;
+	Animation rightAnim;
+	Animation leftAnim;
+	Animation rightdashAnim;
+	Animation leftdashAnim;
+	Animation updashAnim;
+	Animation downdashAnim;
+
+
+	// Stores the nation
+	Nation nat;
+
+	// The player's collider
+	Collider* collider = nullptr;
+
+	// A flag to detect when the player has been destroyed
+	bool destroyed = false;
+
+	// A countdown to when the player gets destroyed. After a while, the game exits
+	uint destroyedCountdown = 120;
+
+	// SFX
+	uint NthrowFx = 0;
+	uint explosionFx = 0;
+	uint dashFx = 0;
+
+	// Disc indent
+	bool hasDisc = false;
+
+	// Enum of different dash directions
+	enum dashingDir {
+		RIGHT,
+		LEFT,
+		UP,
+		DOWN,
+	};
+	dashingDir dashDir;
+
+	bool animationLocked = false;
+
+	int animFC = 10;
+
+	bool canDash = true;
+
+	unsigned int dashingFC = animFC;
+
+	// Points
+	int points = 0;
 };
 
-#endif // __MODULE_ENEMIES_H__
+#endif //!__MODULE_PLAYER_H__
