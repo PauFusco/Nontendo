@@ -6,7 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
-#include "ModuleEnemy.h"
+#include "ModuleEnemies.h"
 #include "SceneIntro.h"
 #include "SceneLevel1.h"
 #include "ModuleParticles.h"
