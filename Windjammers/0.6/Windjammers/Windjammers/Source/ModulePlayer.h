@@ -115,6 +115,9 @@ public:
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 
+	// Points
+	int points = 0;
+
 };
 
 #endif //!__MODULE_PLAYER_H__

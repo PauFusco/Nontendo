@@ -61,7 +61,7 @@ bool SceneLevel1::Start()
 	App->render->camera.y = 0;
 
 	App->player->Enable();
-	App->enemies->Enable();
+	App->enemy->Enable();
 
 	return ret;
 }
@@ -84,7 +84,7 @@ Update_Status SceneLevel1::PostUpdate()
 bool SceneLevel1::CleanUp()
 {
 	App->player->Disable();
-	App->enemies->Disable();
+	App->enemy->Disable();
 
 	return true;
 }

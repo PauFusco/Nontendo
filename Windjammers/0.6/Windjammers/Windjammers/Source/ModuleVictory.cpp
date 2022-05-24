@@ -7,7 +7,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
-#include "ModuleEnemy.h"
+#include "ModuleEnemies.h"
 
 ModuleVictory::ModuleVictory(bool startEnabled) : Module(startEnabled)
 {
@@ -33,20 +33,20 @@ bool ModuleVictory::Start()
 	return ret;
 }
 
-update_status ModuleVictory::Update()
+Update_Status ModuleVictory::Update()
 {
 	if (App->player->points == 6 || App->enemy->points == 6) {
 		win = true;
 	}
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }
 
 // Update: draw background
-update_status ModuleVictory::PostUpdate()
+Update_Status ModuleVictory::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	if (win) {
 		App->render->Blit(victoryTexture, 150, 100, nullptr, 0.0f);
 	}
-	return update_status::UPDATE_CONTINUE;
+	return Update_Status::UPDATE_CONTINUE;
 }

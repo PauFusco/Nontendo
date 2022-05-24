@@ -7,8 +7,10 @@
 #include "ModuleAudio.h"
 #include "ModuleCollisions.h"
 #include "Collider.h"
+#include "ModuleParticles.h"
 
 #include "SDL/include/SDL_scancode.h"
+#include "ModuleInput.h"
 
 
 ModuleEnemy::ModuleEnemy(bool startEnabled) : Module(startEnabled)
@@ -264,12 +266,12 @@ Update_Status ModuleEnemy::Update()
 		}
 		currentAnimation->Update();
 
-		return Update_status::UPDATE_CONTINUE;
+		return Update_Status::UPDATE_CONTINUE;
 	}
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-Update_Status ModuleEnemy::PostUpdate()
+/*Update_Status ModuleEnemy::PostUpdate()
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -285,23 +287,7 @@ Update_Status ModuleEnemy::PostUpdate()
 
 	return Update_Status::UPDATE_CONTINUE;
 }
-
-// Called before quitting
-bool ModuleEnemy::CleanUp()
-{
-	LOG("Freeing all enemies");
-
-	for(uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if(enemies[i] != nullptr)
-		{
-			delete enemies[i];
-			enemies[i] = nullptr;
-		}
-	}
-
-	return true;
-}
+*/
 
 void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 {

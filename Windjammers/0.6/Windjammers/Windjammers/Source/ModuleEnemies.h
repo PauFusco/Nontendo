@@ -29,7 +29,7 @@ public:
 
 	// Called at the end of the application loop
 	// Performs the render call of the player sprite
-	Update_Status PostUpdate() override;
+	//Update_Status PostUpdate() override;
 
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
@@ -39,6 +39,8 @@ public:
 		KOREA,
 		ITALY,
 		USA,
+
+		MAX
 	};
 
 	// Position of the player in the map
@@ -92,7 +94,7 @@ public:
 		RIGHT,
 		LEFT,
 		UP,
-		DOWN,
+		DOWN
 	};
 	dashingDir dashDir;
 
