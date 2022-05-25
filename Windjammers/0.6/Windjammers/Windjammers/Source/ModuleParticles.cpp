@@ -40,8 +40,8 @@ bool ModuleParticles::Start()
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
 
-	wallrbFx = App->audio->LoadFx("Assets/Sound/8 REBOUND.wav");
-	goalFx = App->audio->LoadFx("Assets/Sound/10 POINT.wav");
+	wallrbFx = App->audio->LoadFx("Assets/Music/8 REBOUND.wav");
+	goalFx = App->audio->LoadFx("Assets/Music/10 POINT.wav");
 
 	return true;
 }

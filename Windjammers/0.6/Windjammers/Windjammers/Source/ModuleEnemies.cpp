@@ -76,16 +76,16 @@ bool ModuleEnemy::Start()
 	LOG("Loading player textures");
 
 	bool ret = true;
-	if (nat == KOREA) texture = App->textures->Load("Assets/Korea movements.png"); // Korea sprites
+	if (nat == KOREA) texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
 
-	if (nat == ITALY) texture = App->textures->Load("Assets/Italy movements.png"); // Italy sprites
+	if (nat == ITALY) texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
 
-	if (nat == USA) texture = App->textures->Load("Assets/USA movements.png"); // USA sprites
+	if (nat == USA) texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA sprites
 
 	currentAnimation = &idlediscAnim;
 
-	NthrowFx = App->audio->LoadFx("Assets/Sound/1 NORMAL THROW.wav");
-	explosionFx = App->audio->LoadFx("Assets/Sound/explosion.wav");
+	NthrowFx = App->audio->LoadFx("Assets/Music/1 NORMAL THROW.wav");
+	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
 
 	position.x = 240;
 	position.y = 100;

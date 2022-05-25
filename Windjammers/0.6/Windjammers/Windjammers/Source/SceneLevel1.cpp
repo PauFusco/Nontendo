@@ -25,8 +25,8 @@ bool SceneLevel1::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/markadores wj chikitos.png");
-	App->audio->PlayMusic("Assets/Sound/BEACH.ogg");
+	bgTexture = App->textures->Load("Assets/Sprites/Beach Stadium.png");
+	App->audio->PlayMusic("Assets/Music/BEACH.ogg");
 
 	// Colliders ---
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
@@ -37,25 +37,7 @@ bool SceneLevel1::Start()
 	App->collisions->AddCollider({ 0,  56,   8, 132 }, Collider::Type::GOAL);
 	App->collisions->AddCollider({ 296,  56,   8, 132 }, Collider::Type::GOAL);
 
-	/*
-	// Enemies ---
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 600, 80);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 625, 80);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 640, 80);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 665, 80);
-
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 735, 120);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 750, 120);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 775, 120);
-	App->enemies->AddEnemy(Enemy_Type::REDBIRD, 790, 120);
-
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 830, 100);
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 850, 100);
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 870, 100);
-	App->enemies->AddEnemy(Enemy_Type::BROWNSHIP, 890, 100);
-
-	App->enemies->AddEnemy(Enemy_Type::MECH, 900, 195);
-	*/
+	
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;

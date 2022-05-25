@@ -86,16 +86,16 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 
-	if (nat == KOREA) texture = App->textures->Load("Assets/Korea movements.png"); // Korea sprites
+	if (nat == KOREA) texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
 
-	if (nat == ITALY) texture = App->textures->Load("Assets/Italy movements.png"); // Italy sprites
+	if (nat == ITALY) texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
 
-	if (nat == USA) texture = App->textures->Load("Assets/USA movements.png"); // USA sprites
+	if (nat == USA) texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA sprites
 
 	currentAnimation = &idlediscAnim;
 
-	NthrowFx = App->audio->LoadFx("Assets/Sound/1 NORMAL THROW.wav");
-	explosionFx = App->audio->LoadFx("Assets/Sound/explosion.wav");
+	NthrowFx = App->audio->LoadFx("Assets/Music/1 NORMAL THROW.wav");
+	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
 
 	position.x = 20;
 	position.y = 100;
@@ -105,7 +105,7 @@ bool ModulePlayer::Start()
 
 	// TODO 0: Notice how a font is loaded and the meaning of all its arguments 
 	//char lookupTable[] = { "!  ,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz" };
-	//scoreFont = App->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	//&scoreFont = App->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
