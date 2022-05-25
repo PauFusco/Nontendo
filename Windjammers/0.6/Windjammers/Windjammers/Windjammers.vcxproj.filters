@@ -94,6 +94,9 @@
     <ClInclude Include="Source\Path.h">
       <Filter>Source Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Source Files\Mods\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -158,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="Source\Path.cpp">
       <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Mods\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
