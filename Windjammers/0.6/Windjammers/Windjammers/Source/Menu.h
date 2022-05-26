@@ -12,10 +12,10 @@ class Menu : public Module
 {
 public:
 	//Constructor
-	SceneIntro(bool startEnabled);
+	Menu(bool startEnabled);
 
 	//Destructor
-	~SceneIntro();
+	~Menu();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background

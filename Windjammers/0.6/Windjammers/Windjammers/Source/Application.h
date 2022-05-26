@@ -54,6 +54,7 @@ public:
 	ModuleEnemy* enemy = nullptr;
 
 	SceneIntro* sceneIntro = nullptr;
+	Menu* menu = nullptr; 
 	SceneLevel1* sceneLevel_1 = nullptr;
 
 	ModuleParticles* particles = nullptr;
@@ -62,9 +63,7 @@ public:
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleFonts* fonts = nullptr;
 
-	ModuleRender* render = nullptr;
-
-	Menu* menu = nullptr; 
+	ModuleRender* render = nullptr;	
 };
 
 // Global var made extern for Application ---

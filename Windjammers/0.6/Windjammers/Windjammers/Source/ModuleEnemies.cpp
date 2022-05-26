@@ -73,7 +73,7 @@ ModuleEnemy::~ModuleEnemy()
 
 bool ModuleEnemy::Start()
 {
-	LOG("Loading player textures");
+	LOG("Loading enemy textures");
 
 	bool ret = true;
 	if (nat == KOREA) texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
@@ -99,195 +99,184 @@ bool ModuleEnemy::Start()
 
 Update_Status ModuleEnemy::Update()
 {
-
 	if (!hasDisc && !animationLocked) {
-	if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x -= speed;
-		if (currentAnimation != &leftAnim)
+		if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
-			leftAnim.Reset();
-			currentAnimation = &leftAnim;
-		}
-		collider->SetPos(position.x, position.y);
-				if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
-				{
-					dashDir = LEFT;
-					animationLocked = true;
-				}
-			
-
-			if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			position.x -= speed;
+			if (currentAnimation != &leftAnim)
 			{
-				position.x += speed;
-				if (currentAnimation != &rightAnim)
-				{
-					rightAnim.Reset();
-					currentAnimation = &rightAnim;
-				}
-				collider->SetPos(position.x, position.y);
-				if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
-				{
-					dashDir = RIGHT;
-					animationLocked = true;
-					collider->SetPos(position.x + 34, position.y);
-				}
+				leftAnim.Reset();
+				currentAnimation = &leftAnim;
 			}
-
-			if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-			{
-				position.y += speed;
-				if (currentAnimation != &downAnim)
-				{
-					downAnim.Reset();
-					currentAnimation = &downAnim;
-				}
-				collider->SetPos(position.x, position.y);
-				if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
-				{
-					dashDir = DOWN;
-					animationLocked = true;
-					collider->SetPos(position.x, position.y + 34);
-				}
-
-			}
-
-			if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-			{
-				position.y -= speed;
-				if (currentAnimation != &upAnim)
-				{
-					upAnim.Reset();
-					currentAnimation = &upAnim;
-				}
-				collider->SetPos(position.x, position.y);
-				if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
-					dashDir = UP;
-					animationLocked = true;
-				}
-			}
-
-			if ((App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-				&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-				&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
-				&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
-				&& App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+			collider->SetPos(position.x, position.y);
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
 			{
 				dashDir = LEFT;
 				animationLocked = true;
-				collider->SetPos(position.x + 34, position.y);
-
 			}
+		}
 
-			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		{
+			position.x += speed;
+			if (currentAnimation != &rightAnim)
 			{
-				// currentAnimation = &smackAnim;
-				// animationLocked = true;
+				rightAnim.Reset();
+				currentAnimation = &rightAnim;
+			}
+			collider->SetPos(position.x, position.y);
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+			{
+				dashDir = RIGHT;
+				animationLocked = true;
+				collider->SetPos(position.x + 34, position.y);
 			}
 		}
 
-		int sx = -3, sy;
-
-		if (hasDisc) {
-			currentAnimation = &idlediscAnim;
-		}
-
-		if (hasDisc
-			&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
-			&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
-			sy = -2;
-			App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
-			hasDisc = false;
-			App->audio->PlayFx(NthrowFx);
-		}
-
-		if (hasDisc
-			&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
-			&& App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-		{
-			sy = 2;
-			App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
-			hasDisc = false;
-			App->audio->PlayFx(NthrowFx);
-		}
-
-		if (hasDisc
-			&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
-		{
-			sx = -5;
-			sy = 0;
-			App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
-			hasDisc = false;
-			App->audio->PlayFx(NthrowFx);
-		}
-
-		if (animationLocked) {
-			switch (dashDir) {
-			case RIGHT:
-				currentAnimation = &rightdashAnim;
-				position.x += 4 * speed;
-				break;
-
-			case LEFT:
-				currentAnimation = &leftdashAnim;
-				position.x -= 4 * speed;
-				break;
-
-			case DOWN:
-				currentAnimation = &downdashAnim;
-				position.y += 4 * speed;
-				break;
-
-			case UP:
-				currentAnimation = &updashAnim;
-				position.y -= 4 * speed;
-				break;
+			position.y += speed;
+			if (currentAnimation != &downAnim)
+			{
+				downAnim.Reset();
+				currentAnimation = &downAnim;
+			}
+			collider->SetPos(position.x, position.y);
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+			{
+				dashDir = DOWN;
+				animationLocked = true;
+				collider->SetPos(position.x, position.y + 34);
 			}
 
-			dashingFC--;
-			if (dashingFC == 0) {
-				dashingFC = animFC;
-				animationLocked = false;
+		}
+
+		if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			position.y -= speed;
+			if (currentAnimation != &upAnim)
+			{
+				upAnim.Reset();
+				currentAnimation = &upAnim;
+			}
+			collider->SetPos(position.x, position.y);
+			if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT) {
+				dashDir = UP;
+				animationLocked = true;
 			}
 		}
 
-		// If no up/down movement detected, set the current animation back to idle
-		else if ((App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+		if ((App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
-			&& !hasDisc)
+			&& App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
 		{
-			currentAnimation = &idleAnim;
+			dashDir = LEFT;
+			animationLocked = true;
+			collider->SetPos(position.x + 34, position.y);
 
-			// TODO 4: Update collider position to player position
-			collider->SetPos(position.x + 17, position.y);
 		}
-		currentAnimation->Update();
 
-		return Update_Status::UPDATE_CONTINUE;
+		if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN)
+		{
+			// currentAnimation = &smackAnim;
+			// animationLocked = true;
+		}
+	
 	}
+	int sx = -3, sy;
+
+	if (hasDisc) {
+		currentAnimation = &idlediscAnim;
+	}
+
+	if (hasDisc
+		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
+		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	{
+		sy = -2;
+		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
+		hasDisc = false;
+		App->audio->PlayFx(NthrowFx);
+	}
+
+	if (hasDisc
+		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
+		&& App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	{
+		sy = 2;
+		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
+		hasDisc = false;
+		App->audio->PlayFx(NthrowFx);
+	}
+
+	if (hasDisc
+		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
+	{
+		sx = -5;
+		sy = 0;
+		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
+		hasDisc = false;
+		App->audio->PlayFx(NthrowFx);
+	}
+
+	if (animationLocked) {
+		switch (dashDir) {
+		case RIGHT:
+			currentAnimation = &rightdashAnim;
+			position.x += 4 * speed;
+			break;
+
+		case LEFT:
+			currentAnimation = &leftdashAnim;
+			position.x -= 4 * speed;
+			break;
+
+		case DOWN:
+			currentAnimation = &downdashAnim;
+			position.y += 4 * speed;
+			break;
+
+		case UP:
+			currentAnimation = &updashAnim;
+			position.y -= 4 * speed;
+			break;
+		}
+
+		dashingFC--;
+		if (dashingFC == 0) {
+			dashingFC = animFC;
+			animationLocked = false;
+		}
+	}
+
+	// If no up/down movement detected, set the current animation back to idle
+	else if ((App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
+		&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE) && !hasDisc)
+	{
+		currentAnimation = &idleAnim;
+
+		collider->SetPos(position.x + 17, position.y);
+	}
+	currentAnimation->Update();
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-/*Update_Status ModuleEnemy::PostUpdate()
+Update_Status ModuleEnemy::PostUpdate()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr)
-			enemies[i]->Draw();
-	}
 	if (!destroyed)
 	{
 		SDL_Rect rect = currentAnimation->GetCurrentFrame();
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
-
 	return Update_Status::UPDATE_CONTINUE;
 }
-*/
+
 
 void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 {

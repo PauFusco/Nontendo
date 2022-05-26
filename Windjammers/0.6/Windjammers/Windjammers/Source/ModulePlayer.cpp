@@ -290,7 +290,6 @@ Update_Status ModulePlayer::Update()
 	}
 	currentAnimation->Update();
 
-
 	return Update_Status::UPDATE_CONTINUE;
 }
 

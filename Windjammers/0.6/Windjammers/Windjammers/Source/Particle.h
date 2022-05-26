@@ -23,6 +23,8 @@ public:
 	// Returns false when the particle reaches its lifetime
 	bool Update();
 
+
+
 	// Sets flag for deletion and for the collider aswell
 	void SetToDelete();
 
