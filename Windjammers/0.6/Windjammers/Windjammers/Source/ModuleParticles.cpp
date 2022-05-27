@@ -25,7 +25,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = App->textures->Load("Assets/Sprites/particles.png");
+	DiscTexture = App->textures->Load("Assets/Sprites/particles.png");
 
 	explosion.anim.PushBack({ 451, 12, 60, 53 });
 	explosion.anim.PushBack({ 451, 12, 60, 53 });
@@ -158,7 +158,7 @@ Update_Status ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			App->render->Blit(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			App->render->Blit(DiscTexture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 

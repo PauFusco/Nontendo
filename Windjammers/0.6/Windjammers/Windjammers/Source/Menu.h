@@ -35,9 +35,6 @@ public:
 
 	Animation* currentAnimation = nullptr;
 
-	Animation P1;
-	Animation P2;
-
 	struct characterSelected {
 		bool Locked = false;
 		int character = 0;
