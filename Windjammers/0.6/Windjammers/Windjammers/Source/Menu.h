@@ -33,10 +33,15 @@ public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
 
-	int characters1[2];
-	int characters2[2];
+	Animation* currentAnimation = nullptr;
 
-	int cselection = 0; 
+	Animation P1;
+	Animation P2;
+
+	struct characterSelected {
+		bool Locked = false;
+		int character = 0;
+	};
 };
 
 #endif

@@ -38,9 +38,17 @@ bool ModuleParticles::Start()
 	disc.anim.PushBack({ 149, 560, 16, 16 });
 	disc.anim.PushBack({ 181, 560, 16, 16 });
 	disc.anim.PushBack({ 213, 560, 16, 16 });
-
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
+
+
+	// Menu
+	P1ind.anim.PushBack({});
+	P1ind.anim.loop = true;
+
+	P2ind.anim.PushBack({});
+	P2ind.anim.loop = true;
+
 
 	wallrbFx = App->audio->LoadFx("Assets/Music/8 REBOUND.wav");
 	goalFx = App->audio->LoadFx("Assets/Music/10 POINT.wav");

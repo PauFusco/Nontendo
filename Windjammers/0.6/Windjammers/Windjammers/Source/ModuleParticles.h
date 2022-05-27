@@ -59,6 +59,10 @@ public:
 	//Template particle for a laser
 	Particle disc;
 
+	// P1 and P2 for the menu
+	Particle P1ind;
+	Particle P2ind;
+
 	// SFX
 	uint wallrbFx = 0;
 	uint goalFx = 0;
