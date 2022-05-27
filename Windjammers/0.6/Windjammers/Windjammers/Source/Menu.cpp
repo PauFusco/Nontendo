@@ -26,7 +26,7 @@ bool Menu::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/menupersonajes.png");
-	App->audio->PlayMusic("Assets/Music/Beach.ogg", 1.0f);
+	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -97,4 +97,10 @@ Update_Status Menu::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
+}
+
+bool Menu::CleanUp()
+{
+
+	return true;
 }
