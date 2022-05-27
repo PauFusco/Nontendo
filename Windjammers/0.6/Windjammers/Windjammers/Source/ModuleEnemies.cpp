@@ -17,7 +17,7 @@ ModuleEnemy::ModuleEnemy(bool startEnabled) : Module(startEnabled)
 {
 	nat = KOREA;
 	if (nat == KOREA) {
-		// idle animation
+		// idle animation with disc
 		idlediscAnim.PushBack({ 124, 161, 52, 36 });
 		idlediscAnim.PushBack({ 178, 161, 52, 36 });
 		idlediscAnim.speed = 0.05f;
