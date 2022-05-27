@@ -101,6 +101,6 @@ Update_Status Menu::PostUpdate()
 
 bool Menu::CleanUp()
 {
-
+	App->particles->CleanUp();
 	return true;
 }

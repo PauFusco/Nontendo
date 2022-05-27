@@ -66,6 +66,7 @@ public:
 	// SFX
 	uint wallrbFx = 0;
 	uint goalFx = 0;
+	uint recieve = 0;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

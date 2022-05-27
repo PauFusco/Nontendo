@@ -53,3 +53,8 @@ Update_Status SceneIntro::PostUpdate()
 
 	return Update_Status::UPDATE_CONTINUE;
 }
+
+bool SceneIntro::CleanUp()
+{
+		return true;
+}

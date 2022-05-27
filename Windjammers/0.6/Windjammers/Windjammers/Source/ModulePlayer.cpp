@@ -208,7 +208,7 @@ Update_Status ModulePlayer::Update()
 	int sx = 3, sy;
 
 	if (hasDisc) {
-		//currentAnimation = &idlediscAnim;
+		currentAnimation = &idlediscAnim;
 	}
 
 	if (hasDisc && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN
