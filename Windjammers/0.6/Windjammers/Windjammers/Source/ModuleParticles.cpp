@@ -110,10 +110,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 			if (p->position.x > 152) {
 				App->player->points += 3;
+				SDL_Delay(20);
 				App->enemy->hasDisc = true;
 			}
 			else {
 				App->enemy->points += 3;
+				SDL_Delay(20);
+
 				App->player->hasDisc = true;
 			}
 			CleanUp();
