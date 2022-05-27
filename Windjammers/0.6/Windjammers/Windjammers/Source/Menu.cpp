@@ -81,7 +81,6 @@ Update_Status Menu::Update()
 		P1.Locked = true;
 	}
 
-
 	if (P1.Locked && P2.Locked)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
