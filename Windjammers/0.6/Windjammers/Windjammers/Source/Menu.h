@@ -38,7 +38,12 @@ public:
 	struct characterSelected {
 		bool Locked = false;
 		int character = 0;
+		int speed = 500;
+		Particle selector;
 	};
+	
+	characterSelected P1;
+	characterSelected P2;
 };
 
 #endif

@@ -237,8 +237,7 @@ Update_Status ModulePlayer::Update()
 		sx = 5;
 		sy = 0;
 		currentAnimation = &normalthrowAnim;
-		App->particles->AddParticle(App->particles->disc,
-			position.x + 30, position.y, sx, sy, Collider::Type::DISC);
+		App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
 		App->audio->PlayFx(NthrowFx);
 

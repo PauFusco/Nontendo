@@ -41,6 +41,7 @@ bool ModuleParticles::Start()
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
 
+	CSTexture = App->textures->Load("");
 
 	// Menu
 	P1ind.anim.PushBack({});
