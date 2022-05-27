@@ -24,7 +24,7 @@ bool Menu::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/introwindjammers.png");
+	bgTexture = App->textures->Load("Assets/Sprites/menupersonajes.png");
 	App->audio->PlayMusic("Assets/Music/Beach.ogg", 1.0f);
 
 	App->render->camera.x = 0;
@@ -37,7 +37,7 @@ Update_Status Menu::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 90);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
 
 	}
 
