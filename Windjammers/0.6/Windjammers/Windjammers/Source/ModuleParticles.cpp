@@ -6,6 +6,8 @@
 #include "ModuleRender.h"
 #include "ModuleCollisions.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer.h"
+#include "ModuleEnemies.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -80,14 +82,43 @@ bool ModuleParticles::CleanUp()
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	Particle* p = particles[0];
+	if (p != nullptr)
 	{
-		// Always destroy particles that collide
-		if (particles[i] != nullptr && particles[i]->collider == c1)
+		if (c2->type == Collider::Type::WALL)
 		{
-			particles[i]->pendingToDelete = true;
-			particles[i]->collider->pendingToDelete = true;
-			break;
+			p->speed.y = -p->speed.y;
+			App->audio->PlayFx(wallrbFx);
+			App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
+		}
+
+		if (c2->type == Collider::Type::GOAL)
+		{
+			App->audio->PlayFx(goalFx);
+			p->speed.x = 0;
+			p->speed.y = 0;
+			p->isAlive = false;
+
+			if (p->position.x > 152) {
+				App->player->points += 3;
+				App->enemy->hasDisc = true;
+			}
+			else {
+				App->enemy->points += 3;
+				App->player->hasDisc = true;
+			}
+			CleanUp();
+		}
+
+		if (c2->type == Collider::Type::PLAYER)
+		{
+			CleanUp();
+			App->player->hasDisc = true;
+		}
+		if (c2->type == Collider::Type::ENEMY)
+		{
+			CleanUp();
+			App->enemy->hasDisc = true;
 		}
 	}
 }
