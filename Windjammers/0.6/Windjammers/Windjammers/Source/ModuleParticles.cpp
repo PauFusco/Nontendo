@@ -166,8 +166,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sp
 		{
 			Particle* p = new Particle(particle);
 
-			//p->frameCount = -(int)delay;			// We start the frameCount as the negative delay
-			p->position.x = x;						// so when frameCount reaches 0 the particle will be activated
+			p->position.x = x;
 			p->position.y = y;
 			p->speed.x = speedx;
 			p->speed.y = speedy;
