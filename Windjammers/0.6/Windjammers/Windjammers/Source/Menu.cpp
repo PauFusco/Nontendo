@@ -30,17 +30,34 @@ bool Menu::Start()
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
+	
+
 	return ret;
 }
 
 Update_Status Menu::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	characters1[cselection]; 
+	characters2[cselection];
+
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN)
+	{
+		cselection++;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN)
+	{
+		cselection--;
+
+	}
+
+	if (characters1[0]||App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
 
 	}
-
+	
+	
 	return Update_Status::UPDATE_CONTINUE;
 }
 

@@ -32,6 +32,11 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+
+	int characters1[2];
+	int characters2[2];
+
+	int cselection = 0; 
 };
 
 #endif
