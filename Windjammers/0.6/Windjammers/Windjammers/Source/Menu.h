@@ -42,6 +42,7 @@ public:
 		int character = 0;
 		int speed = 500;
 		Particle selector;
+		Nation FinalSelection;
 	};
 	
 	characterSelected P1;

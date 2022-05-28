@@ -2,6 +2,7 @@
 #define __MODULE_ENEMIES_H__
 
 #include "Module.h"
+#include "ModulePlayer.h"
 #include "Animation.h"
 #include "p2Point.h"
 
@@ -35,13 +36,6 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
-	enum Nation {
-		KOREA,
-		ITALY,
-		USA,
-
-		MAX
-	};
 
 	// Position of the player in the map
 	iPoint position;
@@ -67,7 +61,6 @@ public:
 	Animation leftdashAnim;
 	Animation updashAnim;
 	Animation downdashAnim;
-
 
 	// Stores the nation
 	Nation nat;

@@ -5,6 +5,8 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
+#include "ModuleEnemies.h"
 
 #include "Menu.h"
 
@@ -64,16 +66,17 @@ Update_Status Menu::Update()
 		P2.Locked = true;
 	}
 	
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character < 3)
-	{
-		P1.selector.position.y += P1.speed;
-		P1.character++;
-
-	}
+	// Player 1 Character selection
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character >= 0)
 	{
 		P1.selector.position.y -= P1.speed;
 		P1.character--;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character < 3)
+	{
+		P1.selector.position.y += P1.speed;
+		P1.character++;
 
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
@@ -83,10 +86,34 @@ Update_Status Menu::Update()
 
 	if (P1.Locked && P2.Locked)
 	{
+		switch (P1.character) {
+		case(0):
+			P1.FinalSelection = KOREA;
+			break;
+		case(1):
+			P1.FinalSelection = ITALY;
+			break;
+		case(2):
+			P1.FinalSelection = USA;
+		}
+		
+		switch (P2.character) {
+		case(0):
+			P2.FinalSelection = KOREA;
+			break;
+		case(1):
+			P2.FinalSelection = ITALY;
+			break;
+		case(2):
+			P2.FinalSelection = USA;
+		}
+
+		App->player->nat = P1.FinalSelection;
+		App->enemy->nat = P2.FinalSelection;
+
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
 	}
 
-	
 	return Update_Status::UPDATE_CONTINUE;
 }
 

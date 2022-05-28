@@ -14,11 +14,26 @@
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 {
-	nat = KOREA;
-	if (nat == KOREA) {
-		// idle with disc animation
-		idlediscAnim.PushBack({ 4, 7, 52, 36 });
-		idlediscAnim.PushBack({ 58, 7, 52, 36 });
+
+}
+
+ModulePlayer::~ModulePlayer()
+{
+
+}
+
+bool ModulePlayer::Start()
+{
+	LOG("Loading enemy textures");
+
+	bool ret = true;
+	if (nat == KOREA)
+	{
+		texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
+
+		// idle animation with disc
+		idlediscAnim.PushBack({ 124, 161, 52, 36 });
+		idlediscAnim.PushBack({ 178, 161, 52, 36 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
@@ -26,11 +41,11 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({ 146, 49, 27, 44 });
-		upAnim.PushBack({ 179, 49, 27, 44 });
-		upAnim.PushBack({ 214, 49, 26, 50 });
-		upAnim.PushBack({ 247, 49, 24, 44 });
-		upAnim.PushBack({ 276, 49, 26, 44 });
+		upAnim.PushBack({ 146, 54, 27, 39 });
+		upAnim.PushBack({ 179, 54, 27, 39 });
+		upAnim.PushBack({ 214, 48, 26, 50 });
+		upAnim.PushBack({ 247, 54, 24, 39 });
+		upAnim.PushBack({ 276, 54, 26, 39 });
 		upAnim.speed = 0.1f;
 
 		// Move down
@@ -62,35 +77,17 @@ ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
 
 		// Dash down
 		downdashAnim.PushBack({ 340, 135, 33, 68 });
-
-		// Disc throw
-		normalthrowAnim.PushBack({ 110, 6, 34, 38 });
-		normalthrowAnim.PushBack({ 144, 6, 42, 35 });
-		normalthrowAnim.PushBack({ 191, 3, 47, 46 });
-		normalthrowAnim.PushBack({ 240, 4, 37, 42 });
-		normalthrowAnim.speed = 0.5f;
-
-		// Smack anim
-		smackAnim.PushBack({  });
 	}
-}
 
-ModulePlayer::~ModulePlayer()
-{
+	if (nat == ITALY)
+	{
+		texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
+	}
 
-}
-
-bool ModulePlayer::Start()
-{
-	LOG("Loading player textures");
-
-	bool ret = true;
-
-	if (nat == KOREA) texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
-
-	if (nat == ITALY) texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
-
-	if (nat == USA) texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA sprites
+	if (nat == USA)
+	{
+		texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA sprites
+	}
 
 	currentAnimation = &idlediscAnim;
 

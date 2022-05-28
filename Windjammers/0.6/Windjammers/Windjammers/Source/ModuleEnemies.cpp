@@ -8,6 +8,7 @@
 #include "ModuleCollisions.h"
 #include "Collider.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_scancode.h"
 #include "ModuleInput.h"
@@ -15,8 +16,23 @@
 
 ModuleEnemy::ModuleEnemy(bool startEnabled) : Module(startEnabled)
 {
-	nat = KOREA;
-	if (nat == KOREA) {
+	
+}
+
+ModuleEnemy::~ModuleEnemy()
+{
+
+}
+
+bool ModuleEnemy::Start()
+{
+	LOG("Loading enemy textures");
+
+	bool ret = true;
+	if (nat == KOREA)
+	{
+		texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
+		
 		// idle animation with disc
 		idlediscAnim.PushBack({ 124, 161, 52, 36 });
 		idlediscAnim.PushBack({ 178, 161, 52, 36 });
@@ -64,23 +80,16 @@ ModuleEnemy::ModuleEnemy(bool startEnabled) : Module(startEnabled)
 		// Dash down
 		downdashAnim.PushBack({ 340, 135, 33, 68 });
 	}
-}
 
-ModuleEnemy::~ModuleEnemy()
-{
-
-}
-
-bool ModuleEnemy::Start()
-{
-	LOG("Loading enemy textures");
-
-	bool ret = true;
-	if (nat == KOREA) texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
-
-	if (nat == ITALY) texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
-
-	if (nat == USA) texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA sprites
+	if (nat == ITALY)
+	{
+		texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
+	}
+	
+	if (nat == USA)
+	{
+		texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA sprites
+	}
 
 	currentAnimation = &idlediscAnim;
 

@@ -5,6 +5,12 @@
 #include "Animation.h"
 #include "p2Point.h"
 
+enum Nation {
+	KOREA,
+	ITALY,
+	USA
+};
+
 struct SDL_Texture;
 struct Collider;
 
@@ -34,11 +40,7 @@ public:
 
 public:
 	
-	enum Nation {
-		KOREA,
-		ITALY,
-		USA
-	};
+
 	
 	// Position of the player in the map
 	iPoint position;
