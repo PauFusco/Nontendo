@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Globals.h"
 #include "MemLeaks.h"
+#include "ModuleInput.h"
 
 
 #define SDL_MAIN_HANDLED
@@ -69,7 +70,8 @@ int main(int argc, char* argv[])
 				{
 					state = Main_States::MAIN_FINISH;
 				}
-			}	break;
+				if (App->input->keys[SDL_SCANCODE_ESCAPE] == KEY_IDLE) break;
+			}	
 
 			case Main_States::MAIN_FINISH:
 			{
