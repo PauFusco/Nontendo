@@ -84,7 +84,7 @@ bool ModuleEnemy::Start()
 
 	currentAnimation = &idlediscAnim;
 
-	NthrowFx = App->audio->LoadFx("Assets/Music/1 NORMAL THROW.wav");
+	NthrowFx = App->audio->LoadFx("Assets/Music/SFX/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
 
 	position.x = 240;

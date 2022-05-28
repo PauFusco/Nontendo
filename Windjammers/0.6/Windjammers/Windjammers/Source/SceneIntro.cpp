@@ -27,7 +27,6 @@ bool SceneIntro::Start()
 	bool ret = true;
 
 	bgTexture = App->textures->Load("Assets/Sprites/introwindjammers.png");
-	App->audio->PlayMusic("Assets/Music/Beach.ogg", 1.0f);
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -53,4 +52,9 @@ Update_Status SceneIntro::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
+}
+
+bool SceneIntro::CleanUp()
+{
+		return true;
 }

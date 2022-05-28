@@ -51,9 +51,9 @@ bool ModuleParticles::Start()
 	P2ind.anim.loop = true;
 
 
-	wallrbFx = App->audio->LoadFx("Assets/Music/8 REBOUND.wav");
-	goalFx = App->audio->LoadFx("Assets/Music/10 POINT.wav");
-
+	wallrbFx = App->audio->LoadFx("Assets/Music/SFX/8 REBOUND.wav");
+	goalFx = App->audio->LoadFx("Assets/Music/SFX/10 POINT.wav");
+	recieve = App->audio->LoadFx("Assets/Music/SFX/HIT 1.wav");
 	return true;
 }
 
@@ -96,8 +96,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (c2->type == Collider::Type::WALL)
 		{
-			p->speed.y = -p->speed.y;
 			App->audio->PlayFx(wallrbFx);
+			p->speed.y = -p->speed.y;
 			App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
 		}
 
@@ -124,13 +124,15 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 		if (c2->type == Collider::Type::PLAYER)
 		{
-			CleanUp();
+			App->audio->PlayFx(recieve);
 			App->player->hasDisc = true;
+			CleanUp();
 		}
 		if (c2->type == Collider::Type::ENEMY)
 		{
-			CleanUp();
+			App->audio->PlayFx(recieve);
 			App->enemy->hasDisc = true;
+			CleanUp();
 		}
 	}
 }
