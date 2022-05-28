@@ -130,7 +130,7 @@ Update_Status Menu::Update()
 // Update: draw background
 Update_Status Menu::PostUpdate()
 {
-	// Draw everything --------------------------------------
+	// Draw everything
 	App->render->Blit(bgTexture, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
