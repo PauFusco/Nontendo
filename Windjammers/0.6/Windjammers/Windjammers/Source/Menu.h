@@ -44,6 +44,10 @@ public:
 		Particle selector;
 		Nation FinalSelection;
 	};
+
+	uint KoreaSelect = 0;
+	uint ItalySelect = 0;
+	uint USASelect = 0;
 	
 	characterSelected P1;
 	characterSelected P2;

@@ -30,6 +30,10 @@ bool Menu::Start()
 	bgTexture = App->textures->Load("Assets/Sprites/menupersonajes.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
 
+	KoreaSelect = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/1 SELECTED.wav");
+	ItalySelect = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/1 SELECTED.wav");
+	USASelect = App->audio->LoadFx("Assets/Music/CHARACTER SFX/USA/VOICES/1 SELECTED.wav");
+
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 
@@ -64,6 +68,20 @@ Update_Status Menu::Update()
 	if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN)
 	{
 		P2.Locked = true;
+		switch (P2.character) {
+		case(0):
+			P2.FinalSelection = KOREA;
+			App->audio->PlayFx(KoreaSelect);
+			break;
+		case(1):
+			P2.FinalSelection = ITALY;
+			App->audio->PlayFx(ItalySelect);
+			break;
+		case(2):
+			P2.FinalSelection = USA;
+			App->audio->PlayFx(USASelect);
+			break;
+		}
 	}
 	
 	// Player 1 Character selection
@@ -82,32 +100,24 @@ Update_Status Menu::Update()
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		P1.Locked = true;
-	}
-
-	if (P1.Locked && P2.Locked)
-	{
 		switch (P1.character) {
 		case(0):
 			P1.FinalSelection = KOREA;
+			App->audio->PlayFx(KoreaSelect);
 			break;
 		case(1):
 			P1.FinalSelection = ITALY;
+			App->audio->PlayFx(ItalySelect);
 			break;
 		case(2):
 			P1.FinalSelection = USA;
-		}
-		
-		switch (P2.character) {
-		case(0):
-			P2.FinalSelection = KOREA;
+			App->audio->PlayFx(USASelect);
 			break;
-		case(1):
-			P2.FinalSelection = ITALY;
-			break;
-		case(2):
-			P2.FinalSelection = USA;
 		}
+	}
 
+	if (P1.Locked && P2.Locked)
+	{		
 		App->player->nat = P1.FinalSelection;
 		App->enemy->nat = P2.FinalSelection;
 
