@@ -26,7 +26,7 @@ bool SceneIntro::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/introwindjammers.png");
+	bgTexture = App->textures->Load("Assets/Sprites/palmeras.png");
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
