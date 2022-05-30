@@ -27,8 +27,9 @@ bool ModulePlayer::Start()
 	LOG("Loading enemy textures");
 
 	bool ret = true;
-	if (nat == KOREA)
-	{
+	switch (nat) {
+	case (KOREA):
+	
 		texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
 
 		// idle animation with disc
@@ -77,18 +78,18 @@ bool ModulePlayer::Start()
 
 		// Dash down
 		downdashAnim.PushBack({ 340, 135, 33, 68 });
-	}
-
-	if (nat == ITALY)
-	{
+		break;
+	
+	case ITALY:
 		texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
-	}
 
-	if (nat == USA)
-	{
-		texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA sprites
-	}
+		break;
 
+	case USA:
+		texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA spriteS
+	
+		break;
+	}
 	currentAnimation = &idlediscAnim;
 
 	NthrowFx = App->audio->LoadFx("Assets/Music/SFX/1 NORMAL THROW.wav");

@@ -44,7 +44,7 @@ public:
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
 
-
+	Scenario scene;
 };
 
 #endif

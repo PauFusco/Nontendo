@@ -126,7 +126,7 @@ Update_Status Menu::Update()
 		App->player->nat = P1.FinalSelection;
 		App->enemy->nat = P2.FinalSelection;
 
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
+		App->fade->FadeToBlack(this, (Module*)App->mapmenu, 50);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

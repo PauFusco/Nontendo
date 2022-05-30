@@ -25,10 +25,23 @@ bool SceneLevel1::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	switch (scene) {
+	case BEACH:
+		bgTexture = App->textures->Load("Assets/Sprites/Beach Stadium.png");
+		App->audio->PlayMusic("Assets/Music/STAGES/BEACH.ogg");
+		
+		break;
+	
+	case LAWN:
+		
+		
+		break;
 
-	bgTexture = App->textures->Load("Assets/Sprites/Beach Stadium.png");
-	App->audio->PlayMusic("Assets/Music/STAGES/BEACH.ogg");
-
+	case TILED:
+		
+		
+		break;
+	}
 	// Colliders ---
 	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
 
