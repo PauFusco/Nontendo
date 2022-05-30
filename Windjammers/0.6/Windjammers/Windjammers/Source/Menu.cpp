@@ -26,13 +26,10 @@ bool Menu::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
+	
 	p1np2 = App->textures->Load("Assets/Sprites/mas sprites.png");
 
 	p1.PushBack({618,175,640,193});
-
-	
-
-
 
 	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
@@ -72,19 +69,19 @@ Update_Status Menu::Update()
 		P2.character--;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN && !P2.Locked)
 	{
 		P2.Locked = true;
 		switch (P2.character) {
-		case(0):
+		case 0:
 			P2.FinalSelection = KOREA;
 			App->audio->PlayFx(KoreaSelect);
 			break;
-		case(1):
+		case 1:
 			P2.FinalSelection = ITALY;
 			App->audio->PlayFx(ItalySelect);
 			break;
-		case(2):
+		case 2:
 			P2.FinalSelection = USA;
 			App->audio->PlayFx(USASelect);
 			break;
@@ -92,19 +89,19 @@ Update_Status Menu::Update()
 	}
 	
 	// Player 1 Character selection
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character >= 0)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character >= 0)
 	{
 		P1.selector.position.y -= P1.speed;
 		P1.character--;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character < 3)
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character < 3)
 	{
 		P1.selector.position.y += P1.speed;
 		P1.character++;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !P1.Locked)
 	{
 		P1.Locked = true;
 		switch (P1.character) {

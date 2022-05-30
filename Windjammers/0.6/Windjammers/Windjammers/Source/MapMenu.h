@@ -35,7 +35,7 @@ public:
 
 	uint selected = 0;
 
-	scenarioSelected Selector;
+	scenarioSelected selection;
 
 };
 

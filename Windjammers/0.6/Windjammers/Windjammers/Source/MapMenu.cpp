@@ -37,15 +37,53 @@ bool MapMenu::Start()
 
 Update_Status MapMenu::Update()
 {
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && selection.scenario >= 0)
+	{
+		selection.selector.position.y -= selection.speed;
+		selection.scenario--;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && selection.scenario < 3)
+	{
+		selection.selector.position.y += selection.speed;
+		selection.scenario++;
+
+	}
+	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !selection.Locked)
+	{
+		selection.Locked = true;
+		switch (selection.scenario) {
+		case 0:
+			selection.FinalSelection = BEACH;
+			break;
+		case 1:
+			selection.FinalSelection = LAWN;
+			break;
+		case 2:
+			selection.FinalSelection = TILED;
+			break;
+		}
+		App->audio->PlayFx(selected);
+	}
+
+	if(selection.Locked)
+	{
+		App->sceneLevel_1->scene = selection.FinalSelection;
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 Update_Status MapMenu::PostUpdate()
 {
+	App->render->Blit(bgTexture, 0, 0, NULL);
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 bool MapMenu::CleanUp()
 {
+	App->particles->CleanUp();
 	return true;
 }

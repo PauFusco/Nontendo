@@ -27,19 +27,18 @@ bool SceneLevel1::Start()
 	bool ret = true;
 	switch (scene) {
 	case BEACH:
-		bgTexture = App->textures->Load("Assets/Sprites/Beach Stadium.png");
+		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/BEACH.ogg");
-		
 		break;
 	
 	case LAWN:
-		
-		
+		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
+		App->audio->PlayMusic("Assets/Music/STAGES/LAWN.ogg");
 		break;
 
 	case TILED:
-		
-		
+		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
+		App->audio->PlayMusic("Assets/Music/STAGES/TILED.ogg");
 		break;
 	}
 	// Colliders ---
