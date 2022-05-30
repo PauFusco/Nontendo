@@ -12,7 +12,7 @@
 
 Menu::Menu(bool startEnabled) : Module(startEnabled)
 {
-
+	p1.PushBack({ 618,175,620,180 });
 }
 
 Menu::~Menu()
@@ -27,12 +27,14 @@ bool Menu::Start()
 
 	bool ret = true;
 	p1np2 = App->textures->Load("Assets/Sprites/mas sprites.png");
-
-	p1.PushBack({618,175,640,193});
-
 	
+		
 
-
+		position.x = 20;
+		position.y = 100;
+		p1.speed = 0.00f;
+	
+		currentAnimation = &p1;
 
 	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
@@ -137,9 +139,10 @@ Update_Status Menu::Update()
 // Update: draw background
 Update_Status Menu::PostUpdate()
 {
+	SDL_Rect rect = p1.GetCurrentFrame();
 	// Draw everything
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(p1np2, 0, 0, NULL);
+	App->render->Blit(p1np2, 50, 50, &rect);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
