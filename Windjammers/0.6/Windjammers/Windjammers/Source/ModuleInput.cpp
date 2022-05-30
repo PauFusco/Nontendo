@@ -74,9 +74,7 @@ Update_Status ModuleInput::PreUpdate()
 	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
 		LOG("Button press detected");
 		switch(event.cbutton.button){
-		case(SDL_CONTROLLER_BUTTON_A):
 			keys[SDL_SCANCODE_SPACE] = KEY_DOWN;
-			break;
 		}
 	}
 
