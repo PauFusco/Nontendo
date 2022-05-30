@@ -1,19 +1,20 @@
-#ifndef __SCENE_INTRO_H__
-#define __SCENE_INTRO_H__
+#pragma once
+#ifndef __NEO_GEO_H__
+#define __NEO_GEO_H__
 
 #include "Module.h"
 #include "Animation.h"
 
 struct SDL_Texture;
 
-class SceneIntro : public Module
+class NeoGeo : public Module
 {
 public:
 	//Constructor
-	SceneIntro(bool startEnabled);
+	NeoGeo(bool startEnabled);
 
 	//Destructor
-	~SceneIntro();
+	~NeoGeo();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the map background
@@ -27,12 +28,22 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	Update_Status PostUpdate() override;
 
-	bool CleanUp() override;
 
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
-	SDL_Texture* bgTexture = nullptr;
-	
+	SDL_Texture* bgTexture_white = nullptr;
+	SDL_Texture* bgTexture_black = nullptr;
+	SDL_Texture* NeoGeoLOGO = nullptr;
+	SDL_Texture* MaxLOGO = nullptr;
+
+	Animation NeoGeo;
+	Animation Max;
+
+	Animation* currentAnimation = nullptr;
+
+	int neogeospeed = 1;
+	int maxspeed = 1;
+
 
 };
 

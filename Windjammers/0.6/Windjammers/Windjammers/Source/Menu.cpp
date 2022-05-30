@@ -26,7 +26,7 @@ bool Menu::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-
+	
 	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
 

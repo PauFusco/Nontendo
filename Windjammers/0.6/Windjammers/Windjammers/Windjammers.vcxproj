@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NeoGeo.h" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Application.h" />
     <ClInclude Include="Source\Collider.h" />
@@ -45,6 +46,7 @@
     <ClInclude Include="Source\SceneLevel1.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="NeoGeo.cpp" />
     <ClCompile Include="Source\Application.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Globals.cpp" />
