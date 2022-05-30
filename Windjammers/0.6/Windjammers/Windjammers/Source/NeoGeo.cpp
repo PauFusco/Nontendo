@@ -56,7 +56,7 @@ NeoGeo::NeoGeo(bool startEnabled) : Module(startEnabled)
 	NeoGeoA.PushBack({ 680, 354, 321, 34 });
 	NeoGeoA.PushBack({ 910, 355, 233, 41 });
 
-	NeoGeoA.speed = 0.2f;
+	NeoGeoA.speed = 0.02f;
 	NeoGeoA.loop = false;
 
 	//Max logo
@@ -92,7 +92,7 @@ NeoGeo::NeoGeo(bool startEnabled) : Module(startEnabled)
 	Max.PushBack({ 347, 103, 23, 36 });
 	Max.PushBack({ 370, 103, 23, 35 });
 	Max.PushBack({ 393, 103, 23, 36 });
-	Max.speed = 0.4f;
+	Max.speed = 0.04f;
 	Max.loop = false;
 }
 
