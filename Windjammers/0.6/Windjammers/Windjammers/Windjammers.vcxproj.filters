@@ -97,7 +97,7 @@
     <ClInclude Include="Source\Menu.h">
       <Filter>Source Files\Mods\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="NeoGeo.h">
+    <ClInclude Include="Source\NeoGeo.h">
       <Filter>Source Files\Mods\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
@@ -168,7 +168,7 @@
     <ClCompile Include="Source\Menu.cpp">
       <Filter>Source Files\Mods\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="NeoGeo.cpp">
+    <ClCompile Include="Source\NeoGeo.cpp">
       <Filter>Source Files\Mods\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
