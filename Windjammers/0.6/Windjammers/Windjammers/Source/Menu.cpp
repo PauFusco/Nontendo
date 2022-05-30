@@ -27,7 +27,7 @@ bool Menu::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/menupersonajes.png");
+	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
 
 	KoreaSelect = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/1 SELECTED.wav");
