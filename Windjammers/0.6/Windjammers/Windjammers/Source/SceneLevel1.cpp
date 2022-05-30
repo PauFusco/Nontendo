@@ -27,7 +27,7 @@ bool SceneLevel1::Start()
 	bool ret = true;
 	switch (scene) {
 	case BEACH:
-		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
+		bgTexture = App->textures->Load("Assets/Sprites/SCENES/BEACH.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/BEACH.ogg");
 		break;
 	

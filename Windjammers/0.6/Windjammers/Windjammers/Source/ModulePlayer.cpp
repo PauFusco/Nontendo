@@ -30,7 +30,7 @@ bool ModulePlayer::Start()
 	switch (nat) {
 	case (KOREA):
 	
-		texture = App->textures->Load("Assets/Sprites/Korea movements.png"); // Korea sprites
+		texture = App->textures->Load("Assets/Sprites/PLAYERS/Korea movements.png"); // Korea sprites
 
 		// idle animation with disc
 		idlediscAnim.PushBack({ 124, 161, 52, 36 });
@@ -81,12 +81,12 @@ bool ModulePlayer::Start()
 		break;
 	
 	case ITALY:
-		texture = App->textures->Load("Assets/Sprites/Italy movements.png"); // Italy sprites
+		texture = App->textures->Load("Assets/Sprites/PLAYERS/Italy movements.png"); // Italy sprites
 
 		break;
 
 	case USA:
-		texture = App->textures->Load("Assets/Sprites/USA movements.png"); // USA spriteS
+		texture = App->textures->Load("Assets/Sprites/PLAYERS/USA movements.png"); // USA spriteS
 	
 		break;
 	}

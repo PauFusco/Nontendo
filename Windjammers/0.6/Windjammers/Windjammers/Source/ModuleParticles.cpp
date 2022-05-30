@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "SceneLevel1.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -25,19 +26,18 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	DiscTexture = App->textures->Load("Assets/Sprites/particles.png");
 
-	explosion.anim.PushBack({ 451, 12, 60, 53 });
-	explosion.anim.PushBack({ 451, 12, 60, 53 });
-	explosion.anim.PushBack({ 451, 12, 60, 53 });
+	explosion.anim.PushBack({ 149, 48, 16, 16 });
+	explosion.anim.PushBack({ 181, 48, 16, 16 });
+	explosion.anim.PushBack({ 213, 48, 16, 16 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.1f;
+	explosion.anim.speed = 0.5f;
 	explosion.lifetime = 5;
 
-	disc.anim.PushBack({ 117, 560, 16, 16 });
-	disc.anim.PushBack({ 149, 560, 16, 16 });
-	disc.anim.PushBack({ 181, 560, 16, 16 });
-	disc.anim.PushBack({ 213, 560, 16, 16 });
+	disc.anim.PushBack({ 149, 48, 16, 16 });
+	disc.anim.PushBack({ 181, 48, 16, 16 });
+	disc.anim.PushBack({ 213, 48, 16, 16 });
+	disc.anim.PushBack({ 245, 48, 16, 16 });
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
 
@@ -59,6 +59,17 @@ bool ModuleParticles::Start()
 
 Update_Status ModuleParticles::PreUpdate()
 {
+	switch (App->sceneLevel_1->scene) {
+	case BEACH:
+		DiscTexture = App->textures->Load("Assets/Sprites/SCENES/DiscBeach.png");
+		break;
+	case LAWN:
+		DiscTexture = App->textures->Load("");
+		break;
+	case TILED:
+		DiscTexture = App->textures->Load("");
+	}
+
 	// Remove all particles scheduled for deletion
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
