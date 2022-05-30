@@ -16,25 +16,17 @@ bool ModuleInput::Init()
 	SDL_Init(0);
 
 	for (int i = 0; i < SDL_NumJoysticks(); i++) {
-		if (SDL_IsGameController(i) && controllerP1 == nullptr)
+		if (SDL_IsGameController(i))
 		{
 			controllerP1 = SDL_GameControllerOpen(i);
-		}
-		else if (SDL_IsGameController(i) && controllerP2 == nullptr)
-		{
-			controllerP2 = SDL_GameControllerOpen(i);
 			break;
 		}
-
 	}
-	if (controllerP1 == nullptr && controllerP2 == nullptr)
+	if (controllerP1 == nullptr)
 	{
 		LOG("No Controllers found")
 	}
-	if (controllerP1 != nullptr && controllerP2 == nullptr)
-	{
-		LOG("One Controller found")
-	}
+
 	
 
 	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
@@ -73,9 +65,8 @@ Update_Status ModuleInput::PreUpdate()
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
 		LOG("Button press detected");
-		switch(event.cbutton.button){
-			keys[SDL_SCANCODE_SPACE] = KEY_DOWN;
-		}
+		keys[SDL_SCANCODE_SPACE] = KEY_DOWN;
+		
 	}
 
 

@@ -6,6 +6,12 @@
 
 struct SDL_Texture;
 
+enum Scenario {
+	BEACH,
+	LAWN,
+	TILED
+};
+
 class SceneLevel1 : public Module
 {
 public:
@@ -37,6 +43,8 @@ public:
 
 	// The sprite rectangle for the ground
 	SDL_Texture* starsTexture = nullptr;
+
+
 };
 
 #endif

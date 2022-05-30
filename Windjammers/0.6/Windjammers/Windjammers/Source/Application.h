@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 15
+#define NUM_MODULES 16
 
 class Module;
 class ModuleWindow;
@@ -21,6 +21,7 @@ class ModuleFonts;
 class ModuleRender;
 class Menu;
 class NeoGeo;
+class MapMenu;
 
 class Application
 {
@@ -57,6 +58,7 @@ public:
 	NeoGeo* neogeo = nullptr; 
 	SceneIntro* sceneIntro = nullptr;
 	Menu* menu = nullptr; 
+	MapMenu* mapmenu = nullptr;
 	SceneLevel1* sceneLevel_1 = nullptr;
 
 	ModuleParticles* particles = nullptr;
