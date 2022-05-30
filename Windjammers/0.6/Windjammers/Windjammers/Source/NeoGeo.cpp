@@ -110,11 +110,11 @@ bool NeoGeo::Start()
 
 
 	//Anims on top of bg
-	NeoGeoLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start1def.png");
-	MaxLOGO = App->textures->Load("Assets/Spriteswind/Sprites/UI/Start5.png");
+	NeoGeoLOGO = App->textures->Load("Assets/Sprites/Start1def.png");
+	MaxLOGO = App->textures->Load("Assets/Sprites/Start5.png");
 
-	bgTexture_white = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_white.png");
-	bgTexture_black = App->textures->Load("Assets/Spriteswind/Sprites/UI/Dont_Use/introbg_black.png");
+	bgTexture_white = App->textures->Load("Assets/Sprites/white.png");
+	bgTexture_black = App->textures->Load("Assets/Sprites/black.png");
 
 	currentAnimation = &NeoGeoA;
 	//currentAnimation = &Max;
