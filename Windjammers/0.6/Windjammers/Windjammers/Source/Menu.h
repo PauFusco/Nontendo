@@ -34,6 +34,7 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* p1np2 = nullptr; 
 
 	Animation* currentAnimation = nullptr;
 
@@ -51,6 +52,9 @@ public:
 	
 	characterSelected P1;
 	characterSelected P2;
+
+	Animation p1; 
+	Animation p2; 
 };
 
 #endif

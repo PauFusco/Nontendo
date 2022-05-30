@@ -26,7 +26,12 @@ bool Menu::Start()
 	LOG("Loading background assets");
 
 	bool ret = true;
-	
+	p1np2 = App->textures->Load("Assets/Sprites/mas sprites.png");
+
+	p1.PushBack({618,175,640,193});
+
+
+
 	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
 
