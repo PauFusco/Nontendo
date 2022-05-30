@@ -30,6 +30,8 @@ bool Menu::Start()
 
 	p1.PushBack({618,175,640,193});
 
+	
+
 
 
 	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
@@ -137,6 +139,7 @@ Update_Status Menu::PostUpdate()
 {
 	// Draw everything
 	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(p1np2, 0, 0, NULL);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
