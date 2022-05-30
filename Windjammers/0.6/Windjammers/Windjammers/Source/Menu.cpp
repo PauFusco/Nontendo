@@ -32,15 +32,11 @@ bool Menu::Start()
 
 	p1.PushBack({618,175,640,193});
 
+	position.x = 20;
+	position.y = 100;
+	p1.speed = 0.00f;
 	
-		
-
-		position.x = 20;
-		position.y = 100;
-		p1.speed = 0.00f;
-	
-		currentAnimation = &p1;
-
+	currentAnimation = &p1;
 
 	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
