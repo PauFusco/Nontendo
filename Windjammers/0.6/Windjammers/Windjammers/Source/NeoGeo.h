@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __NEO_GEO_H__
-#define __NEO_GEO_H__
+#ifndef __NEOGEO_H__
+#define __NEOGEO_H__
 
 #include "Module.h"
 #include "Animation.h"

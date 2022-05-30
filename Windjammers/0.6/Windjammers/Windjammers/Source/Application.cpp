@@ -18,7 +18,7 @@
 #include "ModuleFonts.h"
 #include "ModuleRender.h"
 #include "Menu.h"
-
+#include "NeoGeo.h"
 
 
 Application::Application()

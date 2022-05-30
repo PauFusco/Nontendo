@@ -54,7 +54,7 @@ public:
 	ModulePlayer* player = nullptr;
 	ModuleEnemy* enemy = nullptr;
 
-	NeoGeo* neogeo = nullptr;
+	NeoGeo* neogeo = nullptr; 
 	SceneIntro* sceneIntro = nullptr;
 	Menu* menu = nullptr; 
 	SceneLevel1* sceneLevel_1 = nullptr;
