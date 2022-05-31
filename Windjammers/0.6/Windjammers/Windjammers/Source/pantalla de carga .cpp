@@ -19,6 +19,8 @@ PantallaDeCarga::PantallaDeCarga(bool startEnabled) : Module(startEnabled)
 	EnemyKorea.PushBack({1432,231,47,32});
 	EnemyItalia.PushBack({1429,263,47,32});
 	EnemyUsa.PushBack({1424,192,47,32});
+	pantalla1.PushBack({713,361,304,223});
+	pantalla2.PushBack({});
 
 }
 
@@ -42,7 +44,7 @@ bool PantallaDeCarga::Start()
 
 
 	
-	bgTexture3 = App->textures->Load("Assets/Sprites/mas sprites.png");
+	bgTexture = App->textures->Load("Assets/Sprites/mas sprites.png");
 
 
 	App->render->camera.x = 0;
