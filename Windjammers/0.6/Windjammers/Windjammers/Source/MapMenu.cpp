@@ -25,7 +25,7 @@ bool MapMenu::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/fonfo mapas.png");
+	bgTexture = App->textures->Load("Assets/Sprites/Beach Selected.png");
 
 	selected = App->audio->LoadFx("Assets/Music/MENU/START SELECT.wav");
 
@@ -42,10 +42,10 @@ Update_Status MapMenu::Update()
 		selection.scenario--;
 		switch (selection.scenario) {
 		case 0:
-			bgTexture = App->textures->Load("");
+			bgTexture = App->textures->Load("Assets/Sprites/MENUS/Beach Selected.png");
 			break;
 		case 1:
-			bgTexture = App->textures->Load("");
+			bgTexture = App->textures->Load("Assets/Sprites/MENUS/Lawn Selected.png");
 			break;
 		}
 	}
@@ -54,10 +54,10 @@ Update_Status MapMenu::Update()
 		selection.scenario++;
 		switch (selection.scenario) {
 		case 1:
-			bgTexture = App->textures->Load("");
+			bgTexture = App->textures->Load("Assets/Sprites/MENUS/Lawn Selected.png");
 			break;
 		case 2:
-			bgTexture = App->textures->Load("");
+			bgTexture = App->textures->Load("Assets/Sprites/MENUS/Tiled Selected.png");
 			break;
 		}
 	}
