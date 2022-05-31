@@ -44,8 +44,8 @@ public:
 	Animation EnemyKorea;
 	Animation EnemyItalia;
 	Animation EnemyUsa;
-	Animation pantalla1;
-	Animation pantalla2;
+	Animation pantalla;
+	
 
 	float Timer = 0.0f; 
 	int visualicacion = -5;
