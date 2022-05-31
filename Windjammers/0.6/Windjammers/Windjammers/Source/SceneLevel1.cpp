@@ -32,12 +32,12 @@ bool SceneLevel1::Start()
 		break;
 	
 	case LAWN:
-		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
+		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/LAWN.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/LAWN.ogg");
 		break;
 
 	case TILED:
-		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
+		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/TILED.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/TILED.ogg");
 		break;
 	}
