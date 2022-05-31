@@ -34,10 +34,10 @@ bool ModuleParticles::Start()
 	explosion.anim.speed = 0.5f;
 	explosion.lifetime = 5;
 
-	disc.anim.PushBack({ 149, 48, 16, 16 });
-	disc.anim.PushBack({ 181, 48, 16, 16 });
-	disc.anim.PushBack({ 213, 48, 16, 16 });
-	disc.anim.PushBack({ 245, 48, 16, 16 });
+	disc.anim.PushBack({  82, 48, 16, 16 });
+	disc.anim.PushBack({ 114, 48, 16, 16 });
+	disc.anim.PushBack({ 146, 48, 16, 16 });
+	disc.anim.PushBack({ 178, 48, 16, 16 });
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
 
@@ -64,10 +64,10 @@ Update_Status ModuleParticles::PreUpdate()
 		DiscTexture = App->textures->Load("Assets/Sprites/SCENES/DiscBeach.png");
 		break;
 	case LAWN:
-		DiscTexture = App->textures->Load("");
+		DiscTexture = App->textures->Load("Assets/Sprites/SCENES/DiscLawn.png");
 		break;
 	case TILED:
-		DiscTexture = App->textures->Load("");
+		DiscTexture = App->textures->Load("Assets/Sprites/SCENES/DiscTiled.png");
 	}
 
 	// Remove all particles scheduled for deletion
@@ -109,7 +109,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->audio->PlayFx(wallrbFx);
 			p->speed.y = -p->speed.y;
-			App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
+			// App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
 		}
 
 		if (c2->type == Collider::Type::GOAL)
