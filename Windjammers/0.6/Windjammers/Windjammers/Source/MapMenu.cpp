@@ -25,7 +25,7 @@ bool MapMenu::Start()
 
 	bool ret = true;
 
-	bgTexture = App->textures->Load("Assets/Sprites/Beach Selected.png");
+	bgTexture = App->textures->Load("Assets/Sprites/MENUS/Beach Selected.png");
 
 	selected = App->audio->LoadFx("Assets/Music/MENU/START SELECT.wav");
 
@@ -37,7 +37,7 @@ bool MapMenu::Start()
 
 Update_Status MapMenu::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && selection.scenario >= 0)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && selection.scenario > 0)
 	{
 		selection.scenario--;
 		switch (selection.scenario) {
@@ -49,7 +49,7 @@ Update_Status MapMenu::Update()
 			break;
 		}
 	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && selection.scenario < 3)
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && selection.scenario < 2)
 	{
 		selection.scenario++;
 		switch (selection.scenario) {

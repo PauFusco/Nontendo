@@ -38,7 +38,7 @@ bool PantallaDeCarga::Start()
 
 	bool ret = true;
 
-
+	App->audio->PlayMusic("Assets/Music/MENU/Loading Screen.wav", 1.0f);
 
 
 	bgTexture = App->textures->Load("Assets/Sprites/pantalla de carga1.png");
