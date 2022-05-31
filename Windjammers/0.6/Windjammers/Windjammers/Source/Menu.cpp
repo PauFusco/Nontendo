@@ -12,7 +12,7 @@
 
 Menu::Menu(bool startEnabled) : Module(startEnabled)
 {
-	p1.PushBack({ 618,175,620,180 });
+	p1.PushBack({ 618,175,22,17 });
 }
 
 Menu::~Menu()
@@ -30,7 +30,7 @@ bool Menu::Start()
 	p1np2 = App->textures->Load("Assets/Sprites/mas sprites.png");
 
 
-	p1.PushBack({618,175,640,193});
+	
 
 	position.x = 20;
 	position.y = 100;
