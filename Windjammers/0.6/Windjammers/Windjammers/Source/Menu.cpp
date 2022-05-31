@@ -30,13 +30,6 @@ bool Menu::Start()
 	
 	p1np2 = App->textures->Load("Assets/Sprites/mas sprites.png");
 
-
-	
-
-	
-	
-	
-
 	bgTexture = App->textures->Load("Assets/Sprites/MENUS/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
 
