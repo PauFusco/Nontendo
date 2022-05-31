@@ -39,15 +39,27 @@ Update_Status MapMenu::Update()
 {
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && selection.scenario >= 0)
 	{
-		selection.selector.position.y -= selection.speed;
 		selection.scenario--;
-
+		switch (selection.scenario) {
+		case 0:
+			bgTexture = App->textures->Load("");
+			break;
+		case 1:
+			bgTexture = App->textures->Load("");
+			break;
+		}
 	}
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && selection.scenario < 3)
 	{
-		selection.selector.position.y += selection.speed;
 		selection.scenario++;
-
+		switch (selection.scenario) {
+		case 1:
+			bgTexture = App->textures->Load("");
+			break;
+		case 2:
+			bgTexture = App->textures->Load("");
+			break;
+		}
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !selection.Locked)
 	{
