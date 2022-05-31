@@ -13,6 +13,7 @@
 Menu::Menu(bool startEnabled) : Module(startEnabled)
 {
 	p1.PushBack({ 618,175,22,17 });
+	p2.PushBack({});
 }
 
 Menu::~Menu()

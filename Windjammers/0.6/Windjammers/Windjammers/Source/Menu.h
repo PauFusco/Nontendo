@@ -43,6 +43,8 @@ public:
 		int speed = 30;
 		int x1 = 89; 
 		int y1 = 64;
+		int x2 = 70;
+		int y2 = 60; 
 		Particle selector;
 		Nation FinalSelection;
 	};
