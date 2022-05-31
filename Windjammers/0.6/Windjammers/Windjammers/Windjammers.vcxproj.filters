@@ -103,6 +103,9 @@
     <ClInclude Include="Source\MapMenu.h">
       <Filter>Source Files\Mods\Gameplay</Filter>
     </ClInclude>
+    <ClInclude Include="Source\pantalla de carga.h">
+      <Filter>Source Files\Mods\Gameplay</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -175,6 +178,9 @@
       <Filter>Source Files\Mods\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="Source\MapMenu.cpp">
+      <Filter>Source Files\Mods\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pantalla de carga .cpp">
       <Filter>Source Files\Mods\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>

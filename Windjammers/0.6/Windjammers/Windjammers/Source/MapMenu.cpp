@@ -81,7 +81,7 @@ Update_Status MapMenu::Update()
 	if(selection.Locked)
 	{
 		App->sceneLevel_1->scene = selection.FinalSelection;
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
+		App->fade->FadeToBlack(this, (Module*)App->pantalladecarga, 50);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
