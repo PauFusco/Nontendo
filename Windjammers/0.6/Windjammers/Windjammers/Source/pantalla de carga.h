@@ -33,8 +33,8 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	SDL_Texture* bgTexture2 = nullptr;
-	SDL_Texture* bgTexture3 = nullptr;
+	
+	
 
 	Animation* currentAnimation = nullptr;
 
@@ -45,6 +45,9 @@ public:
 	Animation EnemyItalia;
 	Animation EnemyUsa;
 
+	float Timer = 0.0f; 
+	int visualicacion = -5;
+	int movimiento = 1; 
 
 };
 
