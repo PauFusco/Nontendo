@@ -51,6 +51,8 @@ public:
 	int visualicacion = -5;
 	int movimiento = 1; 
 
+	int framecounter = 220;
+
 };
 
 #endif

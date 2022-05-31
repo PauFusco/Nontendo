@@ -9,7 +9,7 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 
-
+int i = 0;
 
 PantallaDeCarga::PantallaDeCarga(bool startEnabled) : Module(startEnabled)
 {
@@ -39,7 +39,7 @@ PantallaDeCarga::~PantallaDeCarga()
 bool PantallaDeCarga::Start()
 {
 	LOG("Loading background assets");
-
+	
 	bool ret = true;
 
 	App->audio->PlayMusic("Assets/Music/MENU/Loading Screen.wav", 1.0f);
@@ -59,12 +59,10 @@ bool PantallaDeCarga::Start()
 
 Update_Status PantallaDeCarga::Update()
 {
-	
-
-	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 50);
-
+	framecounter--;
+	if (framecounter == 50) {
+		App->audio->PlayMusic("");
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 20);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
