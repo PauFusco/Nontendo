@@ -60,9 +60,9 @@ bool PantallaDeCarga::Start()
 Update_Status PantallaDeCarga::Update()
 {
 	framecounter--;
-	if (framecounter == 50) {
+	if (framecounter == 90) {
 		App->audio->PlayMusic("");
-		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 20);
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 40);
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
