@@ -41,8 +41,7 @@ bool PantallaDeCarga::Start()
 
 
 
-	bgTexture = App->textures->Load("Assets/Sprites/pantalla de carga1.png");
-	bgTexture2 = App->textures->Load("Assets/Sprites/pantalla de carga2.png");
+	
 	bgTexture3 = App->textures->Load("Assets/Sprites/mas sprites.png");
 
 
@@ -56,7 +55,7 @@ bool PantallaDeCarga::Start()
 
 Update_Status PantallaDeCarga::Update()
 {
-
+	
 
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
@@ -72,7 +71,7 @@ Update_Status PantallaDeCarga::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(bgTexture2, 0, 0, NULL);
+	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
