@@ -20,7 +20,7 @@ PantallaDeCarga::PantallaDeCarga(bool startEnabled) : Module(startEnabled)
 	EnemyItalia.PushBack({1429,263,47,32});
 	EnemyUsa.PushBack({1424,192,47,32});
 	pantalla1.PushBack({713,361,304,223});
-	pantalla2.PushBack({});
+	pantalla2.PushBack({1090,361,304,223});
 
 }
 
@@ -71,8 +71,17 @@ Update_Status PantallaDeCarga::Update()
 // Update: draw background
 Update_Status PantallaDeCarga::PostUpdate()
 {
+	SDL_Rect rect = PlayerKorea.GetCurrentFrame();
+	SDL_Rect rect2 = PlayerItalia.GetCurrentFrame();
+	SDL_Rect rect3 = PlayerUsa.GetCurrentFrame();
+	SDL_Rect rect4 = EnemyKorea.GetCurrentFrame();
+	SDL_Rect rect5 = PlayerItalia.GetCurrentFrame();
+	SDL_Rect rect6 = PlayerUsa.GetCurrentFrame();
+	SDL_Rect rect7 = pantalla1.GetCurrentFrame();
+	SDL_Rect rect8 = pantalla2.GetCurrentFrame();
+
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, NULL);
+	App->render->Blit(bgTexture, 0, 0, &rect7);
 	
 
 	return Update_Status::UPDATE_CONTINUE;
