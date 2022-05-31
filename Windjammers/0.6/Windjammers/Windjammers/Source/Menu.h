@@ -40,7 +40,7 @@ public:
 	struct characterSelected {
 		bool Locked = false;
 		int character = 0;
-		int speed = 30;
+		int speed = 70;
 		int x1 = 89; 
 		int y1 = 64;
 		int x2 = 70;

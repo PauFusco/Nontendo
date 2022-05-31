@@ -13,7 +13,7 @@
 Menu::Menu(bool startEnabled) : Module(startEnabled)
 {
 	p1.PushBack({ 618,175,22,17 });
-	p2.PushBack({});
+	p2.PushBack({581,175,28,17});
 }
 
 Menu::~Menu()
@@ -151,6 +151,7 @@ Update_Status Menu::PostUpdate()
 	// Draw everything
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(p1np2, P1.x1, P1.y1, &rect);
+	App->render->Blit(p1np2, P1.x2, P1.y2, &rect2);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
