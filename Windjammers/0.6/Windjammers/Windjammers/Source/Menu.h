@@ -40,14 +40,18 @@ public:
 	struct characterSelected {
 		bool Locked = false;
 		int character = 0;
-		int speed = 500;
+		int speed = 30;
+		int x1 = 89; 
+		int y1 = 64;
 		Particle selector;
 		Nation FinalSelection;
 	};
 
+	int speed = 1; 
+
 	uint KoreaSelect = 0;
-	uint ItalySelect = 0;
-	uint USASelect = 0;
+	uint ItalySelect = 1;
+	uint USASelect = 2;
 	
 	characterSelected P1;
 	characterSelected P2;

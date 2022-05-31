@@ -32,9 +32,7 @@ bool Menu::Start()
 
 	
 
-	position.x = 105;
-	position.y = 76;
-	p1.speed = 0.00f;
+	
 	
 	currentAnimation = &p1;
 
@@ -98,14 +96,20 @@ Update_Status Menu::Update()
 	// Player 1 Character selection
 	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character >= 0)
 	{
+		
+		
 		P1.selector.position.y -= P1.speed;
 		P1.character--;
-
+		
 	}
 	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character < 3)
 	{
+		
+
 		P1.selector.position.y += P1.speed;
 		P1.character++;
+
+		
 
 	}
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && !P1.Locked)
@@ -142,9 +146,10 @@ Update_Status Menu::Update()
 Update_Status Menu::PostUpdate()
 {
 	SDL_Rect rect = p1.GetCurrentFrame();
+	SDL_Rect rect2 = p2.GetCurrentFrame();
 	// Draw everything
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(p1np2, 89, 64, &rect);
+	App->render->Blit(p1np2, P1.x1, P1.y1, &rect);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
