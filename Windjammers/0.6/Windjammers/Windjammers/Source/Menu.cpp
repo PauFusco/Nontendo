@@ -94,7 +94,7 @@ Update_Status Menu::Update()
 	}
 	
 	// Player 1 Character selection
-	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character >= 0)
+	if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character > 0)
 	{
 		
 		
@@ -102,7 +102,7 @@ Update_Status Menu::Update()
 		P1.character--;
 		
 	}
-	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character < 3)
+	if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_DOWN && !P1.Locked && P1.character < 2)
 	{
 		
 
