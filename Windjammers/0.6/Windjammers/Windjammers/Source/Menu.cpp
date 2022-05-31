@@ -98,7 +98,7 @@ Update_Status Menu::Update()
 	{
 		
 		
-		P1.selector.position.y -= P1.speed;
+		P1.y1 -= P1.speed;
 		P1.character--;
 		
 	}
@@ -106,7 +106,7 @@ Update_Status Menu::Update()
 	{
 		
 
-		P1.selector.position.y += P1.speed;
+		P1.y1 += P1.speed;
 		P1.character++;
 
 		
