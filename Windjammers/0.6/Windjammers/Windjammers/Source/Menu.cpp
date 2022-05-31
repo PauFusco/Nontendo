@@ -32,8 +32,8 @@ bool Menu::Start()
 
 	
 
-	position.x = 20;
-	position.y = 100;
+	position.x = 105;
+	position.y = 76;
 	p1.speed = 0.00f;
 	
 	currentAnimation = &p1;
@@ -144,7 +144,7 @@ Update_Status Menu::PostUpdate()
 	SDL_Rect rect = p1.GetCurrentFrame();
 	// Draw everything
 	App->render->Blit(bgTexture, 0, 0, NULL);
-	App->render->Blit(p1np2, 50, 50, &rect);
+	App->render->Blit(p1np2, 89, 64, &rect);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
