@@ -35,7 +35,7 @@ bool Menu::Start()
 
 	
 	
-	currentAnimation = &p1;
+	
 
 	bgTexture = App->textures->Load("Assets/Sprites/menu de pj.png");
 	App->audio->PlayMusic("Assets/Music/MENU/TUTORIAL MUSIC.ogg", 1.0f);
@@ -63,15 +63,15 @@ bool Menu::Start()
 Update_Status Menu::Update()
 {
 	// Player 2 Character selection
-	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character < 3)
+	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character < 2)
 	{
-		P2.selector.position.y += P2.speed;
+		P2.y2 += P2.speed;
 		P2.character++;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character >= 0)
+	if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character > 0)
 	{
-		P2.selector.position.y -= P2.speed;
+		P2.y2 -= P2.speed;
 		P2.character--;
 
 	}
@@ -151,7 +151,7 @@ Update_Status Menu::PostUpdate()
 	// Draw everything
 	App->render->Blit(bgTexture, 0, 0, NULL);
 	App->render->Blit(p1np2, P1.x1, P1.y1, &rect);
-	App->render->Blit(p1np2, P1.x2, P1.y2, &rect2);
+	App->render->Blit(p1np2, P2.x2, P2.y2, &rect2);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
