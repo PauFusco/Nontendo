@@ -32,21 +32,21 @@ bool SceneLevel1::Start()
 		break;
 	
 	case LAWN:
-		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
+		bgTexture = App->textures->Load("Assets/Sprites/SCENES/LAWN.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/LAWN.ogg");
 		break;
 
 	case TILED:
-		bgTexture = App->textures->Load("Assets/Sprites/SCENARIOS/BEACH.png");
+		bgTexture = App->textures->Load("Assets/Sprites/SCENES/TILED.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/TILED.ogg");
 		break;
 	}
 	// Colliders ---
-	App->collisions->AddCollider({ 0, 224, 3930, 16 }, Collider::Type::WALL);
+	App->collisions->AddCollider({   0, 224, 3930, 16 }, Collider::Type::WALL);
 
 	App->collisions->AddCollider({   0,  32, 304,  15 }, Collider::Type::WALL);
 	App->collisions->AddCollider({   0, 182, 304,  15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::RED);
+	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::RED );
 	App->collisions->AddCollider({   0,  56,   8, 132 }, Collider::Type::GOAL);
 	App->collisions->AddCollider({ 296,  56,   8, 132 }, Collider::Type::GOAL);
 
