@@ -14,14 +14,15 @@ bool ModuleInput::Init()
 	LOG("Init SDL input event system");
 	bool ret = true;
 	
-	SDL_GameControllerAddMapping("030000006f0e00008401000000000000,Afton Controller,platform:Windows,a:b1,b:b2,x:b0,y:b3,back:b8,guide:b12,start:b9,leftstick:b10,rightstick:b11,leftshoulder:b4,rightshoulder:b5,dpup:h0.1,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7");
+	SDL_GameControllerAddMapping("030000006f0e00008401000000000000,Faceoff Premiere Wired Pro Controller for Nintendo Switch,platform:Windows,a:b1,b:b2,x:b0,y:b3,back:b8,guide:b12,start:b9,leftstick:b10,rightstick:b11,leftshoulder:b4,rightshoulder:b5,dpup:h0.1,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7,");
 	
-	SDL_Init(0);
+	SDL_Init(SDL_INIT_EVERYTHING);
 
 	for (int i = 0; i < SDL_NumJoysticks(); i++) {
 		if (SDL_IsGameController(i))
 		{
 			controllerP1 = SDL_GameControllerOpen(i);
+			LOG("A controller was found");
 			break;
 		}
 	}
@@ -50,12 +51,7 @@ Update_Status ModuleInput::PreUpdate()
 		if (event.type == SDL_QUIT)	return Update_Status::UPDATE_STOP;
 	}
 
-	//Read all keyboard data and update our custom array
 	SDL_PumpEvents();
-
-	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
-
-	}
 
 	const Uint8* keyboard = SDL_GetKeyboardState(NULL);
 	for (int i = 0; i < MAX_KEYS; ++i)
@@ -65,11 +61,34 @@ Update_Status ModuleInput::PreUpdate()
 		else
 			keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
-
+	SDL_GameControllerUpdate();
 	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
 		LOG("Button press detected");
-		keys[SDL_SCANCODE_SPACE] = KEY_DOWN;
+		switch (event.cbutton.button) {
+		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+			keys[SDL_SCANCODE_A] = KEY_DOWN;
+			break;
 		
+		case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+			keys[SDL_SCANCODE_D] = KEY_DOWN;
+			break;
+
+		case SDL_CONTROLLER_BUTTON_DPAD_UP:
+			keys[SDL_SCANCODE_W] = KEY_DOWN;
+			break;
+
+		case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+			keys[SDL_SCANCODE_S] = KEY_DOWN;
+			break;
+
+		case SDL_CONTROLLER_BUTTON_B:
+			keys[SDL_SCANCODE_SPACE] = KEY_DOWN;
+			break;
+
+		case SDL_CONTROLLER_BUTTON_A:
+			keys[SDL_SCANCODE_X] = KEY_DOWN;
+			break;
+		}
 	}
 
 
