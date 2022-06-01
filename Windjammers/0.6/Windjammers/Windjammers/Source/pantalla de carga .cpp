@@ -12,7 +12,7 @@
 PantallaDeCarga::PantallaDeCarga(bool startEnabled) : Module(startEnabled)
 {
 	PlayerKorea.PushBack ({1237, 266,  94, 65});
-	PlayerItalia.PushBack({1407, 304,  99, 65});
+	PlayerItalia.PushBack({1407, 340,  99, 65});
 	PlayerUsa.PushBack   ({1231, 188, 101, 65});
 	
 	EnemyKorea.PushBack ({1334, 266,  95, 65});
