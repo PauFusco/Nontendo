@@ -84,11 +84,105 @@ bool ModuleEnemy::Start()
 
 	case ITALY:
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/Italy movements.png"); // Italy sprites
+		
+		// idle animation with disc
+		idlediscAnim.PushBack({  });
+		idlediscAnim.PushBack({  });
+		idlediscAnim.speed = 0.05f;
+
+		// idle animation
+		idleAnim.PushBack({  });
+		idleAnim.speed = 0.1f;
+
+		// Move up
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.speed = 0.1f;
+
+		// Move down
+		downAnim.PushBack({  });
+		downAnim.PushBack({  });
+		downAnim.PushBack({  });
+		downAnim.speed = 0.1f;
+
+		// Move right
+		rightAnim.PushBack({  });
+		rightAnim.PushBack({  });
+		rightAnim.PushBack({  });
+		rightAnim.speed = 0.1f;
+
+		// Move left
+		leftAnim.PushBack({  });
+		leftAnim.PushBack({  });
+		leftAnim.PushBack({  });
+		leftAnim.speed = 0.1f;
+
+		// Dash right
+		rightdashAnim.PushBack({  });
+
+		// Dash left
+		leftdashAnim.PushBack ({  });
+
+		// Dash up
+		updashAnim.PushBack   ({  });
+
+		// Dash down
+		downdashAnim.PushBack ({  });
 
 		break;
 
 	case USA:
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/USA movements.png"); // USA spriteS
+
+		// idle animation with disc
+		idlediscAnim.PushBack({  });
+		idlediscAnim.PushBack({  });
+		idlediscAnim.speed = 0.05f;
+
+		// idle animation
+		idleAnim.PushBack({  });
+		idleAnim.speed = 0.1f;
+
+		// Move up
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.PushBack({  });
+		upAnim.speed = 0.1f;
+
+		// Move down
+		downAnim.PushBack({  });
+		downAnim.PushBack({  });
+		downAnim.PushBack({  });
+		downAnim.speed = 0.1f;
+
+		// Move right
+		rightAnim.PushBack({  });
+		rightAnim.PushBack({  });
+		rightAnim.PushBack({  });
+		rightAnim.speed = 0.1f;
+
+		// Move left
+		leftAnim.PushBack({  });
+		leftAnim.PushBack({  });
+		leftAnim.PushBack({  });
+		leftAnim.speed = 0.1f;
+
+		// Dash right
+		rightdashAnim.PushBack({  });
+
+		// Dash left
+		leftdashAnim.PushBack ({  });
+
+		// Dash up
+		updashAnim.PushBack   ({  });
+
+		// Dash down
+		downdashAnim.PushBack ({  });
 
 		break;
 	}
