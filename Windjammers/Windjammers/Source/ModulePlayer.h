@@ -56,27 +56,17 @@ public:
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
 
-	// Idle animations
-	Animation idlediscAnim;
+	// A set of animations
 	Animation idleAnim;
-	
-	// Movement animations
 	Animation upAnim;
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
-
-	// Dash animations
 	Animation rightdashAnim;
 	Animation leftdashAnim;
 	Animation updashAnim;
 	Animation downdashAnim;
 
-	// Action animations
-	Animation normalthrowAnim;
-
-	// Smack animation
-	Animation smackAnim;
 
 	// Stores the nation
 	Nation nat;

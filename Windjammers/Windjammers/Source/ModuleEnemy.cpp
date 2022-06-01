@@ -17,13 +17,9 @@ ModuleEnemy::ModuleEnemy(bool startEnabled) : Module (startEnabled)
 	nat = KOREA;
 	if (nat == KOREA) {
 		// idle animation
-		idlediscAnim.PushBack({ 124, 161, 52, 36 });
-		idlediscAnim.PushBack({ 178, 161, 52, 36 });
-		idlediscAnim.speed = 0.05f;
-		
-		// idle animation
-		idleAnim.PushBack({ 379, 7, 42, 38 });
-		idleAnim.speed = 0.1f;
+		idleAnim.PushBack({ 124, 161, 52, 36 });
+		idleAnim.PushBack({ 178, 161, 52, 36 });
+		idleAnim.speed = 0.05f;
 
 		// Move up
 		upAnim.PushBack({ 146, 54, 27, 39 });
@@ -81,7 +77,7 @@ bool ModuleEnemy::Start()
 
 	if (nat == USA) texture = App->textures->Load("Assets/USA movements.png"); // USA sprites
 
-	currentAnimation = &idlediscAnim;
+	currentAnimation = &idleAnim;
 
 	NthrowFx = App->audio->LoadFx("Assets/Sound/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Sound/explosion.wav");
@@ -168,7 +164,7 @@ update_status ModuleEnemy::Update()
 			&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
 			&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
-			&& App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_REPEAT)
+			&& App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
 		{
 			dashDir = LEFT;
 			animationLocked = true;
@@ -184,10 +180,6 @@ update_status ModuleEnemy::Update()
 	}
 
 	int sx = -3, sy;
-
-	if (hasDisc) {
-		currentAnimation = &idlediscAnim;
-	}
 
 	if (hasDisc
 		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
@@ -254,7 +246,7 @@ update_status ModuleEnemy::Update()
 		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
-		&& !hasDisc)
+		|| hasDisc)
 	{
 		currentAnimation = &idleAnim;
 
