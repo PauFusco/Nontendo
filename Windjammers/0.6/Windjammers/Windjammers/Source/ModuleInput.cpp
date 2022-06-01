@@ -14,7 +14,7 @@ bool ModuleInput::Init()
 	LOG("Init SDL input event system");
 	bool ret = true;
 	
-	SDL_GameControllerAddMapping("030000006f0e00008401000000000000,Faceoff Premiere Wired Pro Controller for Nintendo Switch,platform:Windows,a:b1,b:b2,x:b0,y:b3,back:b8,guide:b12,start:b9,leftstick:b10,rightstick:b11,leftshoulder:b4,rightshoulder:b5,dpup:h0.1,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7,");
+	SDL_GameControllerAddMapping("030000006f0e00008401000000000000, ,platform:Windows,a:b1,b:b2,x:b0,y:b3,back:b8,guide:b12,start:b9,leftstick:b10,rightstick:b11,leftshoulder:b4,rightshoulder:b5,dpup:h0.1,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7,");
 	
 	SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -30,9 +30,7 @@ bool ModuleInput::Init()
 	{
 		LOG("No Controllers found")
 	}
-
 	
-
 	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
@@ -61,6 +59,7 @@ Update_Status ModuleInput::PreUpdate()
 		else
 			keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
+	
 	SDL_GameControllerUpdate();
 
 	for (int j = 0; j < SDL_CONTROLLER_BUTTON_MAX; ++j)

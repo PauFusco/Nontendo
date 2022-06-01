@@ -33,8 +33,6 @@ public:
 public:
 	// The scene sprite sheet loaded into an SDL_Texture
 	SDL_Texture* bgTexture = nullptr;
-	
-	
 
 	Animation* currentAnimation = nullptr;
 

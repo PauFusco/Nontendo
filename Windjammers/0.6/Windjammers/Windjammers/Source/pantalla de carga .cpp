@@ -9,26 +9,20 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 
-int i = 0;
-
 PantallaDeCarga::PantallaDeCarga(bool startEnabled) : Module(startEnabled)
 {
-	PlayerKorea.PushBack({1385,230,47,32});
-	PlayerItalia.PushBack({1381,264,47,32});
-	PlayerUsa.PushBack({ 1374,192,47,32 });
-	EnemyKorea.PushBack({1432,231,47,32});
-	EnemyItalia.PushBack({1429,263,47,32});
-	EnemyUsa.PushBack({1424,192,47,32});
-
+	PlayerKorea.PushBack ({1237, 266,  94, 65});
+	PlayerItalia.PushBack({1407, 304,  99, 65});
+	PlayerUsa.PushBack   ({1231, 188, 101, 65});
+	
+	EnemyKorea.PushBack ({1334, 266,  95, 65});
+	EnemyItalia.PushBack({1511, 339, 100, 68});
+	EnemyUsa.PushBack   ({1336, 186, 100, 67});
 
 	pantalla.PushBack({713,361,304,223});
 	pantalla.PushBack({1090,361,304,223});
 	pantalla.speed = 0.8f;
 }
-
-
-
-
 
 PantallaDeCarga::~PantallaDeCarga()
 {
@@ -44,15 +38,10 @@ bool PantallaDeCarga::Start()
 
 	App->audio->PlayMusic("Assets/Music/MENU/Loading Screen.wav", 1.0f);
 
-
-	
 	bgTexture = App->textures->Load("Assets/Sprites/mas sprites.png");
-
-
+	
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
-
-
 
 	return ret;
 }
@@ -71,19 +60,48 @@ Update_Status PantallaDeCarga::Update()
 // Update: draw background
 Update_Status PantallaDeCarga::PostUpdate()
 {
-	SDL_Rect rect = PlayerKorea.GetCurrentFrame();
+	SDL_Rect rect1 = PlayerKorea.GetCurrentFrame();
 	SDL_Rect rect2 = PlayerItalia.GetCurrentFrame();
 	SDL_Rect rect3 = PlayerUsa.GetCurrentFrame();
 	SDL_Rect rect4 = EnemyKorea.GetCurrentFrame();
-	SDL_Rect rect5 = PlayerItalia.GetCurrentFrame();
-	SDL_Rect rect6 = PlayerUsa.GetCurrentFrame();
+	SDL_Rect rect5 = EnemyItalia.GetCurrentFrame();
+	SDL_Rect rect6 = EnemyUsa.GetCurrentFrame();
 	SDL_Rect rect7 = pantalla.GetCurrentFrame();
 	
 
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, &rect7,false );
+	App->render->Blit(bgTexture, 0, 0, &rect7);
 	
-	
+	switch (App->player->nat)
+	{
+	case KOREA:
+		App->render->Blit(bgTexture, 42, 61, &rect1);
+		break;
+
+	case ITALY:
+		App->render->Blit(bgTexture, 42, 61, &rect2);
+		break;
+
+	case USA:
+		App->render->Blit(bgTexture, 42, 61, &rect3);
+		break;
+	}
+
+	switch (App->enemy->nat)
+	{
+	case KOREA:
+		App->render->Blit(bgTexture, 168, 61, &rect4);
+		break;
+
+	case ITALY:
+		App->render->Blit(bgTexture, 168, 61, &rect5);
+		break;
+
+	case USA:
+		App->render->Blit(bgTexture, 168, 61, &rect6);
+		break;
+
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
