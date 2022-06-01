@@ -1,6 +1,9 @@
 # Nontendo
 ### Winjammers: Flying Power Disc
-The objective is to score points to the other player's goal line, which is located behind them.
+This is a tribute to Windjammers, released in 1994.
+This game consists in a 1 vs 1 match, in which the objective is to throw a disc inside the rival Goal Line.
+The game also offers different characters with whom u can play as. This game includes 3 of the 6 total characters: Korea, Italy and USA.
+The 3 of the 6 total scenarios included are the Beach, Lawn and Tiled.
 
 ## Installation
 Un-zip folder with WinRAR software or similar.
