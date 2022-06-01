@@ -6,7 +6,7 @@ The game also offers different characters with whom u can play as. This game inc
 The 3 of the 6 total scenarios included are the Beach, Lawn and Tiled.
 
 ## Installation
-Un-zip folder with WinRAR software or similar.
+Un-zip folder with WinRAR software or similar. If a controller is desired, plug it in and it should be ready to use.
 
 ## Usage
 Execute game with the .exe file in the main folder.
