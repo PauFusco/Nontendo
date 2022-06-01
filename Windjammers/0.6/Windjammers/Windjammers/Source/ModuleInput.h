@@ -41,9 +41,13 @@ public:
 public:
 	// An array to fill in the state of all the keyboard keys
 	KEY_STATE keys[MAX_KEYS] = { KEY_IDLE };
+
+	struct controller {
+		KEY_STATE buttons[SDL_CONTROLLER_BUTTON_MAX];
+	};
 	
-	SDL_GameController* controllerP1 = nullptr;
-	SDL_GameController* controllerP2 = nullptr;
+	SDL_GameController* sdl_P1 = nullptr;
+	controller P1;
 };
 
 #endif // __ModuleInput_H__

@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "Globals.h"
+#include "ModuleRender.h"
 
 #include "SDL/include/SDL.h"
 
@@ -16,6 +17,7 @@ bool ModuleWindow::Init()
 {
 	LOG("Init SDL window & surface");
 	bool ret = true;
+	SDL_RenderSetLogicalSize(App->render->renderer, 1920, 1080);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{

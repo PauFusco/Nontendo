@@ -21,12 +21,12 @@ bool ModuleInput::Init()
 	for (int i = 0; i < SDL_NumJoysticks(); i++) {
 		if (SDL_IsGameController(i))
 		{
-			controllerP1 = SDL_GameControllerOpen(i);
-			LOG("A controller was found");
+			sdl_P1 = SDL_GameControllerOpen(i);
+			LOG("Controller was found");
 			break;
 		}
 	}
-	if (controllerP1 == nullptr)
+	if (sdl_P1 == nullptr)
 	{
 		LOG("No Controllers found")
 	}
@@ -62,23 +62,44 @@ Update_Status ModuleInput::PreUpdate()
 			keys[i] = (keys[i] == KEY_REPEAT || keys[i] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
 	}
 	SDL_GameControllerUpdate();
-	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
+
+	for (int j = 0; j < SDL_CONTROLLER_BUTTON_MAX; ++j)
+	{
+		if (SDL_GameControllerGetButton(sdl_P1, (SDL_GameControllerButton)j))
+			P1.buttons[j] = (P1.buttons[j] == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			P1.buttons[j] = (P1.buttons[j] == KEY_REPEAT || P1.buttons[j] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
+
+	keys[SDL_SCANCODE_S] = P1.buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN];
+	keys[SDL_SCANCODE_W] = P1.buttons[SDL_CONTROLLER_BUTTON_DPAD_UP];
+	keys[SDL_SCANCODE_A] = P1.buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT];
+	keys[SDL_SCANCODE_D] = P1.buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT];
+	keys[SDL_SCANCODE_X] = P1.buttons[SDL_CONTROLLER_BUTTON_B];
+	keys[SDL_SCANCODE_SPACE] = P1.buttons[SDL_CONTROLLER_BUTTON_B];
+
+	/*if (event.type == SDL_CONTROLLERBUTTONDOWN) {
 		LOG("Button press detected");
 		switch (event.cbutton.button) {
 		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-			keys[SDL_SCANCODE_A] = KEY_DOWN;
+			keys[SDL_SCANCODE_A] = KEY_REPEAT;
+			LOG("LEFT");
 			break;
 		
 		case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-			keys[SDL_SCANCODE_D] = KEY_DOWN;
+			keys[SDL_SCANCODE_D] = KEY_REPEAT;
+			LOG("RIGHT");
+
 			break;
 
 		case SDL_CONTROLLER_BUTTON_DPAD_UP:
-			keys[SDL_SCANCODE_W] = KEY_DOWN;
+			keys[SDL_SCANCODE_W] = KEY_REPEAT;
+			LOG("UP");
 			break;
 
 		case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-			keys[SDL_SCANCODE_S] = KEY_DOWN;
+			keys[SDL_SCANCODE_S] = KEY_REPEAT;
+			LOG("DOWN");
 			break;
 
 		case SDL_CONTROLLER_BUTTON_B:
@@ -86,11 +107,10 @@ Update_Status ModuleInput::PreUpdate()
 			break;
 
 		case SDL_CONTROLLER_BUTTON_A:
-			keys[SDL_SCANCODE_X] = KEY_DOWN;
+			keys[SDL_SCANCODE_X] = KEY_REPEAT;
 			break;
 		}
-	}
-
+	}*/
 
 	return Update_Status::UPDATE_CONTINUE;
 }
