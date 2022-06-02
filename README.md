@@ -1,8 +1,8 @@
 # Nontendo
 ### Winjammers: Flying Power Disc
 This is a tribute to Windjammers, released in 1994. The game consists in a 1 vs 1 match in which the objective is to throw the disc inside the rival Goal Line.
-Different characters are also offered. This tribute includes 3 of the 6 total characters: *Korea, Italy* and *USA.
-3 of the 6 original scenariosare included: *Beach, Lawn* and *Tiled.
+Different characters are also offered. This tribute includes 3 of the 6 total characters: *Korea, Italy* and *USA*.
+3 of the 6 original scenariosare included: *Beach, Lawn* and *Tiled*.
 
 ## Installation
 Un-zip folder with WinRAR software or similar. If a controller is desired, plug it in and it should be ready to use.
@@ -18,9 +18,9 @@ Controls:
 * Player 2 Throw & Select: L
 * Player 2 Dash: M
 
-For now the game has support for one controller which controlls Player 1.
+This game has support for two controllers.
 
-The bindings for the controller are:
+The bindings for the controllers are:
 * Player 1&2 Movement: DPad
 * Player 1&2 Throw & Select: A
 * Player 1&2 Dash: B
