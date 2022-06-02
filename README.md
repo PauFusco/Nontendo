@@ -34,7 +34,7 @@ Info: To perform a special throw, hit the disc just before it arrives to you, th
 
 
 ## Dev Team
-* Oscar Escofet Fortet (Code) --> GitHub Profile
-* Marc Fernandez Vilamasana (Q&A) --> GitHub Profile
-* Pau Fusco Zamora (Code & Management) --> GitHub Profile
-* Miguel Rojas Esquirol (Art & Design) --> GitHub Profile
+* Oscar Escofet Fortet (Code) --> [GitHub Profile](https://github.com/OscarEscF)
+* Marc Fernandez Vilamasana (Q&A) --> [GitHub Profile](https://github.com/FerVil-03)
+* Pau Fusco Zamora (Code & Management) --> [GitHub Profile](https://github.com/PauFusco)
+* Miguel Rojas Esquirol (Art & Design) --> [GitHub Profile](https://github.com/unsanfer89)
