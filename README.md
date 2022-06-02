@@ -6,9 +6,6 @@ Different characters are also offered. This tribute includes 3 of the 6 total ch
 
 3 of the 6 original scenariosare included: *Beach, Lawn* and *Tiled*.
 
-Info: To perform a special throw, hit the disc just before it arrives to you, throwing it up and letting you charge the throw. Then, press the throw button to perform the throw.
-
-*Dashes and a limited number of Special throws are included.*
 ## Installation
 Un-zip folder with WinRAR software or similar. If a controller is desired, plug it in and it should be ready to use.
 
@@ -30,16 +27,15 @@ The bindings for the controllers are:
 * Player 1&2 Throw & Select: A
 * Player 1&2 Dash: B
 
-## Contributing
-Report bugs to main GitHub site.
+Info: To perform a special throw, hit the disc just before it arrives to you, throwing it up and letting you charge the throw. Then, press the throw button to perform the throw.
 
-## History
+*Dashes and a limited number of Special throws are included.*
+
+## Links
 
 
 ## Dev Team
-* Oscar Escofet Fortet
-* Marc Fernandez Vilamasana
-* Pau Fusco Zamora
-* Miguel Rojas Esquirol
-
-## License
+* Oscar Escofet Fortet (Code) --> GitHub Profile
+* Marc Fernandez Vilamasana (Q&A) --> GitHub Profile
+* Pau Fusco Zamora (Code & Management) --> GitHub Profile
+* Miguel Rojas Esquirol (Art & Design) --> GitHub Profile
