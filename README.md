@@ -13,20 +13,21 @@ Un-zip folder with WinRAR software or similar. If a controller is desired, plug 
 Execute game with the .exe file in the main folder.
 
 Controls:
+```
 * Player 1 Movement: W A S D
 * Player 1 Throw & Select: SPACE
 * Player 1 Dash: X
+
 * Player 2 Movement: Arrows
 * Player 2 Throw & Select: L
 * Player 2 Dash: M
-
-This game has support for two controllers.
-
-The bindings for the controllers are:
-* Player 1&2 Movement: DPad
-* Player 1&2 Throw & Select: A
-* Player 1&2 Dash: B
-
+```
+Controller bindings (same for both controllers):
+```
+* Movement: DPad
+* Throw & Select: A
+* Dash: B
+```
 Info: To perform a special throw, hit the disc just before it arrives to you, throwing it up and letting you charge the throw. Then, press the throw button to perform the throw.
 
 *Dashes and a limited number of Special throws are included.*
