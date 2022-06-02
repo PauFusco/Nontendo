@@ -53,10 +53,6 @@ bool ModuleWindow::Init()
 		}
 	}
 
-	if (SDL_RenderSetLogicalSize(App->render->renderer, 304, 223) != 0) {
-		LOG("WTF");
-	}
-
 	return ret;
 }
 
