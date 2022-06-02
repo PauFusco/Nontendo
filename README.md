@@ -1,7 +1,9 @@
 # Nontendo
 ### Winjammers: Flying Power Disc
 This is a tribute to Windjammers, released in 1994. The game consists in a 1 vs 1 match in which the objective is to throw the disc inside the rival Goal Line.
+
 Different characters are also offered. This tribute includes 3 of the 6 total characters: *Korea, Italy* and *USA*.
+
 3 of the 6 original scenariosare included: *Beach, Lawn* and *Tiled*.
 
 ## Installation
