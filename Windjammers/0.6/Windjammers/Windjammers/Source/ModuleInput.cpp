@@ -19,14 +19,21 @@ bool ModuleInput::Init()
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	for (int i = 0; i < SDL_NumJoysticks(); i++) {
-		if (SDL_IsGameController(i))
+		
+		if (SDL_IsGameController(i) && sdl_P1 == nullptr)
 		{
 			sdl_P1 = SDL_GameControllerOpen(i);
-			LOG("Controller was found");
+			LOG("Controller 1 was found");
+			break;
+		}
+		else if (SDL_IsGameController(i) && sdl_P1 != nullptr && sdl_P2 == nullptr)
+		{
+			sdl_P2 = SDL_GameControllerOpen(i);
+			LOG("Controller 2 was found");
 			break;
 		}
 	}
-	if (sdl_P1 == nullptr)
+	if (sdl_P1 == nullptr && sdl_P2 == nullptr)
 	{
 		LOG("No Controllers found")
 	}
