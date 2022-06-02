@@ -17,7 +17,6 @@ bool ModuleWindow::Init()
 {
 	LOG("Init SDL window & surface");
 	bool ret = true;
-	SDL_RenderSetLogicalSize(App->render->renderer, 1920, 1080);
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -52,6 +51,10 @@ bool ModuleWindow::Init()
 		{
 			screenSurface = SDL_GetWindowSurface(window);
 		}
+	}
+
+	if (SDL_RenderSetLogicalSize(App->render->renderer, 304, 223) != 0) {
+		LOG("WTF");
 	}
 
 	return ret;
