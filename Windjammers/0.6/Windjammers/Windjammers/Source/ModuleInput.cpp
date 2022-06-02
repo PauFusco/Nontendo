@@ -77,40 +77,21 @@ Update_Status ModuleInput::PreUpdate()
 	if (P1.buttons[SDL_CONTROLLER_BUTTON_A] != KEY_IDLE)			keys[SDL_SCANCODE_X] = P1.buttons[SDL_CONTROLLER_BUTTON_A];
 	if (P1.buttons[SDL_CONTROLLER_BUTTON_B] != KEY_IDLE)			keys[SDL_SCANCODE_SPACE] = P1.buttons[SDL_CONTROLLER_BUTTON_B];
 	
-	/*if (event.type == SDL_CONTROLLERBUTTONDOWN) {
-		LOG("Button press detected");
-		switch (event.cbutton.button) {
-		case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-			keys[SDL_SCANCODE_A] = KEY_REPEAT;
-			LOG("LEFT");
-			break;
-		
-		case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-			keys[SDL_SCANCODE_D] = KEY_REPEAT;
-			LOG("RIGHT");
+	for (int j = 0; j < SDL_CONTROLLER_BUTTON_MAX; ++j)
+	{
+		if (SDL_GameControllerGetButton(sdl_P2, (SDL_GameControllerButton)j))
+			P2.buttons[j] = (P2.buttons[j] == KEY_IDLE) ? KEY_DOWN : KEY_REPEAT;
+		else
+			P2.buttons[j] = (P2.buttons[j] == KEY_REPEAT || P2.buttons[j] == KEY_DOWN) ? KEY_UP : KEY_IDLE;
+	}
 
-			break;
-
-		case SDL_CONTROLLER_BUTTON_DPAD_UP:
-			keys[SDL_SCANCODE_W] = KEY_REPEAT;
-			LOG("UP");
-			break;
-
-		case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-			keys[SDL_SCANCODE_S] = KEY_REPEAT;
-			LOG("DOWN");
-			break;
-
-		case SDL_CONTROLLER_BUTTON_B:
-			keys[SDL_SCANCODE_SPACE] = KEY_DOWN;
-			break;
-
-		case SDL_CONTROLLER_BUTTON_A:
-			keys[SDL_SCANCODE_X] = KEY_REPEAT;
-			break;
-		}
-	}*/
-
+	if (P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN]  != KEY_IDLE)	keys[SDL_SCANCODE_DOWN]  = P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_DOWN];
+	if (P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_UP]    != KEY_IDLE)	keys[SDL_SCANCODE_UP]    = P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_UP];
+	if (P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT]  != KEY_IDLE)	keys[SDL_SCANCODE_RIGHT] = P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_LEFT];
+	if (P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT] != KEY_IDLE)	keys[SDL_SCANCODE_LEFT]  = P2.buttons[SDL_CONTROLLER_BUTTON_DPAD_RIGHT];
+	if (P2.buttons[SDL_CONTROLLER_BUTTON_A]          != KEY_IDLE)	keys[SDL_SCANCODE_M]     = P2.buttons[SDL_CONTROLLER_BUTTON_A];
+	if (P2.buttons[SDL_CONTROLLER_BUTTON_B]          != KEY_IDLE)	keys[SDL_SCANCODE_L]     = P2.buttons[SDL_CONTROLLER_BUTTON_B];
+		 
 	return Update_Status::UPDATE_CONTINUE;
 }
 

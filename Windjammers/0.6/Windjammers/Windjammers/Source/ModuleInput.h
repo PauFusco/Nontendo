@@ -47,7 +47,9 @@ public:
 	};
 	
 	SDL_GameController* sdl_P1 = nullptr;
+	SDL_GameController* sdl_P2 = nullptr;
 	controller P1;
+	controller P2;
 };
 
 #endif // __ModuleInput_H__
