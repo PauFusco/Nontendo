@@ -50,6 +50,9 @@ bool Menu::Start()
 	P2.selector = App->particles->P2ind;
 	App->particles->AddParticle(P2.selector, p2x, y, 0, P2.speed);
 
+	P1.Locked = false;
+	P2.Locked = false;
+
 	return ret;
 }
 

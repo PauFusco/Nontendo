@@ -8,6 +8,8 @@
 #include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -64,6 +66,9 @@ bool SceneLevel1::Start()
 
 Update_Status SceneLevel1::Update()
 {
+	if (App->input->keys[SDL_SCANCODE_Y] == KEY_STATE::KEY_DOWN) {
+		App->fade->FadeToBlack(this, (Module*)App->menu, 40);
+	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
@@ -81,6 +86,7 @@ bool SceneLevel1::CleanUp()
 {
 	App->player->Disable();
 	App->enemy->Disable();
+	App->particles->CleanUp();
 
 	return true;
 }

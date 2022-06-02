@@ -31,6 +31,8 @@ bool MapMenu::Start()
 
 	int x = 10;
 	int y = 10;
+	
+	selection.Locked = false;
 
 	return true;
 }
