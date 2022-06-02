@@ -30,8 +30,6 @@ Controller bindings (same for both controllers):
 ```
 Info: To perform a special throw, hit the disc just before it arrives to you, throwing it up and letting you charge the throw. Then, press the throw button to perform the throw.
 
-*Dashes and a limited number of Special throws are included.*
-
 ## Links
 
 
