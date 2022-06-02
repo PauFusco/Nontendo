@@ -7,7 +7,7 @@ Different characters are also offered. This tribute includes 3 of the 6 total ch
 3 of the 6 original scenariosare included: *Beach, Lawn* and *Tiled*.
 
 ## Installation
-Un-zip folder with WinRAR software or similar. If a controller is desired, plug it in and it should be ready to use.
+Un-zip folder with WinRAR software or similar. If a controller is desired, plug and play!
 
 ## Usage
 Execute game with the .exe file in the main folder.
