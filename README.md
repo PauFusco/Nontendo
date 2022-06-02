@@ -36,17 +36,17 @@ Info: To perform a special throw, hit the disc just before it arrives to you, th
 ## Dev Team
 * Oscar Escofet Fortet (Code) --> [GitHub Profile](https://github.com/OscarEscF)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Oscar Escofet Fortet")
+![alt text](https://github.com/PauFusco/Nontendo/blob/proyect-9/Dependencies/Foto%20Oscar.png "Oscar Escofet Fortet")
 
 * Marc Fernandez Vilamasana (Q&A) --> [GitHub Profile](https://github.com/FerVil-03)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Marc Fernández Vilamasana")
+![alt text](https://github.com/PauFusco/Nontendo/blob/proyect-9/Dependencies/Foto%20Marc.png  "Marc Fernández Vilamasana")
 
 * Pau Fusco Zamora (Code & Management) --> [GitHub Profile](https://github.com/PauFusco)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Pau Fusco Zamora")
+![alt text](https://github.com/PauFusco/Nontendo/blob/proyect-9/Dependencies/Foto%20Pau.png "Pau Fusco Zamora")
 
 * Miguel Rojas Esquirol (Art & Design) --> [GitHub Profile](https://github.com/unsanfer89)
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Miguel Rojas Esquirol")
+![alt text](https://github.com/PauFusco/Nontendo/blob/proyect-9/Dependencies/Foto%20Miguel.png "Miguel Rojas Esquirol")
 
