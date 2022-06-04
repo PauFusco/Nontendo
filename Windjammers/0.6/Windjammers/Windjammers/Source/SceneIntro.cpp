@@ -11,7 +11,7 @@
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
-	
+	palmeras.({});
 
 
    
@@ -32,7 +32,7 @@ bool SceneIntro::Start()
 	
 	
 
-	bgTexture = App->textures->Load("Assets/Sprites/palmeras.png");
+	bgTexture = App->textures->Load("Assets/Sprites/mas sprites.png");
 
 	
 	
