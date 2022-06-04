@@ -88,7 +88,7 @@ Update_Status SceneIntro::PostUpdate()
 	App->render->Blit(bgTexture, 0, 0, &rect);
 	App->render->Blit(bgTexture, 7, 37, &rect3);
 	App->render->Blit(bgTexture, 27, 16, &rect4);
-	app->render->Bliy(bgTexture, shipPosition_x, shipPosition_y, &rect2);
+	App->render->Blit(bgTexture, shipPosition_x, shipPosition_y, &rect2);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
