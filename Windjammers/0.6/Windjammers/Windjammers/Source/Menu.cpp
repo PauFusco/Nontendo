@@ -13,7 +13,9 @@
 Menu::Menu(bool startEnabled) : Module(startEnabled)
 {
 	p1.PushBack({ 618,175,22,17 });
+	
 	p2.PushBack({581,175,28,17});
+	
 }
 
 Menu::~Menu()
@@ -58,6 +60,8 @@ bool Menu::Start()
 
 Update_Status Menu::Update()
 {
+	
+
 	// Player 2 Character selection
 	if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN && !P2.Locked && P2.character < 2)
 	{

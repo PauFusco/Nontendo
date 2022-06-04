@@ -6,6 +6,10 @@
 #include "ModuleAudio.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
+#include "ModuleEnemies.h"
+#include "SceneLevel1.h"
+
 
 NeoGeo::NeoGeo(bool startEnabled) : Module(startEnabled)
 {
@@ -129,13 +133,18 @@ bool NeoGeo::Start()
 
 Update_Status NeoGeo::Update()
 {
-
-
 	if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->sceneIntro, 40);
 	}
 
+	if (App->input->keys[SDL_SCANCODE_Y] == KEY_STATE::KEY_DOWN)
+	{
+		App->player->nat = KOREA;
+		App->enemy->nat = KOREA;
+		App->sceneLevel_1->scene = BEACH;
+		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 40);
+	}
 
 	currentAnimation->Update();
 

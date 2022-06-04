@@ -51,12 +51,17 @@ bool ModuleEnemy::Start()
 		upAnim.PushBack({ 276, 54, 26, 39 });
 		upAnim.speed = 0.1f;
 
+		//diagonalup
+		
+
 		// Move down
 		downAnim.PushBack({ 45, 57, 27, 33 });
 		downAnim.PushBack({ 79, 52, 30, 43 });
 		downAnim.PushBack({ 114, 56, 27, 35 });
 		downAnim.speed = 0.1f;
 
+		//diagonaldown
+		
 		// Move right
 		rightAnim.PushBack({ 426,  7, 26, 36 });
 		rightAnim.PushBack({ 457,  7, 34, 35 });
@@ -109,28 +114,30 @@ bool ModuleEnemy::Start()
 		downAnim.speed = 0.1f;
 
 		// Move right
-		rightAnim.PushBack({  });
-		rightAnim.PushBack({  });
-		rightAnim.PushBack({  });
+		rightAnim.PushBack({  72, 11, 45, 45 });
+		rightAnim.PushBack({ 156, 11, 37, 45 });
+		rightAnim.PushBack({ 193, 11, 32, 45 });
+		rightAnim.PushBack({ 225, 11, 47, 45 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
-		leftAnim.PushBack({  });
-		leftAnim.PushBack({  });
-		leftAnim.PushBack({  });
+		leftAnim.PushBack({ 419, 169, 45, 45 });
+		leftAnim.PushBack({ 343, 169, 37, 45 });
+		leftAnim.PushBack({ 311, 169, 32, 45 });
+		leftAnim.PushBack({ 264, 169, 47, 45 });
 		leftAnim.speed = 0.1f;
 
 		// Dash right
-		rightdashAnim.PushBack({  });
+		rightdashAnim.PushBack({  55, 238, 79, 38 });
 
 		// Dash left
-		leftdashAnim.PushBack ({  });
+		leftdashAnim.PushBack ({ 242, 123, 80, 35 });
 
 		// Dash up
-		updashAnim.PushBack   ({  });
+		updashAnim.PushBack   ({ 142, 216, 35, 80 });
 
 		// Dash down
-		downdashAnim.PushBack ({  });
+		downdashAnim.PushBack ({  12, 216, 35, 80 });
 
 		break;
 
@@ -144,11 +151,14 @@ bool ModuleEnemy::Start()
 
 		// idle animation
 		idleAnim.PushBack({  });
+		idleAnim.PushBack({  });
+		idleAnim.PushBack({  });
+		idleAnim.PushBack({  });
+		idleAnim.PushBack({  });
+		idleAnim.PushBack({  });
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
 		upAnim.PushBack({  });
 		upAnim.PushBack({  });
 		upAnim.PushBack({  });
@@ -161,28 +171,34 @@ bool ModuleEnemy::Start()
 		downAnim.speed = 0.1f;
 
 		// Move right
-		rightAnim.PushBack({  });
-		rightAnim.PushBack({  });
-		rightAnim.PushBack({  });
+		rightAnim.PushBack({ 272, 117, 38, 41 });
+		rightAnim.PushBack({ 329, 117, 28, 41 });
+		rightAnim.PushBack({ 374, 117, 35, 41 });
+		rightAnim.PushBack({ 424, 117, 38, 41 });
+		rightAnim.PushBack({ 374, 117, 35, 41 });
+		rightAnim.PushBack({ 329, 117, 28, 41 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
-		leftAnim.PushBack({  });
-		leftAnim.PushBack({  });
-		leftAnim.PushBack({  });
+		leftAnim.PushBack({ 451, 227, 38, 41 });  
+		leftAnim.PushBack({ 404, 227, 28, 41 });  
+		leftAnim.PushBack({ 352, 227, 35, 41 });  
+		leftAnim.PushBack({ 299, 227, 38, 41 });  
+		leftAnim.PushBack({ 352, 227, 35, 41 });  
+		leftAnim.PushBack({ 404, 227, 28, 41 });  
 		leftAnim.speed = 0.1f;
 
 		// Dash right
-		rightdashAnim.PushBack({  });
+		rightdashAnim.PushBack({ 105, 227, 55, 34 });
 
 		// Dash left
-		leftdashAnim.PushBack ({  });
+		leftdashAnim.PushBack ({ 103, 273, 55, 34 });
 
 		// Dash up
-		updashAnim.PushBack   ({  });
+		updashAnim.PushBack   ({  54, 269, 34, 55 });
 
 		// Dash down
-		downdashAnim.PushBack ({  });
+		downdashAnim.PushBack ({ 168, 269, 34, 55 });
 
 		break;
 	}
@@ -279,7 +295,7 @@ Update_Status ModuleEnemy::Update()
 		{
 			dashDir = LEFT;
 			animationLocked = true;
-			collider->SetPos(position.x + 34, position.y);
+			collider->SetPos(position.x + 30, position.y);
 
 		}
 
@@ -393,6 +409,6 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 		if (position.x <= 145) position.x = 145;
 	}
 	if (c2->type == Collider::Type::GOAL) {
-		if (position.x >= 266) position.x = 266;
+		if (position.x >= 251) position.x = 266;
 	}
 }

@@ -21,7 +21,7 @@ PantallaDeCarga::PantallaDeCarga(bool startEnabled) : Module(startEnabled)
 
 	pantalla.PushBack({713,361,304,223});
 	pantalla.PushBack({1090,361,304,223});
-	pantalla.speed = 0.8f;
+	pantalla.speed = 0.5f;
 }
 
 PantallaDeCarga::~PantallaDeCarga()
@@ -48,6 +48,8 @@ bool PantallaDeCarga::Start()
 
 Update_Status PantallaDeCarga::Update()
 {
+
+	pantalla.Update();
 	framecounter--;
 	if (framecounter == 0) {
 		App->audio->PlayMusic("");
@@ -71,7 +73,7 @@ Update_Status PantallaDeCarga::PostUpdate()
 	
 
 	// Draw everything --------------------------------------
-	App->render->Blit(bgTexture, 0, 0, &rect7);
+	App->render->Blit(bgTexture, 0, 0, &rect7,1.0f);
 	
 	switch (App->player->nat)
 	{

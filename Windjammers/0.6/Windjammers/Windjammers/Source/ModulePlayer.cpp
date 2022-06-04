@@ -84,62 +84,69 @@ bool ModulePlayer::Start()
 		normalthrowAnim.PushBack({ 192, 3, 43, 46 });
 		normalthrowAnim.PushBack({ 241, 3, 35, 46 });
 		normalthrowAnim.loop = false;
+		normalthrowAnim.speed = 0.1f;
 		break;
 	
 	case ITALY:
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/Italy movements.png"); // Italy sprites
 		
 		// idle animation with disc
-		idlediscAnim.PushBack({ 10, 10, 31, 47 });
-		idlediscAnim.PushBack({ 41, 10, 31, 47 });
+		idlediscAnim.PushBack({  8, 5, 31, 46 });
+		idlediscAnim.PushBack({ 39, 5, 31, 46 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
-		idleAnim.PushBack({ 100, 170, 38, 47 });
-		idleAnim.PushBack({ 139, 170, 38, 47 });
-		idleAnim.PushBack({ 181, 170, 35, 47 });
-		idleAnim.PushBack({ 220, 170, 31, 47 });
+		idleAnim.PushBack({  98, 164, 35, 47 });
+		idleAnim.PushBack({ 137, 164, 38, 47 });
+		idleAnim.PushBack({ 179, 164, 35, 47 });
+		idleAnim.PushBack({ 218, 164, 31, 47 });
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({ 189, 58, 45, 56 });
-		upAnim.PushBack({ 234, 58, 35, 56 });
-		upAnim.PushBack({ 273, 58, 45, 56 });
-		upAnim.PushBack({ 318, 58, 35, 56 });
+		upAnim.PushBack({ 187, 52, 45, 56 });
+		upAnim.PushBack({ 232, 52, 34, 56 });
+		upAnim.PushBack({ 271, 52, 45, 56 });
+		upAnim.PushBack({ 316, 52, 34, 56 });
+		upAnim.PushBack({ 271, 52, 45, 56 });
+		upAnim.PushBack({ 232, 52, 34, 56 });
 		upAnim.speed = 0.1f;
 
 		// Move down
-		downAnim.PushBack({   6, 63, 40, 46 });
-		downAnim.PushBack({  51, 63, 42, 46 });
-		downAnim.PushBack({  98, 63, 42, 46 });
-		downAnim.PushBack({ 145, 63, 40, 46 });
+		downAnim.PushBack({	365,  5, 40, 46 });
+		downAnim.PushBack({ 408,  5, 42, 46 });
+		downAnim.PushBack({ 453,  5, 42, 46 });
+		downAnim.PushBack({   4, 57, 40, 46 });
+		downAnim.PushBack({  49, 57, 42, 46 });
+		downAnim.PushBack({  96, 57, 42, 46 });
+		downAnim.PushBack({ 408,  5, 42, 46 });
 		downAnim.speed = 0.1f;
 
 		// Move right
-		rightAnim.PushBack({  72, 11, 45, 45 });
-		rightAnim.PushBack({ 156, 11, 37, 45 });
-		rightAnim.PushBack({ 193, 11, 32, 45 });
-		rightAnim.PushBack({ 225, 11, 47, 45 });
+		rightAnim.PushBack({ 154, 5, 37, 45 });
+		rightAnim.PushBack({ 191, 5, 32, 45 });
+		rightAnim.PushBack({ 223, 5, 47, 45 });		
+		rightAnim.PushBack({ 270, 5, 47, 45 });
+		rightAnim.PushBack({ 320, 5, 45, 45 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
-		leftAnim.PushBack({ 419, 169, 45, 45 });
-		leftAnim.PushBack({ 343, 169, 37, 45 });
-		leftAnim.PushBack({ 311, 169, 32, 45 });
-		leftAnim.PushBack({ 264, 169, 47, 45 });
+		leftAnim.PushBack({ 417, 163, 45, 45 });
+		leftAnim.PushBack({ 341, 163, 37, 45 });
+		leftAnim.PushBack({ 309, 163, 32, 45 });
+		leftAnim.PushBack({ 262, 163, 47, 45 });
 		leftAnim.speed = 0.1f;
 
 		// Dash right
-		rightdashAnim.PushBack({  });
+		rightdashAnim.PushBack({ 240, 117, 80, 35 });
 
 		// Dash left
-		leftdashAnim.PushBack ({  });
+		leftdashAnim.PushBack ({  55, 238, 79, 37 });
 
 		// Dash up
-		updashAnim.PushBack   ({  });
+		updashAnim.PushBack   ({ 142, 216, 35, 80 });
 
 		// Dash down
-		downdashAnim.PushBack ({  });
+		downdashAnim.PushBack ({  12, 216, 35, 80 });
 
 		break;
 
@@ -147,51 +154,62 @@ bool ModulePlayer::Start()
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/USA movements.png"); // USA spriteS
 		
 		// idle animation with disc
-		idlediscAnim.PushBack({  });
-		idlediscAnim.PushBack({  });
+		idlediscAnim.PushBack({ 367, 61, 33, 42 });
+		idlediscAnim.PushBack({ 419, 61, 34, 42 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
-		idleAnim.PushBack({  });
+		idleAnim.PushBack({  12, 13, 32, 41 });
+		idleAnim.PushBack({  62, 13, 33, 41 });
+		idleAnim.PushBack({ 113, 13, 33, 41 });
+		idleAnim.PushBack({ 164, 13, 32, 41 });
+		idleAnim.PushBack({ 208, 13, 32, 41 });
+		idleAnim.PushBack({ 245, 13, 32, 41 });
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
+		upAnim.PushBack({ 234, 114, 31, 47 });
+		upAnim.PushBack({ 239, 225, 34, 40 });
+		upAnim.PushBack({ 207, 225, 29, 48 });
 		upAnim.speed = 0.1f;
 
 		// Move down
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
-		downAnim.speed = 0.1f;
+		downAnim.PushBack({ 462,  59, 41, 46 });
+		downAnim.PushBack({   5, 116, 39, 43 });
+		downAnim.PushBack({  59, 116, 35, 43 });
+		downAnim.PushBack({ 109, 116, 35, 43 });
+		downAnim.PushBack({ 153, 116, 35, 43 });
+		downAnim.speed = 0.07f;
 
 		// Move right
-		rightAnim.PushBack({  });
-		rightAnim.PushBack({  });
-		rightAnim.PushBack({  });
+		rightAnim.PushBack({ 272, 117, 38, 41 });
+		rightAnim.PushBack({ 329, 117, 28, 41 });
+		rightAnim.PushBack({ 374, 117, 35, 41 });
+		rightAnim.PushBack({ 424, 117, 38, 41 });
+		rightAnim.PushBack({ 374, 117, 35, 41 });
+		rightAnim.PushBack({ 329, 117, 28, 41 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
-		leftAnim.PushBack({  });
-		leftAnim.PushBack({  });
-		leftAnim.PushBack({  });
+		leftAnim.PushBack({ 451, 227, 38, 41 });
+		leftAnim.PushBack({ 404, 227, 28, 41 });
+		leftAnim.PushBack({ 352, 227, 35, 41 });
+		leftAnim.PushBack({ 299, 227, 38, 41 });
+		leftAnim.PushBack({ 352, 227, 35, 41 });
+		leftAnim.PushBack({ 404, 227, 28, 41 });
 		leftAnim.speed = 0.1f;
 
 		// Dash right
-		rightdashAnim.PushBack({  });
+		rightdashAnim.PushBack({ 105, 227, 55, 34 });
 
 		// Dash left
-		leftdashAnim.PushBack ({  });
+		leftdashAnim.PushBack ({ 103, 273, 55, 34 });
 
 		// Dash up
-		updashAnim.PushBack   ({  });
+		updashAnim.PushBack   ({  54, 269, 34, 55 });
 
 		// Dash down
-		downdashAnim.PushBack ({  });
+		downdashAnim.PushBack ({ 168, 269, 34, 55 });
 
 		break;
 	}
@@ -374,12 +392,12 @@ Update_Status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
 				hasDisc = false;
 				App->audio->PlayFx(NthrowFx);
-				canDash = true;
+				
 			}
 		}
 	}
 
-	if (animationLocked && canDash) {
+	if (animationLocked) {
 		switch (dashDir) {
 		case RIGHT:
 			currentAnimation = &rightdashAnim;
@@ -418,7 +436,7 @@ Update_Status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		&& !hasDisc && !animationLocked)
+		&& !hasDisc)
 	{
 		currentAnimation = &idleAnim;
 
