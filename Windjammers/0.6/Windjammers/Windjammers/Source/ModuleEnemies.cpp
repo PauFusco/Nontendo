@@ -279,7 +279,7 @@ Update_Status ModuleEnemy::Update()
 		{
 			dashDir = LEFT;
 			animationLocked = true;
-			collider->SetPos(position.x + 34, position.y);
+			collider->SetPos(position.x + 30, position.y);
 
 		}
 
@@ -393,6 +393,6 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 		if (position.x <= 145) position.x = 145;
 	}
 	if (c2->type == Collider::Type::GOAL) {
-		if (position.x >= 266) position.x = 266;
+		if (position.x >= 251) position.x = 266;
 	}
 }
