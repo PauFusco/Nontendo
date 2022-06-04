@@ -150,7 +150,7 @@ bool ModulePlayer::Start()
 		// idle animation with disc
 		idlediscAnim.PushBack({ 367, 61, 33, 42 });
 		idlediscAnim.PushBack({ 419, 61, 34, 42 });
-		idlediscAnim.speed = 0.1f;
+		idlediscAnim.speed = 0.05f;
 
 		// idle animation
 		idleAnim.PushBack({  12, 13, 32, 41 });
