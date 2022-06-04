@@ -91,33 +91,38 @@ bool ModulePlayer::Start()
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/Italy movements.png"); // Italy sprites
 		
 		// idle animation with disc
-		idlediscAnim.PushBack({ 10, 10, 31, 47 });
-		idlediscAnim.PushBack({ 41, 10, 31, 47 });
+		idlediscAnim.PushBack({  8, 5, 31, 46 });
+		idlediscAnim.PushBack({ 39, 5, 31, 46 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
-		idleAnim.PushBack({ 100, 170, 38, 47 });
-		idleAnim.PushBack({ 139, 170, 38, 47 });
-		idleAnim.PushBack({ 181, 170, 35, 47 });
-		idleAnim.PushBack({ 220, 170, 31, 47 });
+		idleAnim.PushBack({  98, 164, 35, 47 });
+		idleAnim.PushBack({ 137, 164, 38, 47 });
+		idleAnim.PushBack({ 179, 164, 35, 47 });
+		idleAnim.PushBack({ 218, 164, 31, 47 });
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({ 189, 58, 45, 56 });
-		upAnim.PushBack({ 234, 58, 35, 56 });
-		upAnim.PushBack({ 273, 58, 45, 56 });
-		upAnim.PushBack({ 318, 58, 35, 56 });
+		upAnim.PushBack({ 187, 52, 45, 56 });
+		upAnim.PushBack({ 232, 52, 34, 56 });
+		upAnim.PushBack({ 271, 52, 45, 56 });
+		upAnim.PushBack({ 316, 52, 34, 56 });
+		upAnim.PushBack({ 271, 52, 45, 56 });
+		upAnim.PushBack({ 232, 52, 34, 56 });
 		upAnim.speed = 0.1f;
 
 		// Move down
-		downAnim.PushBack({   6, 63, 40, 46 });
-		downAnim.PushBack({  51, 63, 42, 46 });
-		downAnim.PushBack({  98, 63, 42, 46 });
-		downAnim.PushBack({ 145, 63, 40, 46 });
+		downAnim.PushBack({	365,  5, 40, 46 });
+		downAnim.PushBack({ 408,  5, 42, 46 });
+		downAnim.PushBack({ 453,  5, 42, 46 });
+		downAnim.PushBack({   4, 57, 40, 46 });
+		downAnim.PushBack({  49, 57, 42, 46 });
+		downAnim.PushBack({  96, 57, 42, 46 });
+		downAnim.PushBack({ 408,  5, 42, 46 });
 		downAnim.speed = 0.1f;
 
 		// Move right
-		rightAnim.PushBack({  72, 11, 45, 45 });
+		rightAnim.PushBack({ 223, 6, 45, 45 });
 		rightAnim.PushBack({ 156, 11, 37, 45 });
 		rightAnim.PushBack({ 193, 11, 32, 45 });
 		rightAnim.PushBack({ 225, 11, 47, 45 });

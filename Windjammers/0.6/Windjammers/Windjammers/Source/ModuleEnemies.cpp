@@ -166,31 +166,31 @@ bool ModuleEnemy::Start()
 		downAnim.speed = 0.1f;
 
 		// Move right
-		rightAnim.PushBack({ 451, 227, 38, 41 });
-		rightAnim.PushBack({ 404, 227, 28, 41 });
-		rightAnim.PushBack({ 352, 227, 35, 41 });
-		rightAnim.PushBack({ 299, 227, 38, 41 });
-		rightAnim.PushBack({ 352, 227, 35, 41 });
-		rightAnim.PushBack({ 404, 227, 28, 41 });
+		rightAnim.PushBack({ 272, 117, 38, 41 });
+		rightAnim.PushBack({ 329, 117, 28, 41 });
+		rightAnim.PushBack({ 374, 117, 35, 41 });
+		rightAnim.PushBack({ 424, 117, 38, 41 });
+		rightAnim.PushBack({ 374, 117, 35, 41 });
+		rightAnim.PushBack({ 329, 117, 28, 41 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
-		leftAnim.PushBack({ 272, 117, 38, 41 });
-		leftAnim.PushBack({ 329, 117, 28, 41 });
-		leftAnim.PushBack({ 374, 117, 35, 41 });
-		leftAnim.PushBack({ 424, 117, 38, 41 });
-		leftAnim.PushBack({ 374, 117, 35, 41 });
-		leftAnim.PushBack({ 329, 117, 28, 41 });
+		leftAnim.PushBack({ 451, 227, 38, 41 });  
+		leftAnim.PushBack({ 404, 227, 28, 41 });  
+		leftAnim.PushBack({ 352, 227, 35, 41 });  
+		leftAnim.PushBack({ 299, 227, 38, 41 });  
+		leftAnim.PushBack({ 352, 227, 35, 41 });  
+		leftAnim.PushBack({ 404, 227, 28, 41 });  
 		leftAnim.speed = 0.1f;
 
 		// Dash right
-		rightdashAnim.PushBack({ 103, 273, 55, 34 });
+		rightdashAnim.PushBack({ 105, 227, 55, 34 });
 
 		// Dash left
-		leftdashAnim.PushBack ({ 105, 227, 55, 34 });
+		leftdashAnim.PushBack ({ 103, 273, 55, 34 });
 
 		// Dash up
-		updashAnim.PushBack   ({ 54, 269, 34, 55 });
+		updashAnim.PushBack   ({  54, 269, 34, 55 });
 
 		// Dash down
 		downdashAnim.PushBack ({ 168, 269, 34, 55 });
