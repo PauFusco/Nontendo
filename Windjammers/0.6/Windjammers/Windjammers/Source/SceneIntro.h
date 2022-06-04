@@ -23,6 +23,8 @@ public:
 	// Updates the scene's background animations
 	Update_Status Update() override;
 
+	void UpdateShipPosition();
+
 	// Called at the end of the application loop.
 	// Performs the render call of all the parts of the scene's background
 	Update_Status PostUpdate() override;
@@ -40,7 +42,23 @@ public:
 	Animation palmeras;
 	Animation titulo;
 	Animation disco; 
+	Animation subtitulo;
 
+	float shipMovementTimer = 0.0f;
+
+	
+	int shipPosition_x = -5;
+
+	
+	int shipMovement_x = 1;
+
+	int shipPosition_y = -5;
+
+
+	int shipMovement_y = 1;
 };
+
+
+
 
 #endif

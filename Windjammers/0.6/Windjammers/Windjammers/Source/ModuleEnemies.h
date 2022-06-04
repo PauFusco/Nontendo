@@ -61,6 +61,8 @@ public:
 	Animation leftdashAnim;
 	Animation updashAnim;
 	Animation downdashAnim;
+	Animation diagonalupAnim;
+	Animation diagonaldownAnim;
 
 	// Stores the nation
 	Nation nat;
