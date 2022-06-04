@@ -52,12 +52,7 @@ bool ModuleEnemy::Start()
 		upAnim.speed = 0.1f;
 
 		//diagonalup
-		diagonalupAnim.PushBack({ 146, 54, 27, 39 });
-		diagonalupAnim.PushBack({ 179, 54, 27, 39 });
-		diagonalupAnim.PushBack({ 214, 48, 26, 50 });
-		diagonalupAnim.PushBack({ 247, 54, 24, 39 });
-		diagonalupAnim.PushBack({ 276, 54, 26, 39 });
-		diagonalupAnim.speed = 0.1f;
+		
 
 		// Move down
 		downAnim.PushBack({ 45, 57, 27, 33 });
@@ -66,11 +61,7 @@ bool ModuleEnemy::Start()
 		downAnim.speed = 0.1f;
 
 		//diagonaldown
-		diagonaldownAnim.PushBack({ 45, 57, 27, 33 });
-		diagonaldownAnim.PushBack({ 79, 52, 30, 43 });
-		diagonaldownAnim.PushBack({ 114, 56, 27, 35 });
-		diagonaldownAnim.speed = 0.1f;
-
+		
 		// Move right
 		rightAnim.PushBack({ 426,  7, 26, 36 });
 		rightAnim.PushBack({ 457,  7, 34, 35 });
