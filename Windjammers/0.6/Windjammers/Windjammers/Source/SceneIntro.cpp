@@ -11,7 +11,7 @@
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
-	palmeras.({});
+	//palmeras.({});
 
 
    

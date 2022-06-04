@@ -122,24 +122,25 @@ bool ModulePlayer::Start()
 		downAnim.speed = 0.1f;
 
 		// Move right
-		rightAnim.PushBack({ 223, 6, 45, 45 });
-		rightAnim.PushBack({ 156, 11, 37, 45 });
-		rightAnim.PushBack({ 193, 11, 32, 45 });
-		rightAnim.PushBack({ 225, 11, 47, 45 });
+		rightAnim.PushBack({ 154, 5, 37, 45 });
+		rightAnim.PushBack({ 191, 5, 32, 45 });
+		rightAnim.PushBack({ 223, 5, 47, 45 });		
+		rightAnim.PushBack({ 270, 5, 47, 45 });
+		rightAnim.PushBack({ 320, 5, 45, 45 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
-		leftAnim.PushBack({ 419, 169, 45, 45 });
-		leftAnim.PushBack({ 343, 169, 37, 45 });
-		leftAnim.PushBack({ 311, 169, 32, 45 });
-		leftAnim.PushBack({ 264, 169, 47, 45 });
+		leftAnim.PushBack({ 417, 163, 45, 45 });
+		leftAnim.PushBack({ 341, 163, 37, 45 });
+		leftAnim.PushBack({ 309, 163, 32, 45 });
+		leftAnim.PushBack({ 262, 163, 47, 45 });
 		leftAnim.speed = 0.1f;
 
 		// Dash right
-		rightdashAnim.PushBack({ 242, 123, 80, 35 });
+		rightdashAnim.PushBack({ 240, 117, 80, 35 });
 
 		// Dash left
-		leftdashAnim.PushBack ({  55, 238, 79, 38 });
+		leftdashAnim.PushBack ({  55, 238, 79, 37 });
 
 		// Dash up
 		updashAnim.PushBack   ({ 142, 216, 35, 80 });
