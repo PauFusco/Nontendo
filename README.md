@@ -51,6 +51,3 @@ Info: To perform a special throw, hit the disc just before it arrives to you, th
 * Miguel Rojas Esquirol (Art & Design) --> [GitHub Profile](https://github.com/unsanfer89)
 
 ![Miguel Photo](https://github.com/PauFusco/Nontendo/blob/proyect-9/Dependencies/Foto%20Miguel.png "Miguel Rojas Esquirol")
-
-![Miguel Photo](https://github.com/PauFusco/Nontendo/blob/proyect-9/Dependencies/Foto%20Grupo.jpeg "Miguel Rojas Esquirol")
-
