@@ -134,13 +134,13 @@ bool ModulePlayer::Start()
 		rightdashAnim.PushBack({ 242, 123, 80, 35 });
 
 		// Dash left
-		leftdashAnim.PushBack ({ 55, 238, 79, 38 });
+		leftdashAnim.PushBack ({  55, 238, 79, 38 });
 
 		// Dash up
 		updashAnim.PushBack   ({ 142, 216, 35, 80 });
 
 		// Dash down
-		downdashAnim.PushBack ({ 12, 216, 35, 80 });
+		downdashAnim.PushBack ({  12, 216, 35, 80 });
 
 		break;
 
@@ -200,7 +200,7 @@ bool ModulePlayer::Start()
 		leftdashAnim.PushBack ({ 103, 273, 55, 34 });
 
 		// Dash up
-		updashAnim.PushBack   ({  54, 269, 34, 55});
+		updashAnim.PushBack   ({  54, 269, 34, 55 });
 
 		// Dash down
 		downdashAnim.PushBack ({ 168, 269, 34, 55 });
