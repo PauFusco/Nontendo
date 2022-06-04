@@ -61,6 +61,8 @@ bool SceneLevel1::Start()
 	App->enemy->Enable();
 	App->particles->Enable();
 
+
+
 	return ret;
 }
 

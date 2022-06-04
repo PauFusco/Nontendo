@@ -38,6 +38,8 @@ public:
 	// Collision callback, called when the player intersects with another collider
 	void OnCollision(Collider* c1, Collider* c2) override;
 
+	bool CleanUp() override;
+
 public:
 	
 
@@ -113,9 +115,11 @@ public:
 	unsigned int dashingFC = animFC;
 
 	// Font score index
-	uint score = 000;
+	uint score = 0;
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
+	char counter[10] = { "01235689" };
+
 
 	// Points
 	int points = 0;
