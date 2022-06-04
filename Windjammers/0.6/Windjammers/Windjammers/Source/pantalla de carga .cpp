@@ -11,13 +11,13 @@
 
 PantallaDeCarga::PantallaDeCarga(bool startEnabled) : Module(startEnabled)
 {
-	PlayerKorea.PushBack ({1237, 266,  94, 65});
-	PlayerItalia.PushBack({1407, 340,  99, 65});
-	PlayerUsa.PushBack   ({1231, 188, 101, 65});
+	PlayerKorea.PushBack ({743,797,127,81});
+	PlayerItalia.PushBack({720,619,127,81 });
+	PlayerUsa.PushBack   ({743, 708,127,81 });
 	
-	EnemyKorea.PushBack ({1334, 266,  95, 65});
-	EnemyItalia.PushBack({1511, 339, 100, 68});
-	EnemyUsa.PushBack   ({1336, 186, 100, 67});
+	EnemyKorea.PushBack ({877,708,127,81 });
+	EnemyItalia.PushBack({877, 797,127,81 });
+	EnemyUsa.PushBack   ({897, 619,127,81 });
 
 	pantalla.PushBack({713,361,304,223});
 	pantalla.PushBack({1090,361,304,223});
@@ -76,30 +76,30 @@ Update_Status PantallaDeCarga::PostUpdate()
 	switch (App->player->nat)
 	{
 	case KOREA:
-		App->render->Blit(bgTexture, 42, 61, &rect1);
+		App->render->Blit(bgTexture, 21, 52, &rect1);
 		break;
 
 	case ITALY:
-		App->render->Blit(bgTexture, 42, 61, &rect2);
+		App->render->Blit(bgTexture, 21, 52, &rect2);
 		break;
 
 	case USA:
-		App->render->Blit(bgTexture, 42, 61, &rect3);
+		App->render->Blit(bgTexture, 21, 52, &rect3);
 		break;
 	}
 
 	switch (App->enemy->nat)
 	{
 	case KOREA:
-		App->render->Blit(bgTexture, 168, 61, &rect4);
+		App->render->Blit(bgTexture, 155, 52, &rect4);
 		break;
 
 	case ITALY:
-		App->render->Blit(bgTexture, 168, 61, &rect5);
+		App->render->Blit(bgTexture, 155, 52, &rect5);
 		break;
 
 	case USA:
-		App->render->Blit(bgTexture, 168, 61, &rect6);
+		App->render->Blit(bgTexture, 155, 52, &rect6);
 		break;
 
 	}
