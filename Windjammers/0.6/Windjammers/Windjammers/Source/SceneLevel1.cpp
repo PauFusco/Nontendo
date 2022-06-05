@@ -92,20 +92,21 @@ Update_Status SceneLevel1::PostUpdate()
 	sprintf_s(timer, 10, "%d", unidades);
 	App->fonts->BlitText(152, 21, timeFont, timer);
 
-	if (reloj == 0) {
-		if (unidades == 0) {
-			decimas -= 1;
-			unidades = 9;
+	if (!timerStop && !(decimas+unidades == 0)) {
+		if (reloj == 0) {
+			if (unidades == 0) {
+				decimas -= 1;
+				unidades = 9;
+			}
+			else {
+				unidades -= 1;
+			}
+			reloj = 60;
 		}
 		else {
-			unidades -= 1;
+			reloj -= 1;
 		}
-		reloj = 60;
 	}
-	else {
-		reloj -= 1;
-	}
-	
 
 	return Update_Status::UPDATE_CONTINUE;
 }

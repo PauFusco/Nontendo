@@ -9,6 +9,7 @@
 #include "Collider.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "SceneLevel1.h"
 
 #include "SDL/include/SDL_scancode.h"
 #include "ModuleInput.h"
@@ -319,6 +320,7 @@ Update_Status ModuleEnemy::Update()
 		sy = -2;
 		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
+		App->sceneLevel_1->timerStop = false;
 		App->audio->PlayFx(NthrowFx);
 	}
 
@@ -329,6 +331,7 @@ Update_Status ModuleEnemy::Update()
 		sy = 2;
 		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
+		App->sceneLevel_1->timerStop = false;
 		App->audio->PlayFx(NthrowFx);
 	}
 
@@ -339,6 +342,7 @@ Update_Status ModuleEnemy::Update()
 		sy = 0;
 		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
 		hasDisc = false;
+		App->sceneLevel_1->timerStop = false;
 		App->audio->PlayFx(NthrowFx);
 	}
 

@@ -50,6 +50,7 @@ public:
 	int unidades = 0;
 	int decimas = 3;
 	int reloj = 60;
+	bool timerStop = true;
 	int timeFont = -1;
 	char timer[10] = { "\0" };
 };

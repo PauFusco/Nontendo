@@ -9,6 +9,8 @@
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "SceneLevel1.h"
+
 
 #include <stdio.h>
 
@@ -329,6 +331,7 @@ Update_Status ModulePlayer::Update()
 		{
 			nextIsSpecial = true;
 			canDash = false;
+			App->sceneLevel_1->timerStop = false;
 		}
 	}
 
@@ -487,7 +490,7 @@ Update_Status ModulePlayer::PostUpdate()
 	}
 
 	// Enemy Score
-	if (score < 10) {
+	if (score_e < 10) {
 		sprintf_s(counter, 10, "%d", score_e);
 		App->fonts->BlitText(159, 16, scoreFont, "0");
 		App->fonts->BlitText(175, 16, scoreFont, counter);

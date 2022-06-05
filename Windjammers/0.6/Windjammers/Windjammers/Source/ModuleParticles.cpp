@@ -151,6 +151,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				SDL_Delay(20);
 				App->player->hasDisc = true;
 			}
+			App->sceneLevel_1->timerStop = true;
 			CleanUp();
 		}
 
