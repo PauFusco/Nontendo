@@ -98,7 +98,7 @@ public:
 
 	bool nextIsSpecial = false;
 
-	int specialFC = 100;
+	int specialFC = 60;
 
 	// Enum of different dash directions
 	enum dashingDir {

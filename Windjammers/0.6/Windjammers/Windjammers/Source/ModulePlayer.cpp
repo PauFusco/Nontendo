@@ -336,8 +336,9 @@ Update_Status ModulePlayer::Update()
 		animationLocked = true;
 		specialFC--;
 		if (specialFC == 0) {
+			App->particles->CleanUp();
 			int sx = 5;
-			int sy = sx-1;
+			int sy = 0;
 			App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
 			nextIsSpecial = false;
 			animationLocked = false;

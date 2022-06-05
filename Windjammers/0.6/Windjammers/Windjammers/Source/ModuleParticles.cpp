@@ -49,9 +49,7 @@ bool ModuleParticles::Start()
 	discFly.anim.PushBack({ 132, 0,  3, 44 });
 	discFly.anim.PushBack({ 136, 0, 23, 44 });
 	discFly.anim.PushBack({ 160, 0, 33, 44 });
-
 	discFly.anim.PushBack({ 194, 0, 43, 44 });
-
 	discFly.anim.PushBack({ 160, 0, 33, 44 });
 	discFly.anim.PushBack({ 136, 0, 23, 44 });
 	discFly.anim.PushBack({ 132, 0,  3, 44 });
@@ -60,8 +58,9 @@ bool ModuleParticles::Start()
 	discFly.anim.PushBack({ 44, 0, 36, 44 });
 	discFly.anim.PushBack({ 18, 0, 25, 44 });
 	discFly.anim.PushBack({ 0, 0, 17, 44 });
-	disc.anim.speed = 0.05f;
-	disc.anim.loop = false;
+	discFly.anim.speed = 0.3f;
+	discFly.anim.loop = false;
+	discFly.lifetime = 60;
 
 	CSTexture = App->textures->Load("");
 
@@ -165,11 +164,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			}
 			else
 			{
+				App->player->hasDisc = true;
 				int x = p->position.x;
 				int y = p->position.y;
 				App->audio->PlayFx(hit);
 				CleanUp();
 				AddParticle(discFly, x, y, 0, 0, Collider::NONE);
+				
 
 			}
 		}
