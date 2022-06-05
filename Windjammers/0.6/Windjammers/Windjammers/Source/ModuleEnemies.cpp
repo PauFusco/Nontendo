@@ -50,10 +50,7 @@ bool ModuleEnemy::Start()
 		upAnim.PushBack({ 214, 48, 26, 50 });
 		upAnim.PushBack({ 247, 54, 24, 39 });
 		upAnim.PushBack({ 276, 54, 26, 39 });
-		upAnim.speed = 0.1f;
-
-		//diagonalup
-		
+		upAnim.speed = 0.1f;		
 
 		// Move down
 		downAnim.PushBack({ 45, 57, 27, 33 });
@@ -86,6 +83,13 @@ bool ModuleEnemy::Start()
 
 		// Dash down
 		downdashAnim.PushBack({ 340, 135, 33, 68 });
+		
+		specialAnim.PushBack({ 207, 103, 25, 44 });
+		specialAnim.speed = 0.05f;
+
+		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/4 B4 SPECIAL.wav");
+		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/7 NORMAL SPECIAL.wav");
+
 		break;
 
 	case ITALY:
@@ -139,6 +143,13 @@ bool ModuleEnemy::Start()
 
 		// Dash down
 		downdashAnim.PushBack ({  12, 216, 35, 80 });
+
+		specialAnim.PushBack({ 398, 61, 45, 37 });
+		specialAnim.PushBack({ 450, 61, 45, 37 });
+		specialAnim.speed = 0.05f;
+
+		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/4 B4 SPECIAL.wav");
+		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/7 NORMAL SPECIAL.wav");
 
 		break;
 
@@ -200,6 +211,13 @@ bool ModuleEnemy::Start()
 
 		// Dash down
 		downdashAnim.PushBack ({ 168, 269, 34, 55 });
+
+		specialAnim.PushBack({ 198, 170, 48, 50 });
+		specialAnim.PushBack({ 252, 170, 46, 50 });
+		specialAnim.speed = 0.05f;
+
+		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/USA/VOICES/4 B4 SPECIAL.wav");
+		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/USA/VOICES/7 NORMAL SPECIAL.wav");
 
 		break;
 	}
@@ -297,55 +315,91 @@ Update_Status ModuleEnemy::Update()
 			dashDir = LEFT;
 			animationLocked = true;
 			collider->SetPos(position.x + 30, position.y);
+			App->audio->PlayFx(dashFx);
 
 		}
 
-		if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN)
+		if (App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
 		{
-			// currentAnimation = &smackAnim;
-			// animationLocked = true;
+			nextIsSpecial = true;
+			canDash = false;
+			App->sceneLevel_1->timerStop = false;
 		}
 	
 	}
+
+	if (nextIsSpecial && hasDisc) {
+		animationLocked = true;
+		specialFC--;
+		if (currentAnimation != &specialAnim)
+		{
+			specialAnim.Reset();
+			currentAnimation = &specialAnim;
+			App->audio->PlayFx(specialCharge);
+		}
+		if (specialFC == 0) {
+			App->particles->CleanUp();
+			App->audio->PlayFx(specialThrow);
+
+			int sx = -5;
+			int sy = 20;
+			App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
+
+			nextIsSpecial = false;
+			animationLocked = false;
+			hasDisc = false;
+
+			specialFC = 70;
+		}
+	}
+
 	int sx = -3, sy;
 
 	if (hasDisc) {
 		currentAnimation = &idlediscAnim;
 	}
 
-	if (hasDisc
-		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
-		&& App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	if (hasDisc && App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
 	{
-		sy = -2;
-		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
-		hasDisc = false;
-		App->sceneLevel_1->timerStop = false;
-		App->audio->PlayFx(NthrowFx);
-	}
+		if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		{
+			sy = -2;
+			/*currentAnimation = &normalthrowAnim;
 
-	if (hasDisc
-		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN
-		&& App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-	{
-		sy = 2;
-		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
-		hasDisc = false;
-		App->sceneLevel_1->timerStop = false;
-		App->audio->PlayFx(NthrowFx);
-	}
+			animFC--;
+			if (animFC == 0) {
+				animFC = 10;
+				animationLocked = false;
+			}*/
 
-	if (hasDisc
-		&& App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
-	{
-		sx = -5;
-		sy = 0;
-		App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
-		hasDisc = false;
-		App->sceneLevel_1->timerStop = false;
-		App->audio->PlayFx(NthrowFx);
-	}
+			if (!animationLocked)
+			{
+				App->particles->AddParticle(App->particles->disc, position.x + 35, position.y, sx, sy, Collider::Type::DISC);
+				hasDisc = false;
+				App->audio->PlayFx(NthrowFx);
+				canDash = true;
+			}
+		}
 
+		else if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		{
+			sy = 2;
+			App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
+			hasDisc = false;
+			App->audio->PlayFx(NthrowFx);
+		}
+
+		else
+		{
+			sx = -5;
+			sy = 0;
+			App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
+			hasDisc = false;
+			App->audio->PlayFx(NthrowFx);
+			canDash = true;
+		}
+	}
+	
 	if (animationLocked) {
 		switch (dashDir) {
 		case RIGHT:

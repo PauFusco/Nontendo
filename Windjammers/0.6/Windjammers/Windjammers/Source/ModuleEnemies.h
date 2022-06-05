@@ -64,6 +64,8 @@ public:
 	Animation diagonalupAnim;
 	Animation diagonaldownAnim;
 
+	Animation specialAnim;
+
 	// Stores the nation
 	Nation nat;
 
@@ -80,9 +82,14 @@ public:
 	uint NthrowFx = 0;
 	uint explosionFx = 0;
 	uint dashFx = 0;
+	uint specialCharge = 0;
+	uint specialThrow = 0;
 
 	// Disc indent
 	bool hasDisc = false;
+
+	bool nextIsSpecial = false;
+	int specialFC = 70;
 
 	// Enum of different dash directions
 	enum dashingDir {

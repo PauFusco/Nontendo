@@ -141,7 +141,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->audio->PlayFx(wallrbFx);
 			p->speed.y = -p->speed.y;
-			// App->particles->AddParticle(explosion, p->position.x, p->position.y, 0, 0);
 		}
 
 		if (c2->type == Collider::Type::GOAL)
@@ -181,15 +180,25 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				App->audio->PlayFx(hit);
 				CleanUp();
 				AddParticle(discFly, x, y, 0, 0, Collider::NONE);
-				
-
 			}
 		}
 		if (c2->type == Collider::Type::ENEMY)
 		{
-			App->audio->PlayFx(recieve);
-			App->enemy->hasDisc = true;
-			CleanUp();
+			if (!App->enemy->nextIsSpecial)
+			{
+				App->audio->PlayFx(recieve);
+				App->enemy->hasDisc = true;
+				CleanUp();
+			}
+			else
+			{
+				App->enemy->hasDisc = true;
+				int x = p->position.x;
+				int y = p->position.y;
+				App->audio->PlayFx(hit);
+				CleanUp();
+				AddParticle(discFly, x, y, 0, 0, Collider::NONE);
+			}
 		}
 	}
 }

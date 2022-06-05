@@ -157,8 +157,8 @@ bool ModulePlayer::Start()
 		// Dash down
 		downdashAnim.PushBack ({  12, 216, 35, 80 });
 
-		specialAnim.PushBack({ 198, 170, 48, 50 });
-		specialAnim.PushBack({ 252, 170, 46, 50 });
+		specialAnim.PushBack({ 398, 61, 45, 37 });
+		specialAnim.PushBack({ 450, 61, 45, 37 });
 		specialAnim.speed = 0.05f;
 
 		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/4 B4 SPECIAL.wav");
@@ -241,7 +241,6 @@ bool ModulePlayer::Start()
 	NthrowFx = App->audio->LoadFx("Assets/Music/SFX/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
 	dashFx = App->audio->LoadFx("Assets/Music/SFX/9 SLIDE.wav");
-	specialCharge = App->audio->LoadFx("");
 
 	position.x = 20;
 	position.y = 100;
@@ -393,13 +392,13 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
 			sy = -2;
-			currentAnimation = &normalthrowAnim;
+			/*currentAnimation = &normalthrowAnim;
 
 			animFC--;
 			if (animFC == 0) {
 				animFC = 10;
 				animationLocked = false;
-			}
+			}*/
 
 			if (!animationLocked)
 			{
@@ -447,6 +446,7 @@ Update_Status ModulePlayer::Update()
 				App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
 				hasDisc = false;
 				App->audio->PlayFx(NthrowFx);
+				canDash = true;
 				
 			}
 		}
