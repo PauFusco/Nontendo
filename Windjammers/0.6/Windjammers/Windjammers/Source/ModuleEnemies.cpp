@@ -10,8 +10,6 @@
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
 #include "SceneLevel1.h"
-
-#include "SDL/include/SDL_scancode.h"
 #include "ModuleInput.h"
 
 
@@ -374,7 +372,7 @@ Update_Status ModuleEnemy::Update()
 
 	int sx = -3, sy;
 
-	if (hasDisc) {
+	if (hasDisc && !animationLocked) {
 		currentAnimation = &idlediscAnim;
 	}
 
