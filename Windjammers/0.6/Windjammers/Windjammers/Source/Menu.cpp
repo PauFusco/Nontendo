@@ -75,7 +75,7 @@ Update_Status Menu::Update()
 		P2.character--;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN && !P2.Locked)
+	if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN && !P2.Locked)
 	{
 		P2.Locked = true;
 		switch (P2.character) {
@@ -136,8 +136,6 @@ Update_Status Menu::Update()
 	{		
 		App->player->nat = P1.FinalSelection;
 		App->enemy->nat = P2.FinalSelection;
-		P1.character = 0;
-		P2.character = 0;
 
 		App->fade->FadeToBlack(this, (Module*)App->mapmenu, 50);
 	}

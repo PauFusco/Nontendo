@@ -41,27 +41,6 @@ bool ModuleParticles::Start()
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
 
-	discFly.anim.PushBack({   0, 0, 17, 44 });
-	discFly.anim.PushBack({  18, 0, 25, 44 });
-	discFly.anim.PushBack({  44, 0, 36, 44 });
-	discFly.anim.PushBack({  81, 0, 28, 44 });
-	discFly.anim.PushBack({ 110, 0, 21, 44 });
-	discFly.anim.PushBack({ 132, 0,  3, 44 });
-	discFly.anim.PushBack({ 136, 0, 23, 44 });
-	discFly.anim.PushBack({ 160, 0, 33, 44 });
-	
-	discFly.anim.PushBack({ 194, 0, 43, 44 });
-
-	discFly.anim.PushBack({ 160, 0, 33, 44 });
-	discFly.anim.PushBack({ 136, 0, 23, 44 });
-	discFly.anim.PushBack({ 132, 0,  3, 44 });
-	discFly.anim.PushBack({ 110, 0, 21, 44 });
-	discFly.anim.PushBack({  81, 0, 28, 44 });
-	discFly.anim.PushBack({  44, 0, 36, 44 });
-	discFly.anim.PushBack({  18, 0, 25, 44 });
-	discFly.anim.PushBack({   0, 0, 17, 44 });
-	disc.anim.speed = 0.1f;
-
 	CSTexture = App->textures->Load("");
 
 	// Menu
@@ -75,7 +54,6 @@ bool ModuleParticles::Start()
 	wallrbFx = App->audio->LoadFx("Assets/Music/SFX/8 REBOUND.wav");
 	goalFx = App->audio->LoadFx("Assets/Music/SFX/10 POINT.wav");
 	recieve = App->audio->LoadFx("Assets/Music/SFX/HIT 1.wav");
-	hit = App->audio->LoadFx("Assets/Music/SFX/HIT 3.wav");
 	return true;
 }
 
@@ -156,21 +134,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 		if (c2->type == Collider::Type::PLAYER)
 		{
-			if (!App->player->nextIsSpecial)
-			{
-				App->audio->PlayFx(recieve);
-				App->player->hasDisc = true;
-				CleanUp();
-			}
-			else
-			{
-				int x = p->position.x;
-				int y = p->position.y;
-				App->audio->PlayFx(hit);
-				CleanUp();
-				AddParticle(discFly, x, y, 0, 0, Collider::NONE);
-				
-			}
+			App->audio->PlayFx(recieve);
+			App->player->hasDisc = true;
+			CleanUp();
 		}
 		if (c2->type == Collider::Type::ENEMY)
 		{
@@ -195,7 +161,6 @@ Update_Status ModuleParticles::Update()
 			particles[i]->SetToDelete();
 		}
 	}
-	if (App->player->nextIsSpecial)
 
 	return Update_Status::UPDATE_CONTINUE;
 }
