@@ -230,7 +230,7 @@ bool ModulePlayer::Start()
 	//&scoreFont = App->fonts->Load("Assets/Fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 
 	// TODO 4: Try loading "rtype_font3.png" that has two rows to test if all calculations are correct
-	char lookupTable[] = { "012356789" };
+	char lookupTable[] = { "01235689" };
 	scoreFont = App->fonts->Load("Assets/Fonts/counter  wj.png", lookupTable, 2);
 
 	return ret;
@@ -464,12 +464,10 @@ Update_Status ModulePlayer::PostUpdate()
 	sprintf_s(counter, 10, "%d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(111, 13, scoreFont, counter);
-	App->fonts->BlitText(127, 13, scoreFont, counter);
+	App->fonts->BlitText(111, 16, scoreFont, counter);
 
 	sprintf_s(counter, 10, "%d", score_e);
-	App->fonts->BlitText(159, 13, scoreFont, counter);
-	App->fonts->BlitText(175, 13, scoreFont, counter);
+	App->fonts->BlitText(159, 16, scoreFont, counter);
 
 	// App->fonts->BlitText(120, 100, scoreFont, "this is just a font test");
 
