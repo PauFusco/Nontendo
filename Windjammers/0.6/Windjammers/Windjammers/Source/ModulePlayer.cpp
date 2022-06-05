@@ -327,8 +327,7 @@ Update_Status ModulePlayer::Update()
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
-			// currentAnimation = &smackAnim;
-			// animationLocked = true;
+			bool nextIsSpecial = true;
 		}
 	}
 
@@ -464,10 +463,12 @@ Update_Status ModulePlayer::PostUpdate()
 	sprintf_s(counter, 10, "%d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
+
 	App->fonts->BlitText(111, 16, scoreFont, counter);
 
 	sprintf_s(counter, 10, "%d", score_e);
 	App->fonts->BlitText(159, 16, scoreFont, counter);
+
 
 	// App->fonts->BlitText(120, 100, scoreFont, "this is just a font test");
 

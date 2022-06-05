@@ -112,6 +112,8 @@ public:
 
 	bool canDash = true;
 
+	bool nextIsSpecial = false;
+
 	unsigned int dashingFC = animFC;
 
 	// Font score index
@@ -120,7 +122,6 @@ public:
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
 	char counter[10] = { "\0" };
-
 
 	// Points
 	int points = 0;
