@@ -96,6 +96,10 @@ public:
 	// Disc indent
 	bool hasDisc = true;
 
+	bool nextIsSpecial = false;
+
+	int specialFC = 100;
+
 	// Enum of different dash directions
 	enum dashingDir {
 		RIGHT,

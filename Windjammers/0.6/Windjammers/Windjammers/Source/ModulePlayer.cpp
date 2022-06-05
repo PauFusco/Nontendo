@@ -327,8 +327,21 @@ Update_Status ModulePlayer::Update()
 
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
-			// currentAnimation = &smackAnim;
-			// animationLocked = true;
+			nextIsSpecial = true;
+			canDash = false;
+		}
+	}
+
+	if (nextIsSpecial && hasDisc) {
+		animationLocked = true;
+		specialFC--;
+		if (specialFC == 0) {
+			int sx = 5;
+			int sy = sx-1;
+			App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
+			nextIsSpecial = false;
+			animationLocked = false;
+			hasDisc = false;
 		}
 	}
 
@@ -402,7 +415,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (animationLocked) {
+	if (animationLocked && canDash) {
 		switch (dashDir) {
 		case RIGHT:
 			currentAnimation = &rightdashAnim;

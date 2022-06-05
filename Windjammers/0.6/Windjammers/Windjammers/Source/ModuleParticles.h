@@ -58,6 +58,7 @@ public:
 
 	//Template particle for a laser
 	Particle disc;
+	Particle discFly;
 
 	// P1 and P2 for the menu
 	Particle P1ind;
@@ -67,6 +68,7 @@ public:
 	uint wallrbFx = 0;
 	uint goalFx = 0;
 	uint recieve = 0;
+	uint hit = 0;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
