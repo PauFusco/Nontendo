@@ -49,6 +49,7 @@ public:
 	// Font score index
 	int unidades = 0;
 	int decimas = 3;
+	int reloj = 60;
 	int timeFont = -1;
 	char timer[10] = { "\0" };
 };
