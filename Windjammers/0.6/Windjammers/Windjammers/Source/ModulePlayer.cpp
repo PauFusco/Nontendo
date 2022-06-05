@@ -461,14 +461,15 @@ Update_Status ModulePlayer::PostUpdate()
 	}
 
 	// Draw UI (score) --------------------------------------
-	sprintf_s(scoreText, 10, "%d", score);
+	sprintf_s(counter, 10, "%d", score);
 
 	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(111, 13, scoreFont, scoreText);
-	App->fonts->BlitText(127, 13, scoreFont, scoreText);
+	App->fonts->BlitText(111, 13, scoreFont, counter);
+	App->fonts->BlitText(127, 13, scoreFont, counter);
 
-	App->fonts->BlitText(159, 13, scoreFont, scoreText);
-	App->fonts->BlitText(175, 13, scoreFont, scoreText);
+	sprintf_s(counter, 10, "%d", score_e);
+	App->fonts->BlitText(159, 13, scoreFont, counter);
+	App->fonts->BlitText(175, 13, scoreFont, counter);
 
 	// App->fonts->BlitText(120, 100, scoreFont, "this is just a font test");
 

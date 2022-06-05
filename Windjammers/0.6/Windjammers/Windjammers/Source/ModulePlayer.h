@@ -115,10 +115,11 @@ public:
 	unsigned int dashingFC = animFC;
 
 	// Font score index
-	uint score = 0;
+	int score = 0;
+	int score_e = 0;
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
-	char counter[10] = { "01235689" };
+	char counter[10] = { "\0" };
 
 
 	// Points
