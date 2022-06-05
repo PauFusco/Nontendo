@@ -10,8 +10,6 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
 #include "SceneLevel1.h"
-
-
 #include <stdio.h>
 
 ModulePlayer::ModulePlayer(bool startEnabled) : Module(startEnabled)
