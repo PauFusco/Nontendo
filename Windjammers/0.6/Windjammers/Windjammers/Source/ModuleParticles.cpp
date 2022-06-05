@@ -127,7 +127,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			else {
 				App->player->score_e += 3;
 				SDL_Delay(20);
-
 				App->player->hasDisc = true;
 			}
 			CleanUp();
