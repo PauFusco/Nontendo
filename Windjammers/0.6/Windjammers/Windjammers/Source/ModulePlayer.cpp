@@ -473,14 +473,28 @@ Update_Status ModulePlayer::PostUpdate()
 		App->render->Blit(texture, position.x, position.y, &rect);
 	}
 
-	// Draw UI (score) --------------------------------------
-	sprintf_s(counter, 10, "%d", score);
+	// Player Score
+	if (score < 10) {
+		sprintf_s(counter, 10, "%d", score);
+		App->fonts->BlitText(111, 16, scoreFont, "0");
+		App->fonts->BlitText(127, 16, scoreFont, counter);
+	}
+	else {
+		sprintf_s(counter, 10, "%d", score);
+		App->fonts->BlitText(111, 16, scoreFont, counter);
+	}
 
-	// TODO 3: Blit the text of the score in at the bottom of the screen
-	App->fonts->BlitText(111, 16, scoreFont, counter);
-
-	sprintf_s(counter, 10, "%d", score_e);
-	App->fonts->BlitText(159, 16, scoreFont, counter);
+	// Enemy Score
+	if (score < 10) {
+		sprintf_s(counter, 10, "%d", score_e);
+		App->fonts->BlitText(159, 16, scoreFont, "0");
+		App->fonts->BlitText(175, 16, scoreFont, counter);
+	}
+	else {
+		sprintf_s(counter, 10, "%d", score_e);
+		App->fonts->BlitText(159, 16, scoreFont, counter);
+	}
+	
 
 	// App->fonts->BlitText(120, 100, scoreFont, "this is just a font test");
 
