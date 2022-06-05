@@ -10,6 +10,10 @@
 #include "ModuleParticles.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleFonts.h"
+
+#include <stdio.h>
+
 
 SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 {
@@ -61,7 +65,9 @@ bool SceneLevel1::Start()
 	App->enemy->Enable();
 	App->particles->Enable();
 
-
+	// Timer
+	char lookupTable[] = { "0123456789" };
+	timeFont = App->fonts->Load("Assets/Fonts/timer  wj.png", lookupTable, 1);
 
 	return ret;
 }
@@ -80,6 +86,13 @@ Update_Status SceneLevel1::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	App->render->Blit(bgTexture, 0, 0, NULL);
+
+	// Draw UI (score) --------------------------------------
+	sprintf_s(timer, 10, "%d", time);
+
+	// TODO 3: Blit the text of the score in at the bottom of the screen
+	App->fonts->BlitText(144, 21, timeFont, timer);
+	App->fonts->BlitText(152, 21, timeFont, timer);
 
 	return Update_Status::UPDATE_CONTINUE;
 }
