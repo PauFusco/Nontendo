@@ -170,17 +170,16 @@ bool ModuleEnemy::Start()
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/USA movements.png"); // USA spriteS
 
 		// idle animation with disc
-		idlediscAnim.PushBack({14,396,41,47  });
-		idlediscAnim.PushBack({  });
+		idlediscAnim.PushBack({14,396,41,47 });
+		idlediscAnim.PushBack({ 116,396,41,47 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
 		idleAnim.PushBack({ 14,396,41,47 });
 		idleAnim.PushBack({71,396,41,47  });
-		idleAnim.PushBack({116,396,41,47  });
+		idleAnim.PushBack({116,396,41,47 });
 		idleAnim.PushBack({164,396,41,47  });
-		idleAnim.PushBack({  });
-		idleAnim.PushBack({  });
+		
 		idleAnim.speed = 0.1f;
 
 		// Move up
