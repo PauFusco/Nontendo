@@ -338,11 +338,12 @@ Update_Status ModulePlayer::Update()
 		if (specialFC == 0) {
 			App->particles->CleanUp();
 			int sx = 5;
-			int sy = 0;
+			int sy = sx*sx;
 			App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
 			nextIsSpecial = false;
 			animationLocked = false;
 			hasDisc = false;
+			specialFC = 60;
 		}
 	}
 
@@ -359,11 +360,11 @@ Update_Status ModulePlayer::Update()
 			sy = -2;
 			currentAnimation = &normalthrowAnim;
 
-			/*animFC--;
+			animFC--;
 			if (animFC == 0) {
 				animFC = 10;
 				animationLocked = false;
-			}*/
+			}
 
 			if (!animationLocked)
 			{
@@ -379,11 +380,11 @@ Update_Status ModulePlayer::Update()
 			sy = 2;
 			currentAnimation = &normalthrowAnim;
 
-			/*animFC--;
+			animFC--;
 			if (animFC == 0) {
 				animFC = 10;
 				animationLocked = false;
-			}*/
+			}
 
 			if (!animationLocked)
 			{
@@ -400,11 +401,11 @@ Update_Status ModulePlayer::Update()
 			sy = 0;
 			currentAnimation = &normalthrowAnim;
 
-			/*animFC--;
+			animFC--;
 			if (animFC == 0) {
 				animFC = 10;
 				animationLocked = false;
-			}*/
+			}
 
 			if (!animationLocked)
 			{
