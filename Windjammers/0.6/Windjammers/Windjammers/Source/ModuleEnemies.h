@@ -50,20 +50,26 @@ public:
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
 
-	// A set of animations
+	// Idle animations
 	Animation idlediscAnim;
 	Animation idleAnim;
+
+	// Movement animations
 	Animation upAnim;
 	Animation downAnim;
 	Animation rightAnim;
 	Animation leftAnim;
+
+	// Dash animations
 	Animation rightdashAnim;
 	Animation leftdashAnim;
 	Animation updashAnim;
 	Animation downdashAnim;
-	Animation diagonalupAnim;
-	Animation diagonaldownAnim;
 
+	// Action animations
+	Animation normalthrowAnim;
+
+	// Smack animation
 	Animation specialAnim;
 
 	// Stores the nation
@@ -74,9 +80,6 @@ public:
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
-
-	// A countdown to when the player gets destroyed. After a while, the game exits
-	uint destroyedCountdown = 120;
 
 	// SFX
 	uint NthrowFx = 0;
@@ -98,6 +101,7 @@ public:
 		UP,
 		DOWN
 	};
+
 	dashingDir dashDir;
 
 	bool animationLocked = false;

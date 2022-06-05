@@ -99,7 +99,6 @@ public:
 	bool hasDisc = true;
 
 	bool nextIsSpecial = false;
-
 	int specialFC = 70;
 
 	// Enum of different dash directions
@@ -116,7 +115,7 @@ public:
 
 	int animFC = 10;
 
-	bool canDash = true;
+	bool canDash = false;
 
 	unsigned int dashingFC = animFC;
 

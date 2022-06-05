@@ -140,8 +140,8 @@ Update_Status NeoGeo::Update()
 
 	if (App->input->keys[SDL_SCANCODE_Y] == KEY_STATE::KEY_DOWN)
 	{
-		App->player->nat = ITALY;
-		App->enemy->nat = KOREA;
+		App->player->nat = USA;
+		App->enemy->nat = ITALY;
 		App->sceneLevel_1->scene = BEACH;
 		App->fade->FadeToBlack(this, (Module*)App->sceneLevel_1, 40);
 	}

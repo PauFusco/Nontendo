@@ -81,15 +81,13 @@ bool ModulePlayer::Start()
 		// Dash down
 		downdashAnim.PushBack({ 340, 135, 33, 68 });
 
-		normalthrowAnim.PushBack({ 110, 3, 34, 46 });
-		normalthrowAnim.PushBack({ 144, 3, 42, 46 });
-		normalthrowAnim.PushBack({ 192, 3, 43, 46 });
-		normalthrowAnim.PushBack({ 241, 3, 35, 46 });
-		normalthrowAnim.loop = false;
-		normalthrowAnim.speed = 0.1f;
-
-		specialAnim.PushBack({ 207, 103, 25, 44 });
-		specialAnim.speed = 0.05f;
+		specialAnim.PushBack({ 105, 200, 43, 54 });
+		specialAnim.PushBack({ 161, 200, 45, 54 });
+		specialAnim.PushBack({ 215, 200, 53, 54 });
+		specialAnim.PushBack({ 271, 200, 45, 54 });
+		specialAnim.PushBack({ 322, 200, 51, 54 });
+		specialAnim.PushBack({ 387, 200, 41, 54 });
+		specialAnim.speed = 0.2f;
 
 		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/4 B4 SPECIAL.wav");
 		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/7 NORMAL SPECIAL.wav");
@@ -157,9 +155,13 @@ bool ModulePlayer::Start()
 		// Dash down
 		downdashAnim.PushBack ({  12, 216, 35, 80 });
 
-		specialAnim.PushBack({ 398, 61, 45, 37 });
-		specialAnim.PushBack({ 450, 61, 45, 37 });
-		specialAnim.speed = 0.05f;
+		specialAnim.PushBack({ 281, 208, 46, 43 });
+		specialAnim.PushBack({ 334, 208, 44, 43 });
+		specialAnim.PushBack({ 388, 208, 45, 46 });
+		specialAnim.PushBack({ 440, 208, 45, 43 });
+		specialAnim.PushBack({ 282, 251, 45, 48 });
+		specialAnim.PushBack({ 334, 251, 45, 44 });
+		specialAnim.speed = 0.2f;
 
 		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/4 B4 SPECIAL.wav");
 		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/7 NORMAL SPECIAL.wav");
@@ -195,7 +197,7 @@ bool ModulePlayer::Start()
 		downAnim.PushBack({  59, 116, 35, 43 });
 		downAnim.PushBack({ 109, 116, 35, 43 });
 		downAnim.PushBack({ 153, 116, 35, 43 });
-		downAnim.speed = 0.07f;
+		downAnim.speed = 0.1f;
 
 		// Move right
 		rightAnim.PushBack({ 272, 117, 38, 41 });
@@ -227,9 +229,13 @@ bool ModulePlayer::Start()
 		// Dash down
 		downdashAnim.PushBack ({ 168, 269, 34, 55 });
 
-		specialAnim.PushBack  ({ 198, 170, 48, 50 });
-		specialAnim.PushBack  ({ 252, 170, 46, 50 });
-		specialAnim.speed = 0.05f;
+		specialAnim.PushBack  ({ 151, 339, 48, 52 });
+		specialAnim.PushBack  ({ 214, 339, 46, 52 });
+		specialAnim.PushBack  ({ 274, 339, 48, 52 });
+		specialAnim.PushBack  ({ 335, 339, 46, 52 });
+		specialAnim.PushBack  ({ 393, 339, 48, 52 });
+		specialAnim.PushBack  ({ 451, 339, 46, 52 });
+		specialAnim.speed = 0.2f;
 
 		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/USA/VOICES/4 B4 SPECIAL.wav");
 		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/USA/VOICES/7 NORMAL SPECIAL.wav");
@@ -352,7 +358,6 @@ Update_Status ModulePlayer::Update()
 		{
 			nextIsSpecial = true;
 			canDash = false;
-			App->sceneLevel_1->timerStop = false;
 		}
 	}
 
