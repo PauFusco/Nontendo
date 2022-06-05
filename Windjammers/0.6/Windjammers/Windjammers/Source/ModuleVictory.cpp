@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
+#include "SceneLevel1.h"
 
 ModuleVictory::ModuleVictory(bool startEnabled) : Module(startEnabled)
 {
@@ -35,7 +36,7 @@ bool ModuleVictory::Start()
 
 Update_Status ModuleVictory::Update()
 {
-	if (App->player->points == 6 || App->enemy->points == 6) {
+	if (App->player->score == 12 || App->player->score_e == 12 || (App->sceneLevel_1->decimas)*10 + (App->sceneLevel_1->unidades) == 0) {
 		win = true;
 	}
 	return Update_Status::UPDATE_CONTINUE;

@@ -45,6 +45,12 @@ public:
 	SDL_Texture* starsTexture = nullptr;
 
 	Scenario scene;
+
+	// Font score index
+	int unidades = 0;
+	int decimas = 3;
+	int timeFont = -1;
+	char timer[10] = { "\0" };
 };
 
 #endif

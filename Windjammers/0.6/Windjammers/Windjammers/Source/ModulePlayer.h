@@ -118,12 +118,7 @@ public:
 	int score = 0;
 	int score_e = 0;
 	int scoreFont = -1;
-	char scoreText[10] = { "\0" };
 	char counter[10] = { "\0" };
-
-
-	// Points
-	int points = 0;
 
 };
 
