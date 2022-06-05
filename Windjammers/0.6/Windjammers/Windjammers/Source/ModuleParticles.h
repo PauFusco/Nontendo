@@ -60,6 +60,8 @@ public:
 	Particle disc;
 	Particle discFly;
 
+	Particle fire;
+
 	// P1 and P2 for the menu
 	Particle P1ind;
 	Particle P2ind;

@@ -58,11 +58,18 @@ bool ModuleParticles::Start()
 	discFly.anim.PushBack({ 44, 0, 36, 44 });
 	discFly.anim.PushBack({ 18, 0, 25, 44 });
 	discFly.anim.PushBack({ 0, 0, 17, 44 });
-	discFly.anim.speed = 0.3f;
+	discFly.anim.speed = 0.2f;
 	discFly.anim.loop = false;
-	discFly.lifetime = 60;
+	discFly.lifetime = 70;
 
-	CSTexture = App->textures->Load("");
+	fire.anim.PushBack({});
+	fire.anim.PushBack({});
+	fire.anim.PushBack({});
+	fire.anim.PushBack({});
+	fire.anim.PushBack({});
+	fire.anim.loop = false;
+	fire.lifetime = 10;
+	discFly.anim.speed = 0.4f;
 
 	// Menu
 	P1ind.anim.PushBack({});
@@ -76,6 +83,7 @@ bool ModuleParticles::Start()
 	goalFx = App->audio->LoadFx("Assets/Music/SFX/10 POINT.wav");
 	recieve = App->audio->LoadFx("Assets/Music/SFX/HIT 1.wav");
 	hit = App->audio->LoadFx("Assets/Music/SFX/HIT 3.wav");
+	
 	return true;
 }
 
@@ -91,6 +99,8 @@ Update_Status ModuleParticles::PreUpdate()
 	case TILED:
 		DiscTexture = App->textures->Load("Assets/Sprites/SCENES/DiscTiled.png");
 	}
+
+	
 
 	// Remove all particles scheduled for deletion
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

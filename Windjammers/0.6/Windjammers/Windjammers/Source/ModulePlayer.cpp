@@ -87,6 +87,13 @@ bool ModulePlayer::Start()
 		normalthrowAnim.PushBack({ 241, 3, 35, 46 });
 		normalthrowAnim.loop = false;
 		normalthrowAnim.speed = 0.1f;
+
+		specialAnim.PushBack({ 207, 103, 25, 44 });
+		specialAnim.speed = 0.05f;
+
+		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/4 B4 SPECIAL.wav");
+		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/KOREA/VOICES/7 NORMAL SPECIAL.wav");
+
 		break;
 	
 	case ITALY:
@@ -149,6 +156,13 @@ bool ModulePlayer::Start()
 
 		// Dash down
 		downdashAnim.PushBack ({  12, 216, 35, 80 });
+
+		specialAnim.PushBack({ 198, 170, 48, 50 });
+		specialAnim.PushBack({ 252, 170, 46, 50 });
+		specialAnim.speed = 0.05f;
+
+		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/4 B4 SPECIAL.wav");
+		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/ITALY/VOICES/7 NORMAL SPECIAL.wav");
 
 		break;
 
@@ -213,6 +227,13 @@ bool ModulePlayer::Start()
 		// Dash down
 		downdashAnim.PushBack ({ 168, 269, 34, 55 });
 
+		specialAnim.PushBack  ({ 198, 170, 48, 50 });
+		specialAnim.PushBack  ({ 252, 170, 46, 50 });
+		specialAnim.speed = 0.05f;
+
+		specialCharge = App->audio->LoadFx("Assets/Music/CHARACTER SFX/USA/VOICES/4 B4 SPECIAL.wav");
+		specialThrow = App->audio->LoadFx("Assets/Music/CHARACTER SFX/USA/VOICES/7 NORMAL SPECIAL.wav");
+		
 		break;
 	}
 	currentAnimation = &idlediscAnim;
@@ -220,6 +241,7 @@ bool ModulePlayer::Start()
 	NthrowFx = App->audio->LoadFx("Assets/Music/SFX/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
 	dashFx = App->audio->LoadFx("Assets/Music/SFX/9 SLIDE.wav");
+	specialCharge = App->audio->LoadFx("");
 
 	position.x = 20;
 	position.y = 100;
@@ -338,21 +360,31 @@ Update_Status ModulePlayer::Update()
 	if (nextIsSpecial && hasDisc) {
 		animationLocked = true;
 		specialFC--;
+		if (currentAnimation != &specialAnim)
+		{
+			specialAnim.Reset();
+			currentAnimation = &specialAnim;
+			App->audio->PlayFx(specialCharge);
+		}
 		if (specialFC == 0) {
 			App->particles->CleanUp();
+			App->audio->PlayFx(specialThrow);
+
 			int sx = 5;
-			int sy = sx*sx;
+			int sy = 20;
 			App->particles->AddParticle(App->particles->disc, position.x + 30, position.y, sx, sy, Collider::Type::DISC);
+			
 			nextIsSpecial = false;
 			animationLocked = false;
 			hasDisc = false;
-			specialFC = 60;
+			
+			specialFC = 70;
 		}
 	}
 
 	int sx = 3, sy;
 
-	if (hasDisc) {
+	if (hasDisc && !animationLocked) {
 		currentAnimation = &idlediscAnim;
 	}
 
@@ -459,7 +491,7 @@ Update_Status ModulePlayer::Update()
 		&& App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
 		&& App->input->keys[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		&& !hasDisc)
+		&& !hasDisc && !animationLocked)
 	{
 		currentAnimation = &idleAnim;
 
