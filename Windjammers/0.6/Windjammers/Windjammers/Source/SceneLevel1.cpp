@@ -22,7 +22,7 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 
 SceneLevel1::~SceneLevel1()
 {
-	App->victory->win_lose = false;
+	
 }
 
 // Load assets
@@ -106,16 +106,26 @@ Update_Status SceneLevel1::Update()
 	{
 		App->particles->AddParticle(App->particles->win, 37, 58, 0, 0, Collider::NONE);
 		App->particles->AddParticle(App->particles->lose, 182, 58, 0, 0, Collider::NONE);
-		App->fade->FadeToBlack(this, (Module*)App->menu, 300);
-		App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
+		App->fade->FadeToBlack(this, (Module*)App->mapmenu, 100);
+		timeWinLose--;
+		if (timeWinLose == 0) {
+			App->sceneLevel_1->CleanUp();
+			App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
+		}
 	}
 	else if (App->victory->win_enemy)
 	{
 		App->particles->AddParticle(App->particles->win, 182, 58, 0, 0, Collider::NONE);
 		App->particles->AddParticle(App->particles->lose, 37, 58, 0, 0, Collider::NONE);
-		App->fade->FadeToBlack(this, (Module*)App->menu, 300);
-		App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
+		App->fade->FadeToBlack(this, (Module*)App->mapmenu, 100);
+		timeWinLose--;
+		if (timeWinLose == 0) {
+			App->sceneLevel_1->CleanUp();
+			App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
+		}
 	}
+
+	
 
 	if (!timerStop && !(decimas + unidades == 0)) {
 		if (reloj == 0) {
@@ -165,10 +175,9 @@ bool SceneLevel1::CleanUp()
 	decimas = 3;
 	reloj = 60;
 	timerStop = true;
-	App->victory->win_lose = false;
 	App->enemy->Disable();
-	App->particles->CleanUp();
 	App->collisions->CleanUp();
+	App->particles->CleanUp();
 
 	return true;
 }

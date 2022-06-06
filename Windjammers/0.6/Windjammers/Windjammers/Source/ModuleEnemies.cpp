@@ -244,7 +244,7 @@ bool ModuleEnemy::Start()
 	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
 	dashFx = App->audio->LoadFx("Assets/Music/SFX/9 SLIDE.wav");
 
-	position.x = 240;
+	position.x = 225;
 	position.y = 100;
 
 	// TODO 3: Add a collider to the player

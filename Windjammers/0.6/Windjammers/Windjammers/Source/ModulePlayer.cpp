@@ -248,7 +248,7 @@ bool ModulePlayer::Start()
 	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
 	dashFx = App->audio->LoadFx("Assets/Music/SFX/9 SLIDE.wav");
 
-	position.x = 35;
+	position.x = 40;
 	position.y = 100;
 
 	// TODO 3: Add a collider to the player
