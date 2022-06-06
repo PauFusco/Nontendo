@@ -28,6 +28,8 @@ SceneLevel1::~SceneLevel1()
 // Load assets
 bool SceneLevel1::Start()
 {
+	App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
+
 	LOG("Loading background assets");
 
 	bool ret = true;
@@ -174,6 +176,7 @@ bool SceneLevel1::CleanUp()
 	unidades = 0;
 	decimas = 3;
 	reloj = 60;
+	timeWinLose = 180;
 	timerStop = true;
 	App->enemy->Disable();
 	App->collisions->CleanUp();
