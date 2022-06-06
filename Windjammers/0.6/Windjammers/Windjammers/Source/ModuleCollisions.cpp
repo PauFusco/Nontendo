@@ -13,41 +13,55 @@ ModuleCollisions::ModuleCollisions(bool startEnabled) : Module(startEnabled)
 
 	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
 	matrix[Collider::Type::WALL][Collider::Type::RED] = false;
-	matrix[Collider::Type::WALL][Collider::Type::GOAL] = false;
+	matrix[Collider::Type::WALL][Collider::Type::GOAL3] = false;
+	matrix[Collider::Type::WALL][Collider::Type::GOAL5] = false;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::WALL][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::WALL][Collider::Type::DISC] = true;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::RED] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::GOAL] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::GOAL3] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::GOAL5] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::DISC] = true;
 
 	matrix[Collider::Type::DISC][Collider::Type::DISC] = false;
 	matrix[Collider::Type::DISC][Collider::Type::RED] = false;
-	matrix[Collider::Type::DISC][Collider::Type::GOAL] = true;
+	matrix[Collider::Type::DISC][Collider::Type::GOAL3] = true;
+	matrix[Collider::Type::DISC][Collider::Type::GOAL5] = true;
 	matrix[Collider::Type::DISC][Collider::Type::WALL] = true;
 	matrix[Collider::Type::DISC][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::DISC][Collider::Type::ENEMY] = true;
 
 	matrix[Collider::Type::RED][Collider::Type::RED] = false;
-	matrix[Collider::Type::RED][Collider::Type::GOAL] = false;
+	matrix[Collider::Type::RED][Collider::Type::GOAL3] = false;
+	matrix[Collider::Type::RED][Collider::Type::GOAL5] = false;
 	matrix[Collider::Type::RED][Collider::Type::WALL] = false;
 	matrix[Collider::Type::RED][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::RED][Collider::Type::ENEMY] = true;
 	matrix[Collider::Type::RED][Collider::Type::DISC] = false;
 
-	matrix[Collider::Type::GOAL][Collider::Type::GOAL] = false;
-	matrix[Collider::Type::GOAL][Collider::Type::RED] = false;
-	matrix[Collider::Type::GOAL][Collider::Type::WALL] = false;
-	matrix[Collider::Type::GOAL][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::GOAL][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::GOAL][Collider::Type::DISC] = true;
+	matrix[Collider::Type::GOAL3][Collider::Type::GOAL3] = false;
+	matrix[Collider::Type::GOAL3][Collider::Type::GOAL5] = false;
+	matrix[Collider::Type::GOAL3][Collider::Type::RED] = false;
+	matrix[Collider::Type::GOAL3][Collider::Type::WALL] = false;
+	matrix[Collider::Type::GOAL3][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::GOAL3][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::GOAL3][Collider::Type::DISC] = true;
+	
+	matrix[Collider::Type::GOAL5][Collider::Type::GOAL5] = false;
+	matrix[Collider::Type::GOAL5][Collider::Type::GOAL3] = false;
+	matrix[Collider::Type::GOAL5][Collider::Type::RED] = false;
+	matrix[Collider::Type::GOAL5][Collider::Type::WALL] = false;
+	matrix[Collider::Type::GOAL5][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::GOAL5][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::GOAL5][Collider::Type::DISC] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::GOAL] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::GOAL3] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::GOAL5] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::RED] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::WALL] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = false;
@@ -147,8 +161,11 @@ void ModuleCollisions::DebugDraw()
 		case Collider::Type::RED:
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
-		case Collider::Type::GOAL:
+		case Collider::Type::GOAL3:
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			break;
+		case Collider::Type::GOAL5:
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
 			break;
 		}
 	}

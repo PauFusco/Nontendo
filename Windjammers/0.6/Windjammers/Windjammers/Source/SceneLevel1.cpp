@@ -35,28 +35,57 @@ bool SceneLevel1::Start()
 	case BEACH:
 		bgTexture = App->textures->Load("Assets/Sprites/SCENES/BEACH.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/BEACH.ogg");
+		
+		App->collisions->AddCollider({   8,  55, 10, 49 }, Collider::Type::GOAL3);
+		App->collisions->AddCollider({   8, 105, 10, 47 }, Collider::Type::GOAL5);
+		App->collisions->AddCollider({   8, 152, 10, 49 }, Collider::Type::GOAL3);
+		
+		App->collisions->AddCollider({ 285,  56, 10, 49 }, Collider::Type::GOAL3);
+		App->collisions->AddCollider({ 285, 105, 10, 47 }, Collider::Type::GOAL5);
+		App->collisions->AddCollider({ 285, 152, 10, 49 }, Collider::Type::GOAL3);
+		
+		App->collisions->AddCollider({   0,  35, 304,  21 }, Collider::Type::WALL);
+		App->collisions->AddCollider({   0, 185, 304,  19 }, Collider::Type::WALL);
+		App->collisions->AddCollider({ 146,  56,  11, 129 }, Collider::Type::RED);
+
 		break;
 	
 	case LAWN:
 		bgTexture = App->textures->Load("Assets/Sprites/SCENES/LAWN.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/LAWN.ogg");
+		
+		App->collisions->AddCollider({  16,  45, 20, 59 }, Collider::Type::GOAL3);
+		App->collisions->AddCollider({  16, 104, 10, 48 }, Collider::Type::GOAL5);
+		App->collisions->AddCollider({  16, 152, 20, 59 }, Collider::Type::GOAL3);
+
+		App->collisions->AddCollider({ 268,  56, 20, 59 }, Collider::Type::GOAL3);
+		App->collisions->AddCollider({ 268, 104, 20, 48 }, Collider::Type::GOAL5);
+		App->collisions->AddCollider({ 268, 152, 20, 59 }, Collider::Type::GOAL3);
+
+		App->collisions->AddCollider({   0,  22, 304,  22 }, Collider::Type::WALL);
+		App->collisions->AddCollider({   0, 199, 304,  18 }, Collider::Type::WALL);
+		App->collisions->AddCollider({ 145,  44,  15, 155 }, Collider::Type::RED);
+
 		break;
 
 	case TILED:
 		bgTexture = App->textures->Load("Assets/Sprites/SCENES/TILED.png");
 		App->audio->PlayMusic("Assets/Music/STAGES/TILED.ogg");
+		
+		App->collisions->AddCollider({ 17,  56, 8, 32 }, Collider::Type::GOAL5);
+		App->collisions->AddCollider({ 17,  88, 8, 77 }, Collider::Type::GOAL3);
+		App->collisions->AddCollider({ 17, 165, 8, 32 }, Collider::Type::GOAL5);
+
+		App->collisions->AddCollider({ 279,  56, 8, 32 }, Collider::Type::GOAL3);
+		App->collisions->AddCollider({ 279,  88, 8, 77 }, Collider::Type::GOAL5);
+		App->collisions->AddCollider({ 279, 165, 8, 32 }, Collider::Type::GOAL3);
+
+		App->collisions->AddCollider({   0,  38, 304,  19 }, Collider::Type::WALL);
+		App->collisions->AddCollider({   0, 185, 304,  19 }, Collider::Type::WALL);
+		App->collisions->AddCollider({ 146,  56,  13, 129 }, Collider::Type::RED);
+
 		break;
 	}
-	// Colliders ---
-	App->collisions->AddCollider({   0, 224, 3930, 16 }, Collider::Type::WALL);
-
-	App->collisions->AddCollider({   0,  32, 304,  15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({   0, 182, 304,  15 }, Collider::Type::WALL);
-	App->collisions->AddCollider({ 144,  56,  15, 130 }, Collider::Type::RED );
-	App->collisions->AddCollider({   0,  56,   8, 132 }, Collider::Type::GOAL);
-	App->collisions->AddCollider({ 296,  56,   8, 132 }, Collider::Type::GOAL);
-
-	
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -73,8 +102,29 @@ bool SceneLevel1::Start()
 
 Update_Status SceneLevel1::Update()
 {
-	if (App->input->keys[SDL_SCANCODE_Y] == KEY_STATE::KEY_DOWN) {
-		App->fade->FadeToBlack(this, (Module*)App->menu, 40);
+	if (App->victory->win_lose) {
+		App->fade->FadeToBlack(this, (Module*)App->menu, 50);
+		
+	}
+
+	if (!timerStop && !(decimas + unidades == 0)) {
+		if (reloj == 0) {
+			if (unidades == 0) {
+				decimas -= 1;
+				unidades = 9;
+			}
+			else {
+				unidades -= 1;
+			}
+			reloj = 60;
+		}
+		else {
+			reloj -= 1;
+		}
+	}
+
+	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
+		App->victory->win_player = true;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;
@@ -92,29 +142,6 @@ Update_Status SceneLevel1::PostUpdate()
 
 	sprintf_s(timer, 10, "%d", unidades);
 	App->fonts->BlitText(152, 21, timeFont, timer);
-
-	if (!timerStop && !(decimas+unidades == 0)) {
-		if (reloj == 0) {
-			if (unidades == 0) {
-				decimas -= 1;
-				unidades = 9;
-			}
-			else {
-				unidades -= 1;
-			}
-			reloj = 60;
-		}
-		else {
-			reloj -= 1;
-		}
-	}
-
-	if (App->victory->win_lose) {
-		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-		{
-			App->fade->FadeToBlack(this, (Module*)App->menu, 50);
-		}
-	}
 
 	return Update_Status::UPDATE_CONTINUE;
 }
