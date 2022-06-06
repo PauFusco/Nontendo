@@ -380,6 +380,7 @@ Update_Status ModuleEnemy::Update()
 
 	if (hasDisc && App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
 	{
+		App->sceneLevel_1->timerStop = false;
 		if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 		{
 			sy = -2;
@@ -393,7 +394,7 @@ Update_Status ModuleEnemy::Update()
 
 			if (!animationLocked)
 			{
-				App->particles->AddParticle(App->particles->disc, position.x + 35, position.y, sx, sy, Collider::Type::DISC);
+				App->particles->AddParticle(App->particles->disc, position.x - 35, position.y, sx, sy, Collider::Type::DISC);
 				hasDisc = false;
 				App->audio->PlayFx(NthrowFx);
 				canDash = true;

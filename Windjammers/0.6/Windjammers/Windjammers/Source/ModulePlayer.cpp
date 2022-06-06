@@ -390,7 +390,7 @@ Update_Status ModulePlayer::Update()
 	}
 
 	if (hasDisc && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
-		
+		App->sceneLevel_1->timerStop = false;
 		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
 			sy = -2;
