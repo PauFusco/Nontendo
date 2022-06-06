@@ -36,10 +36,10 @@ bool ModuleVictory::Start()
 
 Update_Status ModuleVictory::Update()
 {
-	if (App->player->score == 12) {
+	if (App->player->score >= 12) {
 		win_player = true;
 	}
-	else if (App->player->score_e == 12) {
+	else if (App->player->score_e >= 12) {
 		win_enemy = true;
 	}
 	return Update_Status::UPDATE_CONTINUE;
