@@ -34,7 +34,8 @@ public:
 	SDL_Texture* victoryTexture;
 
 	// Victory state
-	bool win = false;
+	bool win_player = false;
+	bool win_enemy = false;
 
 	// Position of the counter in the map
 	iPoint counterPosition;

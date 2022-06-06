@@ -21,6 +21,7 @@
 #include "NeoGeo.h"
 #include "MapMenu.h"
 #include "pantalla de carga.h"
+#include "ModuleVictory.h"
 
 
 Application::Application()
@@ -48,6 +49,7 @@ Application::Application()
 	modules[14] =	fade =			new ModuleFadeToBlack(true);
 	modules[15] =	fonts =			new ModuleFonts(true);
 	modules[16] =	render =		new ModuleRender(true);
+	modules[16] =	victory =		new ModuleVictory(true);
 }
 
 Application::~Application()
