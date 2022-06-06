@@ -22,7 +22,7 @@ SceneLevel1::SceneLevel1(bool startEnabled) : Module(startEnabled)
 
 SceneLevel1::~SceneLevel1()
 {
-
+	App->victory->win_lose = false;
 }
 
 // Load assets
