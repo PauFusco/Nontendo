@@ -97,8 +97,8 @@ bool ModuleEnemy::Start()
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/Italy movements.png"); // Italy sprites
 		
 		// idle animation with disc
-		idlediscAnim.PushBack({ 178,170,38,50 });
-		idlediscAnim.PushBack({ 217,170,38,50 });
+		idlediscAnim.PushBack({ 178,160,38,50 });
+		idlediscAnim.PushBack({ 217,160,38,50 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
