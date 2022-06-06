@@ -266,7 +266,7 @@ bool ModulePlayer::Start()
 Update_Status ModulePlayer::Update()
 {
 	if (!hasDisc && !animationLocked) {
-		canDash = false;
+		canDash = true;
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
@@ -300,7 +300,6 @@ Update_Status ModulePlayer::Update()
 				collider->SetPos(position.x + 34, position.y);
 				App->audio->PlayFx(dashFx);
 			}
-
 		}
 
 		if (App->input->keys[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
@@ -355,7 +354,7 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 		{
 			nextIsSpecial = true;
-			canDash = false;
+			canDash = true;
 		}
 	}
 
@@ -395,13 +394,6 @@ Update_Status ModulePlayer::Update()
 		if (App->input->keys[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
 			sy = -2;
-			/*currentAnimation = &normalthrowAnim;
-
-			animFC--;
-			if (animFC == 0) {
-				animFC = 10;
-				animationLocked = false;
-			}*/
 
 			if (!animationLocked)
 			{
@@ -455,7 +447,7 @@ Update_Status ModulePlayer::Update()
 		}
 	}
 
-	if (animationLocked && canDash) {
+	if (animationLocked && canDash && !hasDisc) {
 		switch (dashDir) {
 		case RIGHT:
 			currentAnimation = &rightdashAnim;
