@@ -106,14 +106,14 @@ Update_Status SceneLevel1::Update()
 	{
 		App->particles->AddParticle(App->particles->win, 37, 58, 0, 0, Collider::NONE);
 		App->particles->AddParticle(App->particles->lose, 182, 58, 0, 0, Collider::NONE);
-		App->fade->FadeToBlack(this, (Module*)App->menu, 200);
+		App->fade->FadeToBlack(this, (Module*)App->mapmenu, 200);
 		App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
 	}
 	else if (App->victory->win_enemy)
 	{
 		App->particles->AddParticle(App->particles->win, 182, 58, 0, 0, Collider::NONE);
 		App->particles->AddParticle(App->particles->lose, 37, 58, 0, 0, Collider::NONE);
-		App->fade->FadeToBlack(this, (Module*)App->menu, 200);
+		App->fade->FadeToBlack(this, (Module*)App->mapmenu, 200);
 		App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
 	}
 
