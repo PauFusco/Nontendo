@@ -85,6 +85,8 @@ bool ModuleParticles::Start()
 	P2ind.anim.PushBack({});
 	P2ind.anim.loop = true;
 
+	win_lose.anim.PushBack({ 0, 0, 17, 44 });
+	win_lose.anim.loop = true;
 
 	wallrbFx = App->audio->LoadFx("Assets/Music/SFX/8 REBOUND.wav");
 	goalFx = App->audio->LoadFx("Assets/Music/SFX/10 POINT.wav");
