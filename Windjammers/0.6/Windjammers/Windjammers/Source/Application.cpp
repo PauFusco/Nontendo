@@ -49,7 +49,7 @@ Application::Application()
 	modules[14] =	fade =			new ModuleFadeToBlack(true);
 	modules[15] =	fonts =			new ModuleFonts(true);
 	modules[16] =	render =		new ModuleRender(true);
-	modules[16] =	victory =		new ModuleVictory(true);
+	modules[17] =	victory =		new ModuleVictory(true);
 }
 
 Application::~Application()
