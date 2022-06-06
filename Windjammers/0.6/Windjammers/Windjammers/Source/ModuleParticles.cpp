@@ -150,15 +150,19 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			p->speed.y = 0;
 			p->isAlive = false;
 
-			if (p->position.x > 152) {
+			if (p->position.x > 152)
+			{
 				App->player->score += 3;
 				SDL_Delay(20);
 				App->enemy->hasDisc = true;
+				App->enemy->nextIsSpecial = false;
 			}
-			else {
+			else
+			{
 				App->player->score_e += 3;
 				SDL_Delay(20);
 				App->player->hasDisc = true;
+				App->player->nextIsSpecial = false;
 			}
 			App->sceneLevel_1->timerStop = true;
 			CleanUp();

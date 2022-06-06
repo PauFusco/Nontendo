@@ -393,7 +393,7 @@ Update_Status ModuleEnemy::Update()
 
 			if (!animationLocked)
 			{
-				App->particles->AddParticle(App->particles->disc, position.x + 35, position.y, sx, sy, Collider::Type::DISC);
+				App->particles->AddParticle(App->particles->disc, position.x - 35, position.y, sx, sy, Collider::Type::DISC);
 				hasDisc = false;
 				App->audio->PlayFx(NthrowFx);
 				canDash = true;
