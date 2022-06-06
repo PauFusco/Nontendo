@@ -31,9 +31,9 @@ Controller bindings (same for both controllers):
 Info: To perform a special throw, hit the disc just before it arrives to you, throwing it up and letting you charge the throw. Then, press the throw button to perform the throw.
 
 ## Links
-* Gameplay video
+* Gameplay video:
 
-* Downloads
+[![Video](https://consolaytablero.com/wp-content/uploads/2017/07/Windjammers-752x440.png)](https://youtu.be/5Lpq-uPu7bo)
 
 ## Dev Team
 * Oscar Escofet Fortet (Code) --> [GitHub Profile](https://github.com/OscarEscF)
