@@ -59,7 +59,7 @@ bool ModuleEnemy::Start()
 		// Move right
 		rightAnim.PushBack({ 426,  7, 26, 36 });
 		rightAnim.PushBack({ 457,  7, 34, 35 });
-		rightAnim.PushBack({ 6, 55, 32, 36 });
+		rightAnim.PushBack({   6, 55, 32, 36 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
@@ -72,13 +72,13 @@ bool ModuleEnemy::Start()
 		rightdashAnim.PushBack({ 310, 56, 68, 33 });
 
 		// Dash left
-		leftdashAnim.PushBack({ 310, 98, 68, 33 });
+		leftdashAnim.PushBack ({ 310, 98, 68, 33 });
 
 		// Dash up
-		updashAnim.PushBack({ 308, 135, 33, 68 });
+		updashAnim.PushBack   ({ 308, 135, 33, 68 });
 
 		// Dash down
-		downdashAnim.PushBack({ 340, 135, 33, 68 });
+		downdashAnim.PushBack ({ 340, 135, 33, 68 });
 		
 		specialAnim.PushBack({ 105, 200, 43, 54 });
 		specialAnim.PushBack({ 161, 200, 45, 54 });
@@ -170,28 +170,28 @@ bool ModuleEnemy::Start()
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/USA movements.png"); // USA spriteS
 
 		// idle animation with disc
-		idlediscAnim.PushBack({14,396,41,47 });
-		idlediscAnim.PushBack({ 116,396,41,47 });
+		idlediscAnim.PushBack({  14, 396, 41, 47 });
+		idlediscAnim.PushBack({ 116, 396, 41, 47 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
-		idleAnim.PushBack({ 14,396,41,47 });
-		idleAnim.PushBack({71,396,41,47  });
-		idleAnim.PushBack({116,396,41,47 });
-		idleAnim.PushBack({164,396,41,47  });
+		idleAnim.PushBack({  14, 396, 41, 47 });
+		idleAnim.PushBack({  71, 396, 41, 47 });
+		idleAnim.PushBack({ 116, 396, 41, 47 });
+		idleAnim.PushBack({ 164, 396, 41, 47 });
 		
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({12,335,42,55  });
-		upAnim.PushBack({54,335,42,55  });
-		upAnim.PushBack({94,335,42,55  });
+		upAnim.PushBack({ 12, 335, 42, 55 });
+		upAnim.PushBack({ 54, 335, 42, 55 });
+		upAnim.PushBack({ 94, 335, 42, 55 });
 		upAnim.speed = 0.1f;
 
 		// Move down
-		downAnim.PushBack({323,276,43,49  });
-		downAnim.PushBack({226,276,43,49  });
-		downAnim.PushBack({370,276,43,49  });
+		downAnim.PushBack({ 323, 276, 43, 49 });
+		downAnim.PushBack({ 226, 276, 43, 49 });
+		downAnim.PushBack({ 370, 276, 43, 49 });
 		downAnim.speed = 0.1f;
 
 		// Move right
@@ -241,6 +241,7 @@ bool ModuleEnemy::Start()
 
 	NthrowFx = App->audio->LoadFx("Assets/Music/SFX/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
+	dashFx = App->audio->LoadFx("Assets/Music/SFX/9 SLIDE.wav");
 
 	position.x = 240;
 	position.y = 100;
@@ -255,6 +256,7 @@ bool ModuleEnemy::Start()
 Update_Status ModuleEnemy::Update()
 {
 	if (!hasDisc && !animationLocked) {
+		canDash = true;
 		if (App->input->keys[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
@@ -340,7 +342,7 @@ Update_Status ModuleEnemy::Update()
 		if (App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
 		{
 			nextIsSpecial = true;
-			canDash = false;
+			canDash = true;
 		}
 	}
 
@@ -416,7 +418,7 @@ Update_Status ModuleEnemy::Update()
 		}
 	}
 	
-	if (animationLocked && canDash) {
+	if (animationLocked && canDash && !hasDisc) {
 		switch (dashDir) {
 		case RIGHT:
 			currentAnimation = &rightdashAnim;
