@@ -42,8 +42,6 @@ public:
 
 public:
 	
-
-	
 	// Position of the player in the map
 	iPoint position;
 

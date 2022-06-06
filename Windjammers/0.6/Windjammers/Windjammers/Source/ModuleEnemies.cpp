@@ -468,7 +468,6 @@ Update_Status ModuleEnemy::PostUpdate()
 	return Update_Status::UPDATE_CONTINUE;
 }
 
-
 void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c2->type == Collider::Type::WALL) {
