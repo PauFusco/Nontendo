@@ -101,10 +101,10 @@ bool ModulePlayer::Start()
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
-		idleAnim.PushBack({  98, 164, 35, 47 });
-		idleAnim.PushBack({ 137, 164, 38, 47 });
-		idleAnim.PushBack({ 179, 164, 35, 47 });
-		idleAnim.PushBack({ 218, 164, 31, 47 });
+		idleAnim.PushBack({ 8, 5, 31, 46 });
+		idleAnim.PushBack({ 39, 5, 31, 46 });
+		idleAnim.PushBack({ 8, 5, 31, 46 });
+		idleAnim.PushBack({ 39, 5, 31, 46 });
 		idleAnim.speed = 0.1f;
 
 		// Move up
@@ -241,6 +241,7 @@ bool ModulePlayer::Start()
 		break;
 	}
 	currentAnimation = &idlediscAnim;
+	
 
 	NthrowFx = App->audio->LoadFx("Assets/Music/SFX/1 NORMAL THROW.wav");
 	explosionFx = App->audio->LoadFx("Assets/Music/explosion.wav");
@@ -265,6 +266,7 @@ bool ModulePlayer::Start()
 
 Update_Status ModulePlayer::Update()
 {
+	
 	if (!hasDisc && !animationLocked) {
 		canDash = true;
 		if (App->input->keys[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)

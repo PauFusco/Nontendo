@@ -10,6 +10,7 @@
 #include "ModuleEnemies.h"
 #include "SceneLevel1.h"
 
+
 #include "SDL/include/SDL_timer.h"
 
 ModuleParticles::ModuleParticles(bool startEnabled) : Module(startEnabled)
@@ -40,6 +41,12 @@ bool ModuleParticles::Start()
 	disc.anim.PushBack({ 178, 48, 16, 16 });
 	disc.lifetime = 85;
 	disc.anim.speed = 0.1f;
+
+	discIdlek.anim.PushBack({237,64,5,13});
+
+	discIdleI.anim.PushBack({113,47,18,17});
+
+	discIdleU.anim.PushBack({ 113,47,18,17 });
 
 	discFly.anim.PushBack({ 0, 0, 17, 44 });
 	discFly.anim.PushBack({ 18, 0, 25, 44 });
@@ -184,6 +191,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				App->audio->PlayFx(hit);
 				CleanUp();
 				AddParticle(discFly, x, y, 0, 0, Collider::NONE);
+				
 			}
 		}
 		if (c2->type == Collider::Type::ENEMY)
@@ -202,6 +210,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				App->audio->PlayFx(hit);
 				CleanUp();
 				AddParticle(discFly, x, y, 0, 0, Collider::NONE);
+				
 			}
 		}
 	}

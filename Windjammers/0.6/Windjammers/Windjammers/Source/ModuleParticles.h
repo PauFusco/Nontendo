@@ -59,6 +59,9 @@ public:
 	//Template particle for a laser
 	Particle disc;
 	Particle discFly;
+	Particle discIdlek;
+	Particle discIdleI;
+	Particle discIdleU;
 
 	Particle fire;
 
@@ -71,6 +74,7 @@ public:
 	uint goalFx = 0;
 	uint recieve = 0;
 	uint hit = 0;
+
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
