@@ -97,48 +97,49 @@ bool ModuleEnemy::Start()
 		texture = App->textures->Load("Assets/Sprites/PLAYERS/Italy movements.png"); // Italy sprites
 		
 		// idle animation with disc
-		idlediscAnim.PushBack({  });
-		idlediscAnim.PushBack({  });
+		idlediscAnim.PushBack({ 178,170,38,50 });
+		idlediscAnim.PushBack({ 217,170,38,50 });
 		idlediscAnim.speed = 0.05f;
 
 		// idle animation
-		idleAnim.PushBack({  });
-		idleAnim.PushBack({  });
-		idleAnim.PushBack({  });
-		idleAnim.PushBack({  });
+		idleAnim.PushBack({98,160,37,50 });
+		idleAnim.PushBack({ 136,160,38,50 });
+		idleAnim.PushBack({ 178,160,38,50 });
+		idleAnim.PushBack({ 217,160,38,50 });
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
-		upAnim.PushBack({  });
+		upAnim.PushBack({ 187, 52, 45, 56 });
+		upAnim.PushBack({ 232, 52, 34, 56 });
+		upAnim.PushBack({ 271, 52, 45, 56 });
+		upAnim.PushBack({ 316, 52, 34, 56 });
+		upAnim.PushBack({ 271, 52, 45, 56 });
+		upAnim.PushBack({ 232, 52, 34, 56 });
 		upAnim.speed = 0.1f;
 
 		// Move down
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
-		downAnim.PushBack({  });
+		downAnim.PushBack({ 365,  5, 40, 46 });
+		downAnim.PushBack({ 408,  5, 42, 46 });
+		downAnim.PushBack({ 453,  5, 42, 46 });
+		downAnim.PushBack({ 4, 57, 40, 46 });
+		downAnim.PushBack({ 49, 57, 42, 46 });
+		downAnim.PushBack({ 96, 57, 42, 46 });
+		downAnim.PushBack({ 408,  5, 42, 46 });
 		downAnim.speed = 0.1f;
 
 		// Move right
-		rightAnim.PushBack({  72, 11, 45, 45 });
-		rightAnim.PushBack({ 156, 11, 37, 45 });
-		rightAnim.PushBack({ 193, 11, 32, 45 });
-		rightAnim.PushBack({ 225, 11, 47, 45 });
+		rightAnim.PushBack({ 154, 5, 37, 45 });
+		rightAnim.PushBack({ 191, 5, 32, 45 });
+		rightAnim.PushBack({ 223, 5, 47, 45 });
+		rightAnim.PushBack({ 270, 5, 47, 45 });
+		rightAnim.PushBack({ 320, 5, 45, 45 });
 		rightAnim.speed = 0.1f;
 
 		// Move left
-		leftAnim.PushBack({ 419, 169, 45, 45 });
-		leftAnim.PushBack({ 343, 169, 37, 45 });
-		leftAnim.PushBack({ 311, 169, 32, 45 });
-		leftAnim.PushBack({ 264, 169, 47, 45 });
+		leftAnim.PushBack({ 417, 162, 45, 45 });
+		leftAnim.PushBack({ 341, 162, 37, 45 });
+		leftAnim.PushBack({ 309, 162, 32, 45 });
+		leftAnim.PushBack({ 262, 162, 47, 45 });
 		leftAnim.speed = 0.1f;
 
 		// Dash right
@@ -183,9 +184,9 @@ bool ModuleEnemy::Start()
 		idleAnim.speed = 0.1f;
 
 		// Move up
-		upAnim.PushBack({ 12, 335, 42, 55 });
-		upAnim.PushBack({ 54, 335, 42, 55 });
-		upAnim.PushBack({ 94, 335, 42, 55 });
+		upAnim.PushBack({ 12, 335, 40, 55 });
+		upAnim.PushBack({ 54, 335, 40, 55 });
+		upAnim.PushBack({ 94, 335, 40, 55 });
 		upAnim.speed = 0.1f;
 
 		// Move down
