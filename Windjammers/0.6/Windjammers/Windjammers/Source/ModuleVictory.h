@@ -28,6 +28,7 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	Update_Status PostUpdate() override;
 
+	bool CleanUp() override;
 public:
 
 	// The win spritesheet
@@ -37,8 +38,15 @@ public:
 	bool win_player = false;
 	bool win_enemy = false;
 
+	// Win-Lose asset activated
+	bool win_lose = false;
+
 	// Position of the counter in the map
 	iPoint counterPosition;
+
+	int win = 0;
+	int winFont = -1;
+	char winner[10] = { "\0" };
 };
 
 #endif
