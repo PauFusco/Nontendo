@@ -75,7 +75,7 @@ Update_Status Menu::Update()
 		P2.character--;
 
 	}
-	if (App->input->keys[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN && !P2.Locked)
+	if (App->input->keys[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN && !P2.Locked)
 	{
 		P2.Locked = true;
 		switch (P2.character) {
