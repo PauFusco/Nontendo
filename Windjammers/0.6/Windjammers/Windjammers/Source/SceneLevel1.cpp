@@ -102,9 +102,10 @@ bool SceneLevel1::Start()
 
 Update_Status SceneLevel1::Update()
 {
-	if (App->victory->win_lose) {
+	if (App->victory->win_lose)
+	{
 		App->fade->FadeToBlack(this, (Module*)App->menu, 50);
-		
+		App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
 	}
 
 	if (!timerStop && !(decimas + unidades == 0)) {
