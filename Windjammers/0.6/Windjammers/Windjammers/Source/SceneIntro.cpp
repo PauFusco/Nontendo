@@ -11,7 +11,11 @@
 
 SceneIntro::SceneIntro(bool startEnabled) : Module(startEnabled)
 {
+<<<<<<< Updated upstream
 	
+=======
+	//palmeras.({});
+>>>>>>> Stashed changes
 
 
    
