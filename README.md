@@ -15,17 +15,17 @@ Execute game with the .exe file in the main folder.
 Controls:
 ```
 * Player 1 Movement: W A S D
-* Player 1 Throw & Select: SPACE
+* Player 1 Throw, Select & Disc Hit: SPACE
 * Player 1 Dash: X
 
 * Player 2 Movement: Arrows
-* Player 2 Throw & Select: L
+* Player 2 Throw, Select & Disc Hit: L
 * Player 2 Dash: M
 ```
 Controller bindings (same for both controllers):
 ```
 * Movement: DPad
-* Throw & Select: A
+* Throw, Select & Disc Hit: A
 * Dash: B
 ```
 Info: To perform a special throw, hit the disc just before it arrives to you, throwing it up and letting you charge the throw. Then, press the throw button to perform the throw.
