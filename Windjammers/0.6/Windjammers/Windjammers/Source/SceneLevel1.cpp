@@ -11,6 +11,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleVictory.h"
 
 #include <stdio.h>
 
@@ -108,12 +109,26 @@ Update_Status SceneLevel1::PostUpdate()
 		}
 	}
 
+	if (App->victory->win_lose) {
+		if (App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+		{
+			App->fade->FadeToBlack(this, (Module*)App->menu, 50);
+		}
+	}
+
 	return Update_Status::UPDATE_CONTINUE;
 }
 
 bool SceneLevel1::CleanUp()
 {
 	App->player->Disable();
+	App->player->score = 0;
+	App->player->score_e = 0;
+	unidades = 0;
+	decimas = 3;
+	reloj = 60;
+	timerStop = true;
+	App->victory->win_lose = false;
 	App->enemy->Disable();
 	App->particles->CleanUp();
 
