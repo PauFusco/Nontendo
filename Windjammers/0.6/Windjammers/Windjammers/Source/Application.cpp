@@ -30,26 +30,26 @@ Application::Application()
 	// It will define the order in which Pre/Update/Post will be called
 	// Render should always be last, as our last action should be updating the screen
 
-	modules[0] =	window =		new ModuleWindow(true);
-	modules[1] =	input =			new ModuleInput(true);
-	modules[2] =	textures =		new ModuleTextures(true);
-	modules[3] =	audio =			new ModuleAudio(true);
+	modules[0] =	window =			new ModuleWindow(true);
+	modules[1] =	input =				new ModuleInput(true);
+	modules[2] =	textures =			new ModuleTextures(true);
+	modules[3] =	audio =				new ModuleAudio(true);
 	
-	modules[4] =	neogeo =		new NeoGeo(true);
-	modules[5] =	sceneIntro =	new SceneIntro(false);
-	modules[6] =    menu =          new Menu(false);
-	modules[7] =	mapmenu =		new MapMenu(false);
-	modules[8] = pantalladecarga = new PantallaDeCarga(false);
-	modules[9] =	sceneLevel_1 =	new SceneLevel1(false);		//Gameplay scene starts disabled
-	modules[10] =	player =		new ModulePlayer(false);	//Player starts disabled
-	modules[11] =	particles =		new ModuleParticles(false);
-	modules[12] =	enemy =			new ModuleEnemy(false);	//Enemies start disabled
+	modules[4] =	neogeo =			new NeoGeo(true);
+	modules[5] =	sceneIntro =		new SceneIntro(false);
+	modules[6] =    menu =				new Menu(false);
+	modules[7] =	mapmenu =			new MapMenu(false);
+	modules[8] =	pantalladecarga =	new PantallaDeCarga(false);
+	modules[9] =	sceneLevel_1 =		new SceneLevel1(false);		//Gameplay scene starts disabled
+	modules[10] =	player =			new ModulePlayer(false);	//Player starts disabled
+	modules[11] =	particles =			new ModuleParticles(false);
+	modules[12] =	enemy =				new ModuleEnemy(false);	//Enemies start disabled
 
-	modules[13] =	collisions =	new ModuleCollisions(true);
-	modules[14] =	fade =			new ModuleFadeToBlack(true);
-	modules[15] =	fonts =			new ModuleFonts(true);
-	modules[16] =	render =		new ModuleRender(true);
-	modules[16] =	victory =		new ModuleVictory(true);
+	modules[13] =	collisions =		new ModuleCollisions(true);
+	modules[14] =	fade =				new ModuleFadeToBlack(true);
+	modules[15] =	fonts =				new ModuleFonts(true);
+	modules[16] =	render =			new ModuleRender(true);
+	modules[17] =	victory =			new ModuleVictory(true);
 }
 
 Application::~Application()
