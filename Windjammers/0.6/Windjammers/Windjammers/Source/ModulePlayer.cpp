@@ -389,6 +389,10 @@ Update_Status ModulePlayer::Update()
 
 	if (hasDisc && !animationLocked) {
 		currentAnimation = &idlediscAnim;
+
+		App->particles->AddParticle(App->particles->discIdlek, position.x + 35, position.y, sx, sy, Collider::Type::DISC);
+
+
 	}
 
 	if (hasDisc && App->input->keys[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
