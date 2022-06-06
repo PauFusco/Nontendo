@@ -383,15 +383,7 @@ Update_Status ModuleEnemy::Update()
 		App->sceneLevel_1->timerStop = false;
 		if (App->input->keys[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 		{
-			sy = -2;
-			/*currentAnimation = &normalthrowAnim;
-
-			animFC--;
-			if (animFC == 0) {
-				animFC = 10;
-				animationLocked = false;
-			}*/
-
+			sy = 2;
 			if (!animationLocked)
 			{
 				App->particles->AddParticle(App->particles->disc, position.x - 35, position.y, sx, sy, Collider::Type::DISC);
@@ -403,7 +395,7 @@ Update_Status ModuleEnemy::Update()
 
 		else if (App->input->keys[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
-			sy = 2;
+			sy = -2;
 			App->particles->AddParticle(App->particles->disc, position.x - 20, position.y, sx, sy, Collider::Type::DISC);
 			hasDisc = false;
 			App->audio->PlayFx(NthrowFx);
@@ -486,7 +478,10 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == Collider::Type::RED) {
 		if (position.x <= 145) position.x = 145;
 	}
-	if (c2->type == Collider::Type::GOAL) {
+	if (c2->type == Collider::Type::GOAL3) {
+		if (position.x >= 251) position.x = 266;
+	}
+	if (c2->type == Collider::Type::GOAL5) {
 		if (position.x >= 251) position.x = 266;
 	}
 }
