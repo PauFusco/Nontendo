@@ -150,7 +150,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			p->speed.y = -p->speed.y;
 		}
 
-		if (c2->type == Collider::Type::GOAL)
+		if (c2->type == Collider::Type::GOAL3)
 		{
 			App->audio->PlayFx(goalFx);
 			p->speed.x = 0;
@@ -167,6 +167,31 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			else
 			{
 				App->player->score_e += 3;
+				SDL_Delay(20);
+				App->player->hasDisc = true;
+				App->player->nextIsSpecial = false;
+			}
+			App->sceneLevel_1->timerStop = true;
+			CleanUp();
+		}
+
+		if (c2->type == Collider::Type::GOAL5)
+		{
+			App->audio->PlayFx(goalFx);
+			p->speed.x = 0;
+			p->speed.y = 0;
+			p->isAlive = false;
+
+			if (p->position.x > 152)
+			{
+				App->player->score += 5;
+				SDL_Delay(20);
+				App->enemy->hasDisc = true;
+				App->enemy->nextIsSpecial = false;
+			}
+			else
+			{
+				App->player->score_e += 5;
 				SDL_Delay(20);
 				App->player->hasDisc = true;
 				App->player->nextIsSpecial = false;

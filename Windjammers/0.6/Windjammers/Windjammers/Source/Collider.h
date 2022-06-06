@@ -17,7 +17,8 @@ struct Collider
 		ENEMY,
 		DISC,
 		RED,
-		GOAL,
+		GOAL3,
+		GOAL5,
 
 		MAX
 	};

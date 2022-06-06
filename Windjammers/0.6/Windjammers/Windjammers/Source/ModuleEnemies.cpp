@@ -478,15 +478,12 @@ void ModuleEnemy::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == Collider::Type::RED) {
 		if (position.x <= 145) position.x = 145;
 	}
-	if (c2->type == Collider::Type::GOAL) {
-		if (position.x >= 251) position.x = 266;
-	}
-	/*
+	
 	if (c2->type == Collider::Type::GOAL3) {
 		if (position.x >= 251) position.x = 266;
 	}
 	if (c2->type == Collider::Type::GOAL5) {
 		if (position.x >= 251) position.x = 266;
 	}
-	*/
+	
 }

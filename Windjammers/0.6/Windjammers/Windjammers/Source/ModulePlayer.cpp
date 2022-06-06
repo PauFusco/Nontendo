@@ -240,6 +240,7 @@ bool ModulePlayer::Start()
 		
 		break;
 	}
+	
 	currentAnimation = &idlediscAnim;
 	
 
@@ -548,7 +549,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == Collider::Type::RED) {
 		if (position.x >= 117) position.x = 117;
 	}
-	if (c2->type == Collider::Type::GOAL) {
+	if (c2->type == Collider::Type::GOAL3) {
+		if (position.x >= -15) position.x = 0;
+	}
+	if (c2->type == Collider::Type::GOAL5) {
 		if (position.x >= -15) position.x = 0;
 	}
 }
