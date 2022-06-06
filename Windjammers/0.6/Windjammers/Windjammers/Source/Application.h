@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 17
+#define NUM_MODULES 18
 
 class Module;
 class ModuleWindow;
@@ -23,6 +23,7 @@ class Menu;
 class NeoGeo;
 class MapMenu;
 class PantallaDeCarga;
+class ModuleVictory;
 
 class Application
 {
@@ -70,6 +71,7 @@ public:
 	ModuleFonts* fonts = nullptr;
 
 	ModuleRender* render = nullptr;	
+	ModuleVictory* victory = nullptr;	
 };
 
 // Global var made extern for Application ---
