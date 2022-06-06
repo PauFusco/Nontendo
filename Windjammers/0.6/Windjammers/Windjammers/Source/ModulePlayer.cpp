@@ -278,7 +278,7 @@ Update_Status ModulePlayer::Update()
 				currentAnimation = &leftAnim;
 			}
 			collider->SetPos(position.x, position.y);
-			if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_X])
 			{
 				dashDir = LEFT;
 				animationLocked = true;
@@ -295,7 +295,7 @@ Update_Status ModulePlayer::Update()
 				currentAnimation = &rightAnim;
 			}
 			collider->SetPos(position.x, position.y);
-			if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_X] )
 			{
 				dashDir = RIGHT;
 				animationLocked = true;
@@ -314,7 +314,7 @@ Update_Status ModulePlayer::Update()
 
 			}
 			collider->SetPos(position.x, position.y);
-			if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_X] )
 			{
 				dashDir = DOWN;
 				animationLocked = true;
@@ -333,7 +333,7 @@ Update_Status ModulePlayer::Update()
 				currentAnimation = &upAnim;
 			}
 			collider->SetPos(position.x, position.y);
-			if (App->input->keys[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
+			if (App->input->keys[SDL_SCANCODE_X])
 			{
 				dashDir = UP;
 				animationLocked = true;
