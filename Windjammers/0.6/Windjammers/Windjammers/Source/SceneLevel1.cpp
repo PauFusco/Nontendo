@@ -104,6 +104,7 @@ Update_Status SceneLevel1::Update()
 {
 	if (App->victory->win_lose)
 	{
+		App->particles->AddParticle(App->particles->win, 50, 50, 0, 0, Collider::NONE);
 		App->fade->FadeToBlack(this, (Module*)App->menu, 50);
 		App->victory->win_lose, App->victory->win_enemy, App->victory->win_player = false;
 	}
@@ -125,7 +126,7 @@ Update_Status SceneLevel1::Update()
 	}
 
 	if (App->input->keys[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
-		App->victory->win_player = true;
+		App->victory->win_lose = true;
 	}
 
 	return Update_Status::UPDATE_CONTINUE;

@@ -28,13 +28,6 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 
-	explosion.anim.PushBack({ 149, 48, 16, 16 });
-	explosion.anim.PushBack({ 181, 48, 16, 16 });
-	explosion.anim.PushBack({ 213, 48, 16, 16 });
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.5f;
-	explosion.lifetime = 5;
-
 	disc.anim.PushBack({  82, 48, 16, 16 });
 	disc.anim.PushBack({ 114, 48, 16, 16 });
 	disc.anim.PushBack({ 146, 48, 16, 16 });
@@ -86,19 +79,18 @@ bool ModuleParticles::Start()
 	P2ind.anim.loop = true;
 	
 	// Win
-	win.anim.PushBack({ 1687, 164, 106, 41 });
+	win.anim.PushBack({ 0, 65, 100, 32 });
 	win.anim.loop = true;
 
 	// Lose
-	lose.anim.PushBack({ 1535, 189, 118, 37 });
+	lose.anim.PushBack({ 137, 64, 100, 27 });
 	lose.anim.loop = true;
-	
 
 	wallrbFx = App->audio->LoadFx("Assets/Music/SFX/8 REBOUND.wav");
 	goalFx = App->audio->LoadFx("Assets/Music/SFX/10 POINT.wav");
 	recieve = App->audio->LoadFx("Assets/Music/SFX/HIT 1.wav");
 	hit = App->audio->LoadFx("Assets/Music/SFX/HIT 3.wav");
-	
+
 	return true;
 }
 
@@ -114,8 +106,6 @@ Update_Status ModuleParticles::PreUpdate()
 	case TILED:
 		DiscTexture = App->textures->Load("Assets/Sprites/SCENES/DiscTiled.png");
 	}
-
-	
 
 	// Remove all particles scheduled for deletion
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)

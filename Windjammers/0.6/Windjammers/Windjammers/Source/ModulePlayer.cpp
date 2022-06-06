@@ -559,7 +559,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 bool ModulePlayer::CleanUp()
 {
-	idlediscAnim.frames = nullptr;
+	/*idlediscAnim.frames = nullptr;
 	idleAnim.frames = nullptr;
 	upAnim;
 	downAnim;

@@ -28,14 +28,9 @@ ModuleVictory::~ModuleVictory()
 // Load assets
 bool ModuleVictory::Start()
 {
-
-
 	LOG("Loading background assets");
 
 	bool ret = true;
-
-	App->particles->WinTexture = App->textures->Load("Assets/Sprites/mas sprites.png");
-	App->particles->LoseTexture = App->textures->Load("Assets/Sprites/mas sprites.png");
 
 	return ret;
 }
@@ -56,27 +51,14 @@ Update_Status ModuleVictory::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	if (win_player) {
-		App->render->Blit(App->particles->WinTexture, 40, 100, nullptr, 0.0f);
-		App->render->Blit(App->particles->LoseTexture, 205, 100, nullptr, 0.0f);
 		win_lose = true;
 	}
 	else if (win_enemy) {
-		App->render->Blit(App->particles->LoseTexture, 40, 100, nullptr, 0.0f);
-		App->render->Blit(App->particles->WinTexture, 205, 100, nullptr, 0.0f);
 		win_lose = true;
 	}
 	else if ((App->sceneLevel_1->decimas) + (App->sceneLevel_1->unidades) == 0) {
-		if (App->player->score >= App->player->score_e) {
-			App->render->Blit(App->particles->WinTexture, 40, 100, nullptr, 0.0f);
-			App->render->Blit(App->particles->LoseTexture, 205, 100, nullptr, 0.0f);
-		}
-		else {
-			App->render->Blit(App->particles->LoseTexture, 40, 100, nullptr, 0.0f);
-			App->render->Blit(App->particles->WinTexture, 205, 100, nullptr, 0.0f);
-		}
-		win_lose = true;
+		if (!App->player->score >= App->player->score_e)	win_lose = true;
 	}
-	
 
 	return Update_Status::UPDATE_CONTINUE;
 }
