@@ -56,23 +56,23 @@ Update_Status ModuleVictory::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	if (win_player) {
-		App->render->Blit(App->particles->WinTexture, 250, 476, nullptr, 0.0f);
-		App->render->Blit(App->particles->LoseTexture, 1281, 476, nullptr, 0.0f);
+		App->render->Blit(App->particles->WinTexture, 40, 100, nullptr, 0.0f);
+		App->render->Blit(App->particles->LoseTexture, 205, 100, nullptr, 0.0f);
 		win_lose = true;
 	}
 	else if (win_enemy) {
-		App->render->Blit(App->particles->LoseTexture, 250, 476, nullptr, 0.0f);
-		App->render->Blit(App->particles->WinTexture, 1281, 476, nullptr, 0.0f);
+		App->render->Blit(App->particles->LoseTexture, 40, 100, nullptr, 0.0f);
+		App->render->Blit(App->particles->WinTexture, 205, 100, nullptr, 0.0f);
 		win_lose = true;
 	}
 	else if ((App->sceneLevel_1->decimas) + (App->sceneLevel_1->unidades) == 0) {
 		if (App->player->score >= App->player->score_e) {
-			App->render->Blit(App->particles->WinTexture, 250, 476, nullptr, 0.0f);
-			App->render->Blit(App->particles->LoseTexture, 1281, 476, nullptr, 0.0f);
+			App->render->Blit(App->particles->WinTexture, 40, 100, nullptr, 0.0f);
+			App->render->Blit(App->particles->LoseTexture, 205, 100, nullptr, 0.0f);
 		}
 		else {
-			App->render->Blit(App->particles->LoseTexture, 250, 476, nullptr, 0.0f);
-			App->render->Blit(App->particles->WinTexture, 1281, 476, nullptr, 0.0f);
+			App->render->Blit(App->particles->LoseTexture, 40, 100, nullptr, 0.0f);
+			App->render->Blit(App->particles->WinTexture, 205, 100, nullptr, 0.0f);
 		}
 		win_lose = true;
 	}
