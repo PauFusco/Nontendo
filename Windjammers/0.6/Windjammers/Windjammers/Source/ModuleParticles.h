@@ -62,6 +62,8 @@ public:
 	Particle discIdlek;
 	Particle discIdleI;
 	Particle discIdleU;
+	Particle win;
+	Particle lose;
 
 	Particle fire;
 
@@ -75,11 +77,14 @@ public:
 	uint recieve = 0;
 	uint hit = 0;
 
+	SDL_Texture* WinTexture = nullptr;
+	SDL_Texture* LoseTexture = nullptr;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* DiscTexture = nullptr;
 	SDL_Texture* CSTexture = nullptr;
+	
 
 	// An array to store and handle all the particles
 	Particle* particles[MAX_ACTIVE_PARTICLES] = { nullptr };

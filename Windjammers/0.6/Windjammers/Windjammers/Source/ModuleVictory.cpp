@@ -12,6 +12,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
+#include "ModuleParticles.h"
 
 #include <stdio.h>
 
@@ -33,10 +34,8 @@ bool ModuleVictory::Start()
 
 	bool ret = true;
 
-	// victoryTexture = App->textures->Load("Assets/Sprites/WINdjammers.png");
-
-	winFont = App->fonts->Load("Assets/Sprites/WINdjammers.png", "1", 1);
-
+	App->particles->WinTexture = App->textures->Load("Assets/Sprites/mas sprites.png");
+	App->particles->LoseTexture = App->textures->Load("Assets/Sprites/mas sprites.png");
 
 	return ret;
 }
@@ -57,21 +56,23 @@ Update_Status ModuleVictory::PostUpdate()
 {
 	// Draw everything --------------------------------------
 	if (win_player) {
-		sprintf_s(winner, 10, "%d", win);
-		App->fonts->BlitText(150, 300, winFont, winner);
-		// App->render->Blit(victoryTexture, 150, 100, nullptr, 0.0f);
+		App->render->Blit(App->particles->WinTexture, 250, 476, nullptr, 0.0f);
+		App->render->Blit(App->particles->LoseTexture, 1281, 476, nullptr, 0.0f);
 		win_lose = true;
 	}
 	else if (win_enemy) {
-		App->render->Blit(victoryTexture, 500, 100, nullptr, 0.0f);
+		App->render->Blit(App->particles->LoseTexture, 250, 476, nullptr, 0.0f);
+		App->render->Blit(App->particles->WinTexture, 1281, 476, nullptr, 0.0f);
 		win_lose = true;
 	}
 	else if ((App->sceneLevel_1->decimas) + (App->sceneLevel_1->unidades) == 0) {
 		if (App->player->score >= App->player->score_e) {
-			App->render->Blit(victoryTexture, 150, 100, nullptr, 0.0f);
+			App->render->Blit(App->particles->WinTexture, 250, 476, nullptr, 0.0f);
+			App->render->Blit(App->particles->LoseTexture, 1281, 476, nullptr, 0.0f);
 		}
 		else {
-			App->render->Blit(victoryTexture, 500, 100, nullptr, 0.0f);
+			App->render->Blit(App->particles->LoseTexture, 250, 476, nullptr, 0.0f);
+			App->render->Blit(App->particles->WinTexture, 1281, 476, nullptr, 0.0f);
 		}
 		win_lose = true;
 	}
